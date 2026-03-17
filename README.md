@@ -6,6 +6,10 @@
 
 **Histboard** is a browser-based interactive tool for creating beautiful historical maps. Explore world borders from **123,000 BC to 2010**, customize nation colors, place flags and text annotations, and export high-resolution maps for board games, presentations, education, or personal projects.
 
+## 🌐 Live Demo
+
+👉 **[Try Histboard now!](https://paulvern.free.nf/Histboard/)** — No installation required.
+
 <p align="center">
   <img src="https://img.shields.io/badge/Leaflet.js-199900?style=for-the-badge&logo=leaflet&logoColor=white" alt="Leaflet"/>
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
@@ -82,7 +86,10 @@
 
 ## 🚀 Getting Started
 
-### Option 1: Open Directly
+### Option 1: Use the Live Demo
+Visit **[https://paulvern.free.nf/Histboard/](https://paulvern.free.nf/Histboard/)** and start creating maps right away.
+
+### Option 2: Open Locally
 Simply open `index.html` in any modern browser. No build step required.
 
 ```bash
@@ -92,7 +99,7 @@ cd histboard
 
 Then open `index.html` in your browser.
 
-### Option 2: Serve Locally
+### Option 3: Serve Locally
 For best results (avoiding CORS issues with tile loading), use a local server:
 
 ```bash
