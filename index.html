@@ -5,21 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Histboard — Historical Board Game Map Maker</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:wght@400;700&family=Lora:wght@400;700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 <script src="translations.js"></script>
-<script src="lang-en.js"></script>
-<script src="lang-it.js"></script>
-<script src="lang-fr.js"></script>
-<script src="lang-zh.js"></script>
-<script src="lang-ar.js"></script>
-<script src="lang-de.js"></script>
-<script src="lang-ru.js"></script>
-<script src="lang-es.js"></script>
+
 <style>
-:root{--sw:380px;--hh:50px;--bg:#0f1923;--pan:#1a2535;--sec:#1e2d42;--accent:#e74c3c;--accent2:#c0392b;--tx:#dde6ee;--txd:#7899aa;--bd:#2a3a50;--green:#2ecc71;--green2:#27ae60;--blue:#3498db}
+:root{--sw:400px;--hh:50px;--bg:#0f1923;--pan:#1a2535;--sec:#1e2d42;--accent:#e74c3c;--accent2:#c0392b;--tx:#dde6ee;--txd:#7899aa;--bd:#2a3a50;--green:#2ecc71;--green2:#27ae60;--blue:#3498db}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--tx);overflow:hidden;height:100vh}
 header{height:var(--hh);background:linear-gradient(135deg,#1b2838,#2c3e50);display:flex;align-items:center;padding:0 20px;border-bottom:3px solid var(--accent);gap:14px;z-index:800}
@@ -48,9 +42,11 @@ input[type=checkbox]{accent-color:var(--accent);margin-right:4px}
 button{border:none;border-radius:5px;cursor:pointer;font-size:.82em;font-weight:600;transition:all .15s}
 .btn-accent{background:var(--accent);color:#fff;padding:8px 16px}.btn-accent:hover{background:var(--accent2)}
 .btn-green{background:var(--green);color:#fff;padding:8px 16px}.btn-green:hover{background:var(--green2)}
+.btn-blue{background:var(--blue);color:#fff;padding:8px 16px}.btn-blue:hover{background:#2980b9}
 .btn-sec{background:rgba(255,255,255,.1);color:var(--tx);padding:6px 12px}.btn-sec:hover{background:rgba(255,255,255,.18)}
 .btn-sm{padding:4px 10px;font-size:.74em}
 .row{display:flex;gap:8px;align-items:center}.row>*{flex:1}
+.row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
 .palette{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;margin-top:6px}
 .swatch{height:32px;border-radius:5px;border:2px solid transparent;cursor:pointer;transition:all .12s}
 .swatch:hover{transform:scale(1.15);border-color:#fff;z-index:2;position:relative}
@@ -170,6 +166,20 @@ button{border:none;border-radius:5px;cursor:pointer;font-size:.82em;font-weight:
 .clip-indicator{font-size:.7em;padding:2px 6px;border-radius:8px;margin-left:4px}
 .clip-indicator.land{background:rgba(139,90,43,.2);color:#d4a76a}
 .clip-indicator.sea{background:rgba(52,152,219,.15);color:var(--blue)}
+/* Text shape styles */
+.shape-select-row{display:flex;gap:4px;margin-bottom:8px}
+.shape-btn{flex:1;padding:6px;text-align:center;font-size:.75em;background:rgba(255,255,255,.06);color:var(--tx);border-radius:5px;border:2px solid transparent;cursor:pointer}
+.shape-btn:hover{background:rgba(255,255,255,.12)}
+.shape-btn.active{background:rgba(231,76,60,.15);border-color:var(--accent);color:#fff}
+.shape-preview{display:flex;justify-content:center;align-items:center;padding:12px;margin-top:8px;background:rgba(0,0,0,.2);border-radius:6px;min-height:60px}
+.shape-preview-inner{padding:8px 16px;display:inline-block;text-align:center}
+/* Relief effects */
+.relief-flat{box-shadow:none}
+.relief-raised{box-shadow:2px 2px 4px rgba(0,0,0,.4),-1px -1px 2px rgba(255,255,255,.1)}
+.relief-inset{box-shadow:inset 2px 2px 4px rgba(0,0,0,.4),inset -1px -1px 2px rgba(255,255,255,.1)}
+.relief-emboss{box-shadow:2px 2px 0 rgba(0,0,0,.3),-2px -2px 0 rgba(255,255,255,.1),3px 3px 6px rgba(0,0,0,.3)}
+.relief-glow{box-shadow:0 0 10px currentColor,0 0 20px currentColor}
+/* RTL */
 html[lang="ar"]{direction:rtl}
 html[lang="ar"] #sidebar{border-left:1px solid var(--bd);border-right:none}
 html[lang="ar"] .panel-head .arr{transform:scaleX(-1)}
@@ -246,24 +256,77 @@ html[lang="ar"] input[type="range"]{direction:ltr}
         <button class="tool-btn" id="tool-draw" onclick="setTool('draw')" data-i18n="tool.draw">🖊️ Draw</button>
       </div>
 
+      <!-- TEXT OPTIONS -->
       <div id="text-opts" style="display:none">
         <label data-i18n="text.label">Text</label>
         <input type="text" id="text-input" value="Text" data-i18n-placeholder="text.placeholder">
+        
+        <label data-i18n="text.font">Font</label>
+        <select id="text-font" onchange="updateTextPreview()">
+          <option value="'Segoe UI', system-ui, sans-serif">Segoe UI</option>
+          <option value="'Cinzel', serif">Cinzel (Medieval)</option>
+          <option value="'Playfair Display', serif">Playfair Display</option>
+          <option value="'EB Garamond', serif">EB Garamond</option>
+          <option value="'Merriweather', serif">Merriweather</option>
+          <option value="'Lora', serif">Lora</option>
+          <option value="'Roboto', sans-serif">Roboto</option>
+          <option value="'Open Sans', sans-serif">Open Sans</option>
+          <option value="'Oswald', sans-serif">Oswald</option>
+          <option value="Georgia, serif">Georgia</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+          <option value="Arial, sans-serif">Arial</option>
+        </select>
+        
         <label><span data-i18n="text.size">Size</span>: <span class="val" id="ts-val">18</span><span data-i18n="border.px">px</span></label>
-        <input type="range" id="text-size" min="8" max="72" value="18" oninput="document.getElementById('ts-val').textContent=this.value">
+        <input type="range" id="text-size" min="8" max="72" value="18" oninput="document.getElementById('ts-val').textContent=this.value;updateTextPreview()">
+        
         <div class="row" style="margin-top:6px">
-          <div><label data-i18n="text.color">Color</label><input type="color" id="text-color" value="#111111"></div>
-          <div><label><input type="checkbox" id="text-bold"> <span data-i18n="text.bold">Bold</span></label><label><input type="checkbox" id="text-outline" checked> <span data-i18n="text.outline">Outline</span></label></div>
+          <div><label data-i18n="text.color">Color</label><input type="color" id="text-color" value="#111111" onchange="updateTextPreview()"></div>
+          <div><label><input type="checkbox" id="text-bold" onchange="updateTextPreview()"> <span data-i18n="text.bold">Bold</span></label><label><input type="checkbox" id="text-outline" checked onchange="updateTextPreview()"> <span data-i18n="text.outline">Outline</span></label></div>
         </div>
+        
         <label><span data-i18n="text.rotation">Rotation</span>: <span class="val" id="tr-val">0</span>°</label>
         <input type="range" id="text-rot" min="-90" max="90" value="0" step="5" oninput="document.getElementById('tr-val').textContent=this.value">
+        
+        <!-- Shape options -->
+        <div class="custom-section-label" style="margin-top:14px" data-i18n="text.shape">Text Shape</div>
+        <div class="shape-select-row">
+          <button class="shape-btn active" id="shape-none" onclick="setTextShape('none')" data-i18n="text.shape.none">None</button>
+          <button class="shape-btn" id="shape-rect" onclick="setTextShape('rect')" data-i18n="text.shape.rect">▢ Rectangle</button>
+          <button class="shape-btn" id="shape-circle" onclick="setTextShape('circle')" data-i18n="text.shape.circle">● Circle</button>
+          <button class="shape-btn" id="shape-pill" onclick="setTextShape('pill')" data-i18n="text.shape.pill">⬭ Pill</button>
+        </div>
+        
+        <div id="shape-options" style="display:none">
+          <div class="row">
+            <div><label data-i18n="text.shape.bg">Background</label><input type="color" id="shape-bg-color" value="#f5e6c8" onchange="updateTextPreview()"></div>
+            <div><label data-i18n="text.shape.border">Border</label><input type="color" id="shape-border-color" value="#8b5a2b" onchange="updateTextPreview()"></div>
+          </div>
+          <label><span data-i18n="text.shape.borderwidth">Border Width</span>: <span class="val" id="sbw-val">2</span>px</label>
+          <input type="range" id="shape-border-width" min="0" max="8" value="2" step="1" oninput="document.getElementById('sbw-val').textContent=this.value;updateTextPreview()">
+          <label><span data-i18n="text.shape.padding">Padding</span>: <span class="val" id="sp-val">8</span>px</label>
+          <input type="range" id="shape-padding" min="2" max="30" value="8" step="1" oninput="document.getElementById('sp-val').textContent=this.value;updateTextPreview()">
+          <label data-i18n="text.shape.relief">Relief Effect</label>
+          <select id="shape-relief" onchange="updateTextPreview()">
+            <option value="flat" data-i18n="text.relief.flat">Flat</option>
+            <option value="raised" data-i18n="text.relief.raised">Raised</option>
+            <option value="inset" data-i18n="text.relief.inset">Inset</option>
+            <option value="emboss" data-i18n="text.relief.emboss">Emboss</option>
+            <option value="glow" data-i18n="text.relief.glow">Glow</option>
+          </select>
+        </div>
+        
+        <div class="shape-preview" id="text-preview">
+          <div class="shape-preview-inner" id="text-preview-inner">Preview</div>
+        </div>
       </div>
 
+      <!-- FLAG OPTIONS -->
       <div id="flag-opts" style="display:none">
         <label style="margin-top:0;margin-bottom:6px;font-weight:600;color:var(--tx);font-size:.85em" data-i18n="flag.shape">Flag Shape</label>
         <div class="flag-shape-row">
-          <button class="flag-shape-btn active" id="shape-circle" onclick="setFlagShape('circle')" data-i18n="flag.circle">🔵 Circle</button>
-          <button class="flag-shape-btn" id="shape-rect" onclick="setFlagShape('rect')" data-i18n="flag.rect">🟦 Rectangle</button>
+          <button class="flag-shape-btn active" id="flag-shape-circle" onclick="setFlagShape('circle')" data-i18n="flag.circle">🔵 Circle</button>
+          <button class="flag-shape-btn" id="flag-shape-rect" onclick="setFlagShape('rect')" data-i18n="flag.rect">🟦 Rectangle</button>
         </div>
         <label data-i18n="flag.search">Search</label>
         <input type="text" id="flag-search" data-i18n-placeholder="flag.search.placeholder" oninput="filterFlags(this.value)">
@@ -284,6 +347,7 @@ html[lang="ar"] input[type="range"]{direction:ltr}
         <div id="flag-sel-info" style="margin-top:8px;font-size:.78em;color:var(--txd);text-align:center" data-i18n="flag.select.hint">👆 Select, then click on the map</div>
       </div>
 
+      <!-- DRAW OPTIONS -->
       <div id="draw-opts" style="display:none">
         <label style="margin-top:0;margin-bottom:6px;font-weight:600;color:var(--tx);font-size:.85em" data-i18n="draw.world.mode">World Mode</label>
         <div class="world-mode-row">
@@ -365,6 +429,10 @@ html[lang="ar"] input[type="range"]{direction:ltr}
         <button class="btn-sec btn-sm" onclick="fitToData()" data-i18n="export.fit">📐 Fit</button>
       </div>
       <button class="btn-accent" style="width:100%;margin-top:14px;padding:12px;font-size:.95em" onclick="doExport()" data-i18n="export.button">💾 Export Current View</button>
+      
+      <div class="custom-section-label" style="margin-top:16px" data-i18n="export.geojson.title">Export GeoJSON</div>
+      <p style="font-size:.72em;color:var(--txd);margin-bottom:8px" data-i18n="export.geojson.desc">Export all polygons (loaded + custom regions) as GeoJSON file.</p>
+      <button class="btn-blue btn-sm" style="width:100%" onclick="exportGeoJSON()" data-i18n="export.geojson.button">📄 Export GeoJSON</button>
     </div>
   </div>
 
@@ -417,6 +485,7 @@ let worldMode='existing',drawMode='land';
 let isDrawing=false,drawingVertices=[],drawingPolyline=null,drawingMarkers=[];
 let customRegions=[],coastlineData=null,landPolygon=null,coastlineLayer=null;
 let editingRegionIdx=null,editVertexMarkers=[],editMidpointMarkers=[];
+let textShape='none';
 
 // =====================================================================
 //  HELPERS
@@ -449,15 +518,94 @@ function populateSelects(){
 function buildYearPanel(){const c=document.getElementById('yr-eras');let h='';ERA_KEYS.forEach((ek,i)=>{const yrs=AVAIL_YEARS.filter(y=>y.sort>=ERA_RANGES[i][0]&&y.sort<=ERA_RANGES[i][1]);if(!yrs.length)return;const cl=!ERA_OPEN[i];h+=`<div class="era-block"><div class="era-head ${cl?'collapsed':''}" onclick="toggleEra(this)"><span class="era-arrow">▼</span><span>${ERA_ICONS[i]} ${t('era.'+ek)}</span><span class="era-count">${yrs.length}</span></div><div class="era-body ${cl?'collapsed':''}">`;yrs.forEach(y=>{const sub=fmtYearSub(y.key),main=fmtYearShort(y.key);h+=`<button class="yr-btn ${y.key===currentYearKey?'active':''}" data-key="${y.key}" onclick="loadYear('${y.key}')">${main}${sub?`<span class="yr-sub">${sub}</span>`:''}</button>`});h+='</div></div>'});c.innerHTML=h}
 function buildFlagGrid(){const g=document.getElementById('flag-grid');g.innerHTML='';FLAG_CODES.forEach(c=>{const n=tc(c);const it=document.createElement('div');it.className='flag-item';it.dataset.code=c;it.dataset.search=n.toLowerCase();it.innerHTML=`<div class="fimg"><img src="${getFlagUrl(c,flagShape)}" alt="${n}" loading="lazy" class="${flagShape}" onerror="this.style.background='#555'"></div><span>${n}</span>`;it.addEventListener('click',e=>{e.stopPropagation();selectBuiltinFlag(c,it)});g.appendChild(it)})}
 function buildPalette(){const c=document.getElementById('palette');c.innerHTML='';PALETTE_C.forEach(col=>{const b=document.createElement('button');b.className='swatch';b.style.background=col;b.addEventListener('click',()=>applyPaletteColor(col));c.appendChild(b)})}
-function rebuildAllUI(){populateSelects();buildYearPanel();buildFlagGrid();renderCustomFlags();updateSelectionUI();updateAnnotationList();updateCustomRegionsList();updateBorderPreview();document.getElementById('yr-display').innerHTML=fmtYear(currentYearKey);document.getElementById('ybadge').textContent=fmtYear(currentYearKey);setStatus(t('status.ready'))}
+function rebuildAllUI(){populateSelects();buildYearPanel();buildFlagGrid();renderCustomFlags();updateSelectionUI();updateAnnotationList();updateCustomRegionsList();updateBorderPreview();document.getElementById('yr-display').innerHTML=fmtYear(currentYearKey);document.getElementById('ybadge').textContent=fmtYear(currentYearKey);setStatus(t('status.ready'));updateTextPreview()}
 
 // =====================================================================
 //  INIT
 // =====================================================================
-document.addEventListener('DOMContentLoaded',()=>{initLanguage();initMap();populateSelects();buildYearPanel();buildPalette();buildFlagGrid();initDragDrop();updateBorderPreview();applyI18n();loadYear('1938')});
-function initMap(){map=L.map('map',{center:[30,10],zoom:3,minZoom:2,maxZoom:10,zoomControl:true});setBaseMap('physical');map.attributionControl.setPrefix('');map.on('click',e=>{if(clickHandled){clickHandled=false;return}if(currentTool==='text')placeText(e.latlng);else if(currentTool==='flag')placeFlag(e.latlng)})}
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadTranslations();
+  initLanguage();
+  initMap();
+  populateSelects();
+  buildYearPanel();
+  buildPalette();
+  buildFlagGrid();
+  initDragDrop();
+  updateBorderPreview();
+  applyI18n();
+  loadYear('1938');
+  updateTextPreview();
+});
+function initMap(){
+  // Single world - no wrapping
+  const worldBounds = L.latLngBounds([[-85,-180],[85,180]]);
+  map=L.map('map',{
+    center:[30,10],
+    zoom:3,
+    minZoom:2,
+    maxZoom:10,
+    zoomControl:true,
+    worldCopyJump:false,
+    maxBounds:worldBounds,
+    maxBoundsViscosity:1.0
+  });
+  setBaseMap('physical');
+  map.attributionControl.setPrefix('');
+  map.on('click',e=>{if(clickHandled){clickHandled=false;return}if(currentTool==='text')placeText(e.latlng);else if(currentTool==='flag')placeFlag(e.latlng)});
+}
+
 function initDragDrop(){const z=document.getElementById('upload-zone');['dragenter','dragover'].forEach(ev=>z.addEventListener(ev,e=>{e.preventDefault();z.classList.add('dragover')}));['dragleave','drop'].forEach(ev=>z.addEventListener(ev,e=>{e.preventDefault();z.classList.remove('dragover')}));z.addEventListener('drop',e=>{if(e.dataTransfer.files.length)processCustomFile(e.dataTransfer.files[0])})}
 function updateBorderPreview(){const s=document.getElementById('border-style').value,bs=BORDER_STYLES[s],bw=parseFloat(document.getElementById('border-width').value),bc=document.getElementById('border-color').value;document.getElementById('border-desc').textContent=t('border.desc.'+s);const svg=document.getElementById('border-svg');let h='';if(bs.double){h+=`<line x1="5" y1="10" x2="175" y2="10" stroke="${bc}" stroke-width="${Math.max(bw*1.8,3)}"/>`;h+=`<line x1="5" y1="10" x2="175" y2="10" stroke="#fff" stroke-width="${Math.max(bw*.5,1)}" opacity="0.6"/>`}else{const da=bs.dash?` stroke-dasharray="${bs.dash}"`:'';h+=`<line x1="5" y1="10" x2="175" y2="10" stroke="${bc}" stroke-width="${Math.max(bw,1.5)}" stroke-linecap="${bs.cap}"${da}/>`}svg.innerHTML=h}
+
+// =====================================================================
+//  TEXT SHAPE & PREVIEW
+// =====================================================================
+function setTextShape(shape){
+  textShape=shape;
+  ['none','rect','circle','pill'].forEach(s=>{
+    document.getElementById('shape-'+s)?.classList.toggle('active',s===shape);
+  });
+  document.getElementById('shape-options').style.display=shape==='none'?'none':'block';
+  updateTextPreview();
+}
+
+function updateTextPreview(){
+  const text=document.getElementById('text-input').value||'Preview';
+  const font=document.getElementById('text-font').value;
+  const size=parseInt(document.getElementById('text-size').value);
+  const color=document.getElementById('text-color').value;
+  const bold=document.getElementById('text-bold').checked;
+  const outline=document.getElementById('text-outline').checked;
+  const bgColor=document.getElementById('shape-bg-color').value;
+  const borderColor=document.getElementById('shape-border-color').value;
+  const borderWidth=parseInt(document.getElementById('shape-border-width').value);
+  const padding=parseInt(document.getElementById('shape-padding').value);
+  const relief=document.getElementById('shape-relief').value;
+  
+  const prev=document.getElementById('text-preview-inner');
+  let style=`font-family:${font};font-size:${size}px;color:${color};font-weight:${bold?'800':'400'};`;
+  
+  if(outline){
+    style+='text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff;';
+  }
+  
+  if(textShape!=='none'){
+    style+=`background:${bgColor};border:${borderWidth}px solid ${borderColor};padding:${padding}px ${padding*1.5}px;`;
+    if(textShape==='rect')style+='border-radius:4px;';
+    else if(textShape==='circle')style+='border-radius:50%;padding:'+padding+'px;';
+    else if(textShape==='pill')style+='border-radius:999px;';
+    
+    // Relief effects
+    if(relief==='raised')style+='box-shadow:2px 2px 4px rgba(0,0,0,.4),-1px -1px 2px rgba(255,255,255,.2);';
+    else if(relief==='inset')style+='box-shadow:inset 2px 2px 4px rgba(0,0,0,.4),inset -1px -1px 2px rgba(255,255,255,.2);';
+    else if(relief==='emboss')style+='box-shadow:2px 2px 0 rgba(0,0,0,.3),-2px -2px 0 rgba(255,255,255,.15),3px 3px 6px rgba(0,0,0,.3);';
+    else if(relief==='glow')style+=`box-shadow:0 0 10px ${borderColor},0 0 20px ${borderColor};`;
+  }
+  
+  prev.style.cssText=style;
+  prev.textContent=text;
+}
 
 // =====================================================================
 //  YEAR / GEOJSON
@@ -479,7 +627,7 @@ function deselectOne(n){selectedNations.delete(n);updateSelectionUI();renderGeoJ
 function applyPaletteColor(c){if(!selectedNations.size){setStatus(t('status.select.nation.first'));return}selectedNations.forEach(n=>{customColors[n]=c});renderGeoJSON();updateSelectionUI();setStatus(t('status.color.applied',{color:c,count:selectedNations.size}))}
 function applyCustomColor(){applyPaletteColor(document.getElementById('custom-color').value)}
 function resetAllColors(){customColors={};selectedNations.clear();updateSelectionUI();renderGeoJSON();setStatus(t('status.colors.reset'))}
-function setBaseMap(k){if(tileLayer){map.removeLayer(tileLayer);tileLayer=null}if(k!=='none'&&TILES[k])tileLayer=L.tileLayer(TILES[k].url,{attribution:TILES[k].a,maxZoom:16,crossOrigin:'anonymous'}).addTo(map)}
+function setBaseMap(k){if(tileLayer){map.removeLayer(tileLayer);tileLayer=null}if(k!=='none'&&TILES[k])tileLayer=L.tileLayer(TILES[k].url,{attribution:TILES[k].a,maxZoom:16,crossOrigin:'anonymous',noWrap:true}).addTo(map)}
 
 // =====================================================================
 //  TOOLS
@@ -487,15 +635,57 @@ function setBaseMap(k){if(tileLayer){map.removeLayer(tileLayer);tileLayer=null}i
 function setTool(tl){if(isDrawing&&tl!=='draw')cancelDrawing();if(editingRegionIdx!==null&&tl!=='draw')stopEditRegion(true);currentTool=tl;['nav','text','flag','draw'].forEach(x=>{const btn=document.getElementById('tool-'+(x==='nav'?'nav':x));if(btn){btn.classList.remove('active','draw-active');if(tl===(x==='nav'?'navigate':x))btn.classList.add(x==='draw'?'draw-active':'active')}});document.getElementById('text-opts').style.display=tl==='text'?'block':'none';document.getElementById('flag-opts').style.display=tl==='flag'?'block':'none';document.getElementById('draw-opts').style.display=tl==='draw'?'block':'none';const b=document.getElementById('tool-banner'),bt=document.getElementById('banner-text');b.classList.remove('draw-mode','edit-mode');if(tl==='text'){b.classList.remove('hidden');bt.textContent=t('banner.text')}else if(tl==='flag'){b.classList.remove('hidden');if(selectedCustomFlag)bt.textContent=t('banner.custom.place',{name:selectedCustomFlag.name});else if(selectedFlagCode)bt.textContent=t('banner.flag.place',{name:tc(selectedFlagCode)});else bt.textContent=t('banner.flag.select')}else if(tl==='draw'){b.classList.remove('hidden');b.classList.add('draw-mode');bt.textContent=t('banner.draw')}else b.classList.add('hidden');document.getElementById('map').style.cursor=tl==='navigate'?'':'crosshair'}
 
 // =====================================================================
-//  TEXT
+//  TEXT WITH SHAPES
 // =====================================================================
-function placeText(ll){const text=document.getElementById('text-input').value||'Text',size=parseInt(document.getElementById('text-size').value),color=document.getElementById('text-color').value,bold=document.getElementById('text-bold').checked,outline=document.getElementById('text-outline').checked,rot=parseInt(document.getElementById('text-rot').value);let css=`font-size:${size}px;color:${color};font-weight:${bold?'800':'400'};white-space:nowrap;pointer-events:auto;cursor:move;font-family:'Segoe UI',system-ui,sans-serif;`;if(outline)css+='text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff,0 -2px 0 #fff,0 2px 0 #fff,-2px 0 0 #fff,2px 0 0 #fff;';if(rot)css+=`transform:rotate(${rot}deg);display:inline-block;`;const icon=L.divIcon({className:'',html:`<div style="${css}">${text}</div>`,iconSize:null,iconAnchor:[0,Math.round(size/2)]});const marker=L.marker(ll,{icon,draggable:true,interactive:true}).addTo(map);annotations.push({type:'text',label:text,marker,cfg:{text,size,color,bold,outline,rot}});updateAnnotationList();setStatus(t('status.text.placed',{text}))}
+function placeText(ll){
+  const text=document.getElementById('text-input').value||'Text';
+  const font=document.getElementById('text-font').value;
+  const size=parseInt(document.getElementById('text-size').value);
+  const color=document.getElementById('text-color').value;
+  const bold=document.getElementById('text-bold').checked;
+  const outline=document.getElementById('text-outline').checked;
+  const rot=parseInt(document.getElementById('text-rot').value);
+  
+  // Shape options
+  const shape=textShape;
+  const bgColor=document.getElementById('shape-bg-color').value;
+  const borderColor=document.getElementById('shape-border-color').value;
+  const borderWidth=parseInt(document.getElementById('shape-border-width').value);
+  const padding=parseInt(document.getElementById('shape-padding').value);
+  const relief=document.getElementById('shape-relief').value;
+  
+  let css=`font-family:${font};font-size:${size}px;color:${color};font-weight:${bold?'800':'400'};white-space:nowrap;pointer-events:auto;cursor:move;`;
+  
+  if(outline)css+='text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff,0 -2px 0 #fff,0 2px 0 #fff,-2px 0 0 #fff,2px 0 0 #fff;';
+  
+  if(shape!=='none'){
+    css+=`background:${bgColor};border:${borderWidth}px solid ${borderColor};padding:${padding}px ${Math.round(padding*1.5)}px;display:inline-block;`;
+    if(shape==='rect')css+='border-radius:4px;';
+    else if(shape==='circle')css+=`border-radius:50%;padding:${padding}px;`;
+    else if(shape==='pill')css+='border-radius:999px;';
+    
+    // Relief effects
+    if(relief==='raised')css+='box-shadow:2px 2px 4px rgba(0,0,0,.4),-1px -1px 2px rgba(255,255,255,.2);';
+    else if(relief==='inset')css+='box-shadow:inset 2px 2px 4px rgba(0,0,0,.4),inset -1px -1px 2px rgba(255,255,255,.2);';
+    else if(relief==='emboss')css+='box-shadow:2px 2px 0 rgba(0,0,0,.3),-2px -2px 0 rgba(255,255,255,.15),3px 3px 6px rgba(0,0,0,.3);';
+    else if(relief==='glow')css+=`box-shadow:0 0 10px ${borderColor},0 0 20px ${borderColor};`;
+  }
+  
+  if(rot)css+=`transform:rotate(${rot}deg);`;
+  
+  const icon=L.divIcon({className:'',html:`<div style="${css}">${text}</div>`,iconSize:null,iconAnchor:[0,Math.round(size/2)]});
+  const marker=L.marker(ll,{icon,draggable:true,interactive:true}).addTo(map);
+  
+  annotations.push({type:'text',label:text,marker,cfg:{text,font,size,color,bold,outline,rot,shape,bgColor,borderColor,borderWidth,padding,relief}});
+  updateAnnotationList();
+  setStatus(t('status.text.placed',{text}));
+}
 
 // =====================================================================
 //  FLAGS
 // =====================================================================
 function getFlagUrl(code,shape){return shape==='circle'?FLAG_CIRCLE.replace('{code}',code):FLAG_RECT.replace('{code}',code)}
-function setFlagShape(s){flagShape=s;document.getElementById('shape-circle').classList.toggle('active',s==='circle');document.getElementById('shape-rect').classList.toggle('active',s==='rect');document.querySelectorAll('#flag-grid .flag-item').forEach(el=>{const img=el.querySelector('img');img.src=getFlagUrl(el.dataset.code,s);img.className=s})}
+function setFlagShape(s){flagShape=s;document.getElementById('flag-shape-circle').classList.toggle('active',s==='circle');document.getElementById('flag-shape-rect').classList.toggle('active',s==='rect');document.querySelectorAll('#flag-grid .flag-item').forEach(el=>{const img=el.querySelector('img');img.src=getFlagUrl(el.dataset.code,s);img.className=s})}
 function selectBuiltinFlag(code,el){selectedFlagCode=code;selectedCustomFlag=null;document.querySelectorAll('.flag-item').forEach(e=>e.classList.remove('selected'));if(el)el.classList.add('selected');document.getElementById('flag-sel-info').innerHTML=t('flag.selected',{name:`<strong>${tc(code)}</strong>`});if(currentTool!=='flag')setTool('flag');else document.getElementById('banner-text').textContent=t('banner.flag.place',{name:tc(code)})}
 function filterFlags(q){q=q.toLowerCase();document.querySelectorAll('#flag-grid .flag-item').forEach(el=>{el.style.display=(el.dataset.search.includes(q)||el.dataset.code.includes(q))?'':'none'});document.querySelectorAll('#custom-flags-area .flag-item').forEach(el=>{el.style.display=el.dataset.search?.includes(q)?'':'none'})}
 function onCustomFileSelect(ev){const f=ev.target.files[0];if(f)processCustomFile(f);ev.target.value=''}
@@ -524,38 +714,17 @@ function findNearestCoastPoint(ll){const pt=turf.point([ll.lng,ll.lat]);let best
 function doesLineCrossLand(from,to){const line=turf.lineString([[from.lng,from.lat],[to.lng,to.lat]]);const src=coastlineData||geoData;if(!src)return false;for(const f of src.features){try{if(turf.lineIntersect(line,f).features.length>0)return true}catch(e){}}return false}
 
 // =====================================================================
-//  CLIPPING: LAND/SEA + EXISTING REGIONS
+//  CLIPPING
 // =====================================================================
 function verticesToTurfPoly(vertices){if(vertices.length<3)return null;const coords=vertices.map(v=>[v.lng,v.lat]);coords.push(coords[0]);try{return turf.polygon([coords])}catch(e){try{return turf.buffer(turf.polygon([coords]),0)}catch(e2){return null}}}
-
 function turfPolyToVertices(poly){if(!poly)return null;if(poly.geometry.type==='Polygon'){return poly.geometry.coordinates[0].slice(0,-1).map(c=>L.latLng(c[1],c[0]))}if(poly.geometry.type==='MultiPolygon'){let maxA=0,best=null;for(const p of poly.geometry.coordinates){try{const a=turf.area(turf.polygon(p));if(a>maxA){maxA=a;best=p[0]}}catch(e){}}return best?best.slice(0,-1).map(c=>L.latLng(c[1],c[0])):null}return null}
-
-/**
- * Clip polygon to land only (for land borders)
- */
 function clipToLand(poly){const land=getLandMultiPolygon();if(!land)return poly;try{return turf.intersect(poly,land)}catch(e){return poly}}
-
-/**
- * Clip polygon to sea only (for sea borders)
- * Sea = world bounding box MINUS land
- */
-function clipToSea(poly){const land=getLandMultiPolygon();if(!land)return poly;try{// Create world bbox
-const world=turf.bboxPolygon([-180,-85,180,85]);const sea=turf.difference(world,land);if(!sea)return null;return turf.intersect(poly,sea)}catch(e){return poly}}
-
-/**
- * Clip against existing custom regions (no overlap)
- */
+function clipToSea(poly){const land=getLandMultiPolygon();if(!land)return poly;try{const world=turf.bboxPolygon([-180,-85,180,85]);const sea=turf.difference(world,land);if(!sea)return null;return turf.intersect(poly,sea)}catch(e){return poly}}
 function clipAgainstExistingRegions(poly,skipIdx){if(!poly)return null;for(let i=0;i<customRegions.length;i++){if(i===skipIdx)continue;const r=customRegions[i];if(r.vertices.length<3)continue;try{const rp=verticesToTurfPoly(r.vertices);if(rp)poly=turf.difference(poly,rp);if(!poly)return null}catch(e){}}return poly}
-
-/**
- * Full clipping pipeline
- */
-function clipPolygonFull(vertices,mode,skipIdx){let poly=verticesToTurfPoly(vertices);if(!poly)return{vertices:null,clippedToTerrain:false,clippedToRegions:false};const origArea=turf.area(poly);// 1. Clip to land or sea
-let clippedTerrain;if(mode==='land'){clippedTerrain=clipToLand(poly)}else{clippedTerrain=clipToSea(poly)}const terrainClipped=!clippedTerrain||turf.area(clippedTerrain||{})<origArea*0.999;// 2. Clip against existing regions
-const final=clipAgainstExistingRegions(clippedTerrain,skipIdx);const regionClipped=final&&clippedTerrain&&turf.area(final)<turf.area(clippedTerrain)*0.999;const verts=turfPolyToVertices(final);return{vertices:verts&&verts.length>=3?verts:null,clippedToTerrain:terrainClipped,clippedToRegions:regionClipped}}
+function clipPolygonFull(vertices,mode,skipIdx){let poly=verticesToTurfPoly(vertices);if(!poly)return{vertices:null,clippedToTerrain:false,clippedToRegions:false};const origArea=turf.area(poly);let clippedTerrain;if(mode==='land'){clippedTerrain=clipToLand(poly)}else{clippedTerrain=clipToSea(poly)}const terrainClipped=!clippedTerrain||turf.area(clippedTerrain||{})<origArea*0.999;const final=clipAgainstExistingRegions(clippedTerrain,skipIdx);const regionClipped=final&&clippedTerrain&&turf.area(final)<turf.area(clippedTerrain)*0.999;const verts=turfPolyToVertices(final);return{vertices:verts&&verts.length>=3?verts:null,clippedToTerrain:terrainClipped,clippedToRegions:regionClipped}}
 
 // =====================================================================
-//  INTERSECTION DETECTION FOR DRAWING
+//  INTERSECTION
 // =====================================================================
 function findLineIntersectionWithRegions(from,to,skipIdx){const line=turf.lineString([[from.lng,from.lat],[to.lng,to.lat]]);const ptFrom=turf.point([from.lng,from.lat]);let best=null,minD=Infinity;for(let i=0;i<customRegions.length;i++){if(i===skipIdx)continue;const r=customRegions[i];if(r.vertices.length<3)continue;try{const coords=r.vertices.map(v=>[v.lng,v.lat]);coords.push(coords[0]);const ring=turf.lineString(coords);const hits=turf.lineIntersect(line,ring);for(const h of hits.features){const d=turf.distance(ptFrom,h);if(d>0.0005&&d<minD){minD=d;best={point:L.latLng(h.geometry.coordinates[1],h.geometry.coordinates[0]),regionIdx:i,regionName:r.name}}}}catch(e){}}return best}
 function isPointInsideAnyRegion(ll,skipIdx){const pt=turf.point([ll.lng,ll.lat]);for(let i=0;i<customRegions.length;i++){if(i===skipIdx)continue;const r=customRegions[i];if(r.vertices.length<3)continue;try{const p=verticesToTurfPoly(r.vertices);if(p&&turf.booleanPointInPolygon(pt,p))return{regionIdx:i,regionName:r.name}}catch(e){}}return null}
@@ -572,19 +741,14 @@ function setDrawMode(mode){drawMode=mode;document.getElementById('draw-land').cl
 //  DRAWING
 // =====================================================================
 function startDrawing(){if(isDrawing)return;if(editingRegionIdx!==null)stopEditRegion(true);loadCoastlineData().then(()=>{isDrawing=true;drawingVertices=[];document.getElementById('btn-start-draw').style.display='none';document.getElementById('draw-controls').style.display='flex';document.getElementById('map').style.cursor='crosshair';setStatus(t('draw.started'));map.on('click',onDrawClick);map.on('dblclick',onDrawDblClick);map.doubleClickZoom.disable()})}
-function onDrawClick(e){if(!isDrawing)return;L.DomEvent.stopPropagation(e);let ll=e.latlng;const onLand=isPointOnLand(ll);// Snap to existing region borders
-if(drawingVertices.length>0){const last=drawingVertices[drawingVertices.length-1];const hit=findLineIntersectionWithRegions(last,ll,-1);if(hit){ll=hit.point;setStatus(`⚡ ${t('draw.snapped.region')} "${hit.regionName}"`);addDrawingVertex(ll);return}const inside=isPointInsideAnyRegion(ll,-1);if(inside){ll=findNearestBorderPoint(ll,inside.regionIdx);setStatus(`⚡ ${t('draw.snapped.region')} "${inside.regionName}"`)}}// Terrain checks
-if(drawMode==='land'){if(!onLand&&drawingVertices.length>0){ll=findNearestCoastPoint(ll);setStatus(t('draw.snapped.coast.land'))}}else{if(onLand){ll=findNearestCoastPoint(ll);setStatus(t('draw.snapped.coast.sea'))}if(drawingVertices.length>0){const last=drawingVertices[drawingVertices.length-1];if(doesLineCrossLand(last,ll)){setStatus(t('draw.cannot.cross.land'));return}}}addDrawingVertex(ll)}
+function onDrawClick(e){if(!isDrawing)return;L.DomEvent.stopPropagation(e);let ll=e.latlng;const onLand=isPointOnLand(ll);if(drawingVertices.length>0){const last=drawingVertices[drawingVertices.length-1];const hit=findLineIntersectionWithRegions(last,ll,-1);if(hit){ll=hit.point;setStatus(`⚡ ${t('draw.snapped.region')} "${hit.regionName}"`);addDrawingVertex(ll);return}const inside=isPointInsideAnyRegion(ll,-1);if(inside){ll=findNearestBorderPoint(ll,inside.regionIdx);setStatus(`⚡ ${t('draw.snapped.region')} "${inside.regionName}"`)}}if(drawMode==='land'){if(!onLand&&drawingVertices.length>0){ll=findNearestCoastPoint(ll);setStatus(t('draw.snapped.coast.land'))}}else{if(onLand){ll=findNearestCoastPoint(ll);setStatus(t('draw.snapped.coast.sea'))}if(drawingVertices.length>0){const last=drawingVertices[drawingVertices.length-1];if(doesLineCrossLand(last,ll)){setStatus(t('draw.cannot.cross.land'));return}}}addDrawingVertex(ll)}
 function addDrawingVertex(ll){drawingVertices.push(ll);const isFirst=drawingVertices.length===1;const icon=L.divIcon({className:'drawing-vertex'+(isFirst?' first':''),iconSize:isFirst?[14,14]:[10,10]});const marker=L.marker(ll,{icon,draggable:true,zIndexOffset:1000}).addTo(map);if(isFirst)marker.on('click',e=>{L.DomEvent.stopPropagation(e);if(drawingVertices.length>=3)finishDrawing()});marker.on('drag',e=>{const idx=drawingMarkers.indexOf(marker);if(idx>=0){drawingVertices[idx]=e.latlng;updateDrawingLine()}});drawingMarkers.push(marker);updateDrawingLine();setStatus(t('draw.points',{count:drawingVertices.length}))}
 function updateDrawingLine(){if(drawingPolyline)map.removeLayer(drawingPolyline);if(drawingVertices.length<2)return;const c=[...drawingVertices];if(c.length>=3)c.push(c[0]);drawingPolyline=L.polyline(c,{color:document.getElementById('region-color').value,weight:3,opacity:0.8,dashArray:'10,5'}).addTo(map)}
 function undoLastVertex(){if(!drawingVertices.length)return;drawingVertices.pop();const m=drawingMarkers.pop();if(m)map.removeLayer(m);updateDrawingLine();setStatus(t('draw.point.removed'))}
 function cancelDrawing(){cleanupDrawing();setStatus(t('draw.cancelled'))}
 function onDrawDblClick(e){L.DomEvent.stopPropagation(e);L.DomEvent.preventDefault(e);if(drawingVertices.length>=3)finishDrawing()}
 function cleanupDrawing(){isDrawing=false;map.off('click',onDrawClick);map.off('dblclick',onDrawDblClick);map.doubleClickZoom.enable();if(drawingPolyline){map.removeLayer(drawingPolyline);drawingPolyline=null}drawingMarkers.forEach(m=>map.removeLayer(m));drawingMarkers=[];drawingVertices=[];document.getElementById('btn-start-draw').style.display='block';document.getElementById('draw-controls').style.display='none';document.getElementById('map').style.cursor=currentTool==='draw'?'crosshair':''}
-
-function finishDrawing(){if(drawingVertices.length<3){setStatus(t('draw.need.3.points'));return}const raw=[...drawingVertices];cleanupDrawing();// Full clipping
-const result=clipPolygonFull(raw,drawMode,-1);if(!result.vertices){setStatus(t('draw.fully.outside'));return}createCustomRegion(result.vertices,result.clippedToTerrain,result.clippedToRegions)}
-
+function finishDrawing(){if(drawingVertices.length<3){setStatus(t('draw.need.3.points'));return}const raw=[...drawingVertices];cleanupDrawing();const result=clipPolygonFull(raw,drawMode,-1);if(!result.vertices){setStatus(t('draw.fully.outside'));return}createCustomRegion(result.vertices,result.clippedToTerrain,result.clippedToRegions)}
 function createCustomRegion(vertices,clippedTerrain,clippedRegions){const name=document.getElementById('region-name').value||'Region '+(customRegions.length+1);const color=document.getElementById('region-color').value;const fo=parseFloat(document.getElementById('fill-opacity').value);const bc=document.getElementById('border-color').value;const bw=parseFloat(document.getElementById('border-width').value);const polygon=L.polygon(vertices,{fillColor:color,fillOpacity:fo,color:bc,weight:bw,opacity:1}).addTo(map);polygon.bindTooltip(name,{sticky:true,className:'ctip'});polygon.on('click',e=>{clickHandled=true;if(currentTool==='draw'&&!isDrawing){const idx=customRegions.findIndex(r=>r.polygon===polygon);if(idx>=0&&editingRegionIdx===null)startEditRegion(idx)}});customRegions.push({id:'r_'+Date.now(),name,color,vertices:[...vertices],polygon,mode:drawMode});updateCustomRegionsList();document.getElementById('region-name').value='New Region';randomRegionColor();let msg=t('draw.region.created',{name,count:vertices.length});if(clippedTerrain)msg+=' '+t(drawMode==='land'?'draw.clipped.to.land':'draw.clipped.to.sea');if(clippedRegions)msg+=' '+t('draw.clipped.regions');setStatus(msg)}
 
 // =====================================================================
@@ -607,7 +771,62 @@ function removeEditVertex(markerIdx){if(editingRegionIdx===null||markerIdx<0)ret
 function clearEditMarkers(){editVertexMarkers.forEach(m=>map.removeLayer(m));editVertexMarkers=[];editMidpointMarkers.forEach(m=>map.removeLayer(m));editMidpointMarkers=[]}
 
 // =====================================================================
-//  EXPORT
+//  EXPORT GEOJSON
+// =====================================================================
+function exportGeoJSON(){
+  const features=[];
+  
+  // Add loaded geoData features
+  if(geoData&&geoData.features){
+    geoData.features.forEach(f=>{
+      const name=getName(f);
+      const color=getColor(name);
+      features.push({
+        type:'Feature',
+        properties:{...f.properties,_fillColor:color,_source:'loaded'},
+        geometry:f.geometry
+      });
+    });
+  }
+  
+  // Add custom regions
+  customRegions.forEach(r=>{
+    if(r.vertices.length<3)return;
+    const coords=r.vertices.map(v=>[v.lng,v.lat]);
+    coords.push(coords[0]); // Close ring
+    features.push({
+      type:'Feature',
+      properties:{
+        NAME:r.name,
+        _fillColor:r.color,
+        _mode:r.mode,
+        _source:'custom'
+      },
+      geometry:{
+        type:'Polygon',
+        coordinates:[coords]
+      }
+    });
+  });
+  
+  const geojson={
+    type:'FeatureCollection',
+    properties:{
+      exportedAt:new Date().toISOString(),
+      year:currentYearKey,
+      generator:'Histboard'
+    },
+    features
+  };
+  
+  const blob=new Blob([JSON.stringify(geojson,null,2)],{type:'application/geo+json'});
+  const label=fmtYear(currentYearKey).replace(/[.\s]/g,'_');
+  download(blob,`histboard_${label}.geojson`);
+  setStatus(t('export.geojson.done',{count:features.length}));
+}
+
+// =====================================================================
+//  EXPORT IMAGE/PDF
 // =====================================================================
 function onExportFmtChange(){const f=document.getElementById('export-fmt').value;document.getElementById('pdf-opts').style.display=f==='pdf'?'block':'none';if(f==='pdf'){document.getElementById('exp-w').value=297;document.getElementById('exp-h').value=210}else{document.getElementById('exp-w').value=3840;document.getElementById('exp-h').value=2160}}
 function onPdfFormat(){const s={a4:[297,210],a3:[420,297],a2:[594,420],a1:[841,594],a0:[1189,841]},v=document.getElementById('pdf-format').value;if(s[v]){document.getElementById('exp-w').value=s[v][0];document.getElementById('exp-h').value=s[v][1]}}
@@ -616,7 +835,10 @@ async function renderMapToCanvas(tw,th){const mc=document.getElementById('map'),
 function canvasDrawGeoJSON(ctx,sx,sy){const bw=parseFloat(document.getElementById('border-width').value),bc=document.getElementById('border-color').value,fo=parseFloat(document.getElementById('fill-opacity').value),bsKey=document.getElementById('border-style').value,bs=BORDER_STYLES[bsKey],sf=Math.min(sx,sy);if(bs.double&&bw>0)geoData.features.forEach(f=>canvasDrawFeature(ctx,f.geometry,{fill:false,strokeColor:bc,strokeWidth:bw*2.2*sf,dash:null,cap:bs.cap,sx,sy}));const ic=bs.double?'rgba(255,255,255,0.5)':bc,iw=bs.double?Math.max(bw*.6,.5):bw;geoData.features.forEach(f=>{const n=getName(f),sel=selectedNations.has(n),sw=sel?Math.max(bw+3,4):iw,sc=sel?'#fff':ic,da=sel?[6*sf,4*sf]:bs.dash?bs.dash.split(',').map(v=>parseFloat(v)*sf):null;canvasDrawFeature(ctx,f.geometry,{fill:true,fillColor:getColor(n),fillOpacity:fo,strokeColor:sc,strokeWidth:sw*sf,dash:da,cap:bs.cap||'round',sx,sy})})}
 function canvasDrawFeature(ctx,geom,o){if(!geom)return;let polys;if(geom.type==='Polygon')polys=[geom.coordinates];else if(geom.type==='MultiPolygon')polys=geom.coordinates;else return;polys.forEach(poly=>{ctx.beginPath();poly.forEach(ring=>{ring.forEach((c,i)=>{const pt=map.latLngToContainerPoint([c[1],c[0]]),x=pt.x*o.sx,y=pt.y*o.sy;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y)});ctx.closePath()});if(o.fill){ctx.globalAlpha=o.fillOpacity;ctx.fillStyle=o.fillColor;ctx.fill('evenodd');ctx.globalAlpha=1}if(o.strokeWidth>0){ctx.strokeStyle=o.strokeColor;ctx.lineWidth=o.strokeWidth;ctx.lineCap=o.cap;ctx.lineJoin='round';ctx.setLineDash(o.dash||[]);ctx.stroke();ctx.setLineDash([])}})}
 function canvasDrawCustomRegions(ctx,sx,sy){const sf=Math.min(sx,sy),fo=parseFloat(document.getElementById('fill-opacity').value),bc=document.getElementById('border-color').value,bw=parseFloat(document.getElementById('border-width').value);for(const r of customRegions){if(r.vertices.length<3)continue;ctx.beginPath();r.vertices.forEach((v,i)=>{const pt=map.latLngToContainerPoint(v),px=pt.x*sx,py=pt.y*sy;i===0?ctx.moveTo(px,py):ctx.lineTo(px,py)});ctx.closePath();ctx.globalAlpha=fo;ctx.fillStyle=r.color;ctx.fill();ctx.globalAlpha=1;ctx.strokeStyle=bc;ctx.lineWidth=bw*sf;ctx.stroke()}}
-async function canvasDrawAnnotations(ctx,sx,sy){const sf=Math.min(sx,sy);for(const ann of annotations){const ll=ann.marker.getLatLng(),pt=map.latLngToContainerPoint(ll),px=pt.x*sx,py=pt.y*sy;if(ann.type==='text'&&ann.cfg){const c=ann.cfg,fs=c.size*sf;ctx.save();if(c.rot){ctx.translate(px,py);ctx.rotate(c.rot*Math.PI/180);ctx.translate(-px,-py)}ctx.font=`${c.bold?'800':'400'} ${fs}px 'Segoe UI',system-ui,sans-serif`;ctx.textBaseline='middle';if(c.outline){ctx.strokeStyle='#fff';ctx.lineWidth=3*sf;ctx.lineJoin='round';ctx.strokeText(c.text,px,py)}ctx.fillStyle=c.color;ctx.fillText(c.text,px,py);ctx.restore()}else if(ann.type==='flag'&&ann.cfg){const c=ann.cfg,w=c.w*sf,h=c.h*sf;try{const img=await loadImg(c.url);if(img){if(c.shape==='circle'){ctx.save();ctx.beginPath();ctx.arc(px,py,w/2,0,Math.PI*2);ctx.closePath();ctx.clip();ctx.drawImage(img,px-w/2,py-h/2,w,h);ctx.restore();ctx.beginPath();ctx.arc(px,py,w/2,0,Math.PI*2);ctx.strokeStyle='#333';ctx.lineWidth=2*sf;ctx.stroke()}else{ctx.drawImage(img,px-w/2,py-h/2,w,h);ctx.strokeStyle='#333';ctx.lineWidth=2*sf;ctx.strokeRect(px-w/2,py-h/2,w,h)}}}catch(e){}}}}
+async function canvasDrawAnnotations(ctx,sx,sy){const sf=Math.min(sx,sy);for(const ann of annotations){const ll=ann.marker.getLatLng(),pt=map.latLngToContainerPoint(ll),px=pt.x*sx,py=pt.y*sy;if(ann.type==='text'&&ann.cfg){const c=ann.cfg,fs=c.size*sf;ctx.save();if(c.rot){ctx.translate(px,py);ctx.rotate(c.rot*Math.PI/180);ctx.translate(-px,-py)}ctx.font=`${c.bold?'800':'400'} ${fs}px ${c.font||"'Segoe UI',system-ui,sans-serif"}`;ctx.textBaseline='middle';ctx.textAlign='center';
+// Draw shape background if present
+if(c.shape&&c.shape!=='none'){const metrics=ctx.measureText(c.text);const textW=metrics.width;const textH=fs;const pad=c.padding*sf;const bw=c.borderWidth*sf;let shapeW=textW+pad*3;let shapeH=textH+pad*2;if(c.shape==='circle'){const r=Math.max(shapeW,shapeH)/2+pad;ctx.beginPath();ctx.arc(px,py,r,0,Math.PI*2);ctx.closePath()}else if(c.shape==='pill'){const r=shapeH/2+pad;ctx.beginPath();ctx.moveTo(px-shapeW/2+r,py-shapeH/2-pad);ctx.lineTo(px+shapeW/2-r,py-shapeH/2-pad);ctx.arc(px+shapeW/2-r,py,r+pad,Math.PI*1.5,Math.PI*0.5);ctx.lineTo(px-shapeW/2+r,py+shapeH/2+pad);ctx.arc(px-shapeW/2+r,py,r+pad,Math.PI*0.5,Math.PI*1.5);ctx.closePath()}else{ctx.beginPath();ctx.roundRect(px-shapeW/2-pad,py-shapeH/2-pad,shapeW+pad*2,shapeH+pad*2,4*sf);ctx.closePath()}ctx.fillStyle=c.bgColor;ctx.fill();if(bw>0){ctx.strokeStyle=c.borderColor;ctx.lineWidth=bw;ctx.stroke()}}
+if(c.outline){ctx.strokeStyle='#fff';ctx.lineWidth=3*sf;ctx.lineJoin='round';ctx.strokeText(c.text,px,py)}ctx.fillStyle=c.color;ctx.fillText(c.text,px,py);ctx.restore()}else if(ann.type==='flag'&&ann.cfg){const c=ann.cfg,w=c.w*sf,h=c.h*sf;try{const img=await loadImg(c.url);if(img){if(c.shape==='circle'){ctx.save();ctx.beginPath();ctx.arc(px,py,w/2,0,Math.PI*2);ctx.closePath();ctx.clip();ctx.drawImage(img,px-w/2,py-h/2,w,h);ctx.restore();ctx.beginPath();ctx.arc(px,py,w/2,0,Math.PI*2);ctx.strokeStyle='#333';ctx.lineWidth=2*sf;ctx.stroke()}else{ctx.drawImage(img,px-w/2,py-h/2,w,h);ctx.strokeStyle='#333';ctx.lineWidth=2*sf;ctx.strokeRect(px-w/2,py-h/2,w,h)}}}catch(e){}}}}
 async function doExport(){const fmt=document.getElementById('export-fmt').value;let ew=parseInt(document.getElementById('exp-w').value),eh=parseInt(document.getElementById('exp-h').value);if(editingRegionIdx!==null)stopEditRegion(true);showExportModal(true,t('export.preparing'),5);try{await new Promise(r=>setTimeout(r,50));showExportModal(true,t('export.rendering.tiles'),15);let pdfW,pdfH;if(fmt==='pdf'){const dpi=parseInt(document.getElementById('pdf-dpi').value),ori=document.getElementById('pdf-orient').value;pdfW=ori==='landscape'?Math.max(ew,eh):Math.min(ew,eh);pdfH=ori==='landscape'?Math.min(ew,eh):Math.max(ew,eh);ew=Math.round(pdfW*dpi/25.4);eh=Math.round(pdfH*dpi/25.4)}showExportModal(true,t('export.rendering.poly'),40);const canvas=await renderMapToCanvas(ew,eh);showExportModal(true,t('export.generating'),80);const label=fmtYear(currentYearKey).replace(/[.\s]/g,'_');if(fmt==='png'){const blob=await new Promise(r=>canvas.toBlob(r,'image/png'));download(blob,`map_${label}.png`)}else if(fmt==='pdf'){const{jsPDF}=window.jspdf;const pdf=new jsPDF({orientation:document.getElementById('pdf-orient').value,unit:'mm',format:[pdfW,pdfH]});pdf.addImage(canvas.toDataURL('image/jpeg',0.95),'JPEG',0,0,pdfW,pdfH);pdf.save(`map_${label}.pdf`)}else{const img64=canvas.toDataURL('image/png');const svg=`<?xml version="1.0"?>\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${ew}" height="${eh}" viewBox="0 0 ${ew} ${eh}">\n<image width="${ew}" height="${eh}" href="${img64}"/>\n</svg>`;download(new Blob([svg],{type:'image/svg+xml'}),`map_${label}.svg`)}showExportModal(true,t('export.done'),100);setTimeout(()=>showExportModal(false),1000)}catch(err){console.error(err);alert('Error: '+err.message);showExportModal(false)}}
 function download(b,n){const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=n;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u)}
 
