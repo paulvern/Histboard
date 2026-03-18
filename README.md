@@ -258,7 +258,3 @@ Contributions are welcome! Feel free to:
 <p align="center">
   Made with ❤️ for history enthusiasts, board game designers, and map lovers.
 </p>
-
-<p align="center">
-  Made with ❤️ for history enthusiasts, board game designers, and map lovers.
-</p>
