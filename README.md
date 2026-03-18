@@ -1,10 +1,10 @@
 # 🗺️ Histboard — Historical Board Game Map Maker
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
+![Version](https://img.shields.io/badge/version-1.1.0-green.svg)
 ![Languages](https://img.shields.io/badge/languages-8-orange.svg)
 
-**Histboard** is a browser-based interactive tool for creating beautiful historical maps. Explore world borders from **123,000 BC to 2010**, customize nation colors, place flags and text annotations, and export high-resolution maps for board games, presentations, education, or personal projects.
+**Histboard** is a browser-based interactive tool for creating beautiful historical maps. Explore world borders from **123,000 BC to 2010**, customize nation colors, draw custom regions, place flags and text annotations, and export high-resolution maps for board games, presentations, education, or personal projects.
 
 ## 🌐 Live Demo
 
@@ -16,6 +16,37 @@
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
 </p>
+
+---
+
+## 🆕 What's New in v1.1.0
+
+### 🖊️ Draw Tool — Custom Regions
+- **Draw custom regions** directly on the map with point-by-point polygon creation
+- **Land/Sea modes**: land borders are auto-clipped to coastlines, sea borders stay on water
+- **World Mode**: switch between "Existing World" (with historical borders) and "Empty World" (blank canvas with coastline only)
+- **Smart clipping**: new regions are automatically clipped against existing ones to prevent overlap
+- **Coastline snapping**: vertices snap to the nearest coastline when placed on invalid terrain
+- **Region editing**: click a region to enter edit mode — drag vertices, double-click to delete, click midpoints to add new vertices
+- **GeoJSON export**: export all polygons (loaded historical data + custom drawn regions) as a `.geojson` file
+
+### ✏️ Text Shape System
+- **4 text shapes**: None, Rectangle, Circle, Pill — wrap your text labels in styled containers
+- **Shape styling**: customizable background color, border color, border width, and padding
+- **5 relief effects**: Flat, Raised, Inset, Emboss, Glow — add depth to your labels
+- **Live preview** of text appearance in the sidebar before placing
+
+### 📦 Translation System Refactored
+- All 8 language files (`lang-*.js`) consolidated into a **single `translations.json`** file
+- **Table-style format**: each translation key has all languages on the same line — much easier to add new strings
+- `translations.js` now loads the JSON asynchronously and transposes it at startup
+- Adding a new string = **one line** across all languages
+
+### ⌨️ New Keyboard Shortcuts
+| Key | Action |
+|-----|--------|
+| `4` | Draw tool |
+| `Enter` | Save region edit |
 
 ---
 
@@ -40,12 +71,18 @@
 - Reset all colors to defaults
 
 ### 🛠️ Annotation Tools
-- **Text Tool**: Place custom text labels with adjustable font size, color, bold, outline, and rotation (-90° to 90°)
+- **Text Tool**: Place custom text labels with adjustable font, size, color, bold, outline, and rotation (-90° to 90°)
+  - **Text shapes**: Rectangle, Circle, Pill with customizable background, border, padding, and relief effects
 - **Flag Tool**: Place country flags on the map in circle or rectangle shape
   - 68+ built-in country flags
   - Search flags by name or country code
   - Upload custom flag images (PNG, SVG, JPG, WebP, GIF)
   - Adjustable flag size (20–120px)
+- **Draw Tool**: Create custom regions with polygon drawing
+  - Land/Sea border modes with automatic coastline clipping
+  - Existing World / Empty World modes
+  - Smart overlap prevention between regions
+  - Full vertex editing (drag, add, delete)
 - All annotations are **draggable** after placement
 - Annotation list with individual or bulk removal
 
@@ -55,6 +92,7 @@
   - **PNG** (up to 4K resolution)
   - **PDF** (A0–A4 formats, 150/300 DPI, landscape/portrait)
   - **SVG**
+- **Export GeoJSON** — save all polygons (historical + custom) as a `.geojson` file
 - Customizable export dimensions
 - Quick presets: "World View" and "Fit to Data"
 
@@ -79,7 +117,9 @@
 | `1` | Navigate tool |
 | `2` | Text tool |
 | `3` | Flag tool |
-| `Esc` | Back to Navigate |
+| `4` | Draw tool |
+| `Esc` | Cancel drawing / exit edit / back to Navigate |
+| `Enter` | Save region edit |
 | `Ctrl+A` | Select all nations |
 
 ---
@@ -100,7 +140,7 @@ cd histboard
 Then open `index.html` in your browser.
 
 ### Option 3: Serve Locally
-For best results (avoiding CORS issues with tile loading), use a local server:
+For best results (the app needs to fetch `translations.json` and tile data), use a local server:
 
 ```bash
 # Using Python
@@ -122,17 +162,12 @@ Then navigate to `http://localhost:8000`
 ```
 histboard/
 ├── index.html          # Main application (HTML + CSS + JS)
-├── translations.js     # i18n engine & language management
-├── lang-en.js          # English translations
-├── lang-it.js          # Italian translations
-├── lang-fr.js          # French translations
-├── lang-de.js          # German translations
-├── lang-es.js          # Spanish translations
-├── lang-ru.js          # Russian translations
-├── lang-zh.js          # Chinese translations
-├── lang-ar.js          # Arabic translations
+├── translations.js     # i18n engine (loads translations.json)
+├── translations.json   # All translations in table-style format (8 languages)
 └── README.md
 ```
+
+> **Note:** In v1.0.0, translations were split across 8 separate `lang-*.js` files. Since v1.1.0, everything is consolidated into a single `translations.json` for easier management.
 
 ---
 
@@ -143,11 +178,15 @@ All dependencies are loaded via CDN — **no npm install needed**:
 | Library | Version | Purpose |
 |---------|---------|---------|
 | [Leaflet.js](https://leafletjs.com/) | 1.9.4 | Interactive map rendering |
+| [Turf.js](https://turfjs.org/) | 6.x | Geospatial operations (clipping, intersection, snapping) |
 | [jsPDF](https://github.com/parallax/jsPDF) | 2.5.1 | PDF export |
 | [html2canvas](https://html2canvas.hertzen.com/) | 1.4.1 | Map-to-canvas rendering |
 
 Historical border data is fetched at runtime from:
 - [aourednik/historical-basemaps](https://github.com/aourednik/historical-basemaps)
+
+Coastline data for clipping:
+- [Natural Earth](https://www.naturalearthdata.com/) — `ne_110m_land.geojson` via [nvkelso/natural-earth-vector](https://github.com/nvkelso/natural-earth-vector)
 
 Flag assets are sourced from:
 - [hatscripts/circle-flags](https://github.com/HatScripts/circle-flags) (circle shape)
@@ -161,17 +200,28 @@ Flag assets are sourced from:
 2. **Pick a base map** style (Physical, Satellite, Dark, etc.)
 3. **Customize borders** — change style, width, color, and fill opacity
 4. **Color nations** — click on countries, then apply colors from the palette
-5. **Add annotations** — switch to the Text or Flag tool and click on the map
-6. **Export** — choose PNG/PDF/SVG format and resolution, then hit Export
+5. **Add text** — switch to the Text tool, configure shape/style, and click on the map
+6. **Place flags** — switch to the Flag tool, select a flag, and click on the map
+7. **Draw regions** — switch to the Draw tool, choose land/sea mode, and draw polygons
+8. **Edit regions** — click on a drawn region to enter edit mode (drag vertices, add/remove points)
+9. **Export** — choose PNG/PDF/SVG/GeoJSON format and resolution, then hit Export
 
 ---
 
 ## 🌍 Adding a New Language
 
-1. Create a new file `lang-xx.js` (where `xx` is the language code)
-2. Follow the structure of any existing language file (e.g., `lang-en.js`)
-3. Register the language in `translations.js`
-4. Add the `<script>` tag in `index.html`
+1. Open `translations.json`
+2. Add your language to the `"languages"` array:
+   ```json
+   {"code":"ja","name":"日本語","flag":"🇯🇵"}
+   ```
+3. Add your language code to every entry in `"strings"`:
+   ```json
+   "panel.year":{"en":"📅 Historical Year","it":"📅 Anno Storico", ... ,"ja":"📅 歴史的な年"},
+   ```
+4. That's it — no additional files or script tags needed!
+
+> **Tip:** Each string has all languages on the same line, so adding a new key across all languages is just one line of JSON.
 
 ---
 
@@ -184,6 +234,8 @@ This project is released under the [MIT License](LICENSE).
 ## 🙏 Credits & Acknowledgments
 
 - Historical GeoJSON data: [André Ourednik – historical-basemaps](https://github.com/aourednik/historical-basemaps)
+- Coastline data: [Natural Earth](https://www.naturalearthdata.com/) via [nvkelso/natural-earth-vector](https://github.com/nvkelso/natural-earth-vector)
+- Geospatial engine: [Turf.js](https://turfjs.org/)
 - Circle flags: [HatScripts/circle-flags](https://github.com/HatScripts/circle-flags)
 - Rectangular flags: [lipis/flag-icons](https://github.com/lipis/flag-icons)
 - Map tiles: [Esri](https://www.esri.com/), [CartoDB](https://carto.com/), [Stadia Maps](https://stadiamaps.com/)
@@ -202,6 +254,10 @@ Contributions are welcome! Feel free to:
 5. Open a Pull Request
 
 ---
+
+<p align="center">
+  Made with ❤️ for history enthusiasts, board game designers, and map lovers.
+</p>
 
 <p align="center">
   Made with ❤️ for history enthusiasts, board game designers, and map lovers.
