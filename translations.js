@@ -37,9 +37,18 @@ async function loadTranslations() {
 
 // --- Translation functions -----------------------------------------------
 function t(key, params) {
-  let s = TRANSLATIONS[currentLanguage]?.[key] || TRANSLATIONS[FALLBACK_LANGUAGE]?.[key] || key;
-  if (params) for (const [k, v] of Object.entries(params)) s = s.replace(new RegExp(`\\{${k}\\}`, 'g'), v);
-  return s;
+  let s = TRANSLATIONS[currentLanguage]?.[key] 
+       || TRANSLATIONS[FALLBACK_LANGUAGE]?.[key] 
+       || key;
+  
+  if (!params) return s;
+  
+  // One-pass replacement to avoid cascading substitutions
+  return s.replace(/\{(\w+)\}/g, (match, k) => 
+    Object.prototype.hasOwnProperty.call(params, k) 
+      ? String(params[k]) 
+      : match
+  );
 }
 
 function tc(code) {
@@ -52,57 +61,144 @@ function hasTranslation(key) {
   return !!(TRANSLATIONS[currentLanguage]?.[key] || TRANSLATIONS[FALLBACK_LANGUAGE]?.[key]);
 }
 
+// --- Safe HTML for data-i18n-html ----------------------------------------
+const ALLOWED_TAGS = ['b', 'i', 'br', 'span', 'strong', 'em'];
+function safeHtml(str) {
+  // Allow only safe tags, strip everything else
+  const tagPattern = new RegExp(`<(?!/?(?:${ALLOWED_TAGS.join('|')})(?:\\s[^>]*)?>)[^>]*>`, 'gi');
+  return str.replace(tagPattern, '');
+}
+
 // --- DOM binding ---------------------------------------------------------
 function applyI18n() {
-  document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (k) el.textContent = t(k); });
-  document.querySelectorAll('[data-i18n-html]').forEach(el => { const k = el.getAttribute('data-i18n-html'); if (k) el.innerHTML = t(k); });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const k = el.getAttribute('data-i18n-placeholder'); if (k) el.placeholder = t(k); });
-  document.querySelectorAll('[data-i18n-title]').forEach(el => { const k = el.getAttribute('data-i18n-title'); if (k) el.title = t(k); });
-  document.querySelectorAll('[data-i18n-aria]').forEach(el => { const k = el.getAttribute('data-i18n-aria'); if (k) el.setAttribute('aria-label', t(k)); });
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (k) el.textContent = t(k);
+  });
+  
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.getAttribute('data-i18n-html');
+    if (k) el.innerHTML = safeHtml(t(k));
+  });
+  
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const k = el.getAttribute('data-i18n-placeholder');
+    if (k) el.placeholder = t(k);
+  });
+  
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const k = el.getAttribute('data-i18n-title');
+    if (k) el.title = t(k);
+  });
+  
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const k = el.getAttribute('data-i18n-aria');
+    if (k) el.setAttribute('aria-label', t(k));
+  });
 }
 
 // --- Language management -------------------------------------------------
 function setLanguage(lang) {
   if (!TRANSLATIONS[lang]) lang = FALLBACK_LANGUAGE;
   currentLanguage = lang;
-  try { localStorage.setItem('mapmaker-lang', lang); } catch (e) {}
+  
+  try { 
+    localStorage.setItem('histboard-lang', lang); 
+  } catch (e) {}
+  
   document.documentElement.lang = lang;
+  document.documentElement.dir = getLanguageDirection(lang);
+  
   const sel = document.getElementById('lang-sel');
   if (sel) sel.value = lang;
+  
   applyI18n();
-  if (typeof rebuildAllUI === 'function') rebuildAllUI();
+  
+  // Call UI rebuild without reloading data
+  if (typeof rebuildStaticUI === 'function') {
+    rebuildStaticUI();
+  } else if (typeof rebuildAllUI === 'function') {
+    rebuildAllUI();
+  }
 }
 
-function getLanguage() { return currentLanguage; }
-function getAvailableLanguages() { return LANGUAGES.filter(l => TRANSLATIONS[l.code]); }
+function getLanguage() { 
+  return currentLanguage; 
+}
+
+function getAvailableLanguages() { 
+  return LANGUAGES.filter(l => TRANSLATIONS[l.code]); 
+}
 
 function initLanguage() {
-  let lang = FALLBACK_LANGUAGE;
-  try { const s = localStorage.getItem('mapmaker-lang'); if (s && TRANSLATIONS[s]) lang = s; } catch (e) {}
-  if (lang === FALLBACK_LANGUAGE) {
-    const b = navigator.language?.slice(0, 2).toLowerCase();
-    if (b && TRANSLATIONS[b]) lang = b;
+  let preferred = FALLBACK_LANGUAGE;
+  
+  // Try to load from localStorage
+  try { 
+    const saved = localStorage.getItem('histboard-lang'); 
+    if (saved) preferred = saved;
+  } catch (e) {}
+  
+  // Fallback to browser language if nothing saved
+  if (preferred === FALLBACK_LANGUAGE) {
+    const browserLang = navigator.language?.slice(0, 2).toLowerCase();
+    if (browserLang) preferred = browserLang;
   }
-  currentLanguage = lang;
-  document.documentElement.lang = lang;
+  
+  // Validate against available translations
+  currentLanguage = TRANSLATIONS[preferred] ? preferred : FALLBACK_LANGUAGE;
+  document.documentElement.lang = currentLanguage;
+  document.documentElement.dir = getLanguageDirection(currentLanguage);
 }
 
 // --- Utilities -----------------------------------------------------------
-function formatNumber(num) { try { return num.toLocaleString(currentLanguage); } catch (e) { return '' + num; } }
-function getLanguageDirection(lang) { return ['ar','he','fa','ur'].includes(lang || currentLanguage) ? 'rtl' : 'ltr'; }
+function formatNumber(num) { 
+  try { 
+    return num.toLocaleString(currentLanguage); 
+  } catch (e) { 
+    return '' + num; 
+  } 
+}
+
+function getLanguageDirection(lang) { 
+  return ['ar', 'he', 'fa', 'ur'].includes(lang || currentLanguage) ? 'rtl' : 'ltr'; 
+}
 
 function populateLanguageSelector(sel) {
   const el = typeof sel === 'string' ? document.querySelector(sel) : sel;
-  if (el) el.innerHTML = LANGUAGES.filter(l => TRANSLATIONS[l.code]).map(l => `<option value="${l.code}" ${l.code === currentLanguage ? 'selected' : ''}>${l.flag} ${l.name}</option>`).join('');
+  if (el) {
+    el.innerHTML = LANGUAGES
+      .filter(l => TRANSLATIONS[l.code])
+      .map(l => `<option value="${l.code}" ${l.code === currentLanguage ? 'selected' : ''}>${l.flag} ${l.name}</option>`)
+      .join('');
+  }
 }
 
-// --- Debug ---------------------------------------------------------------
+// --- Debug (development only) --------------------------------------------
 function findMissingTranslations() {
-  const all = new Set(); Object.values(TRANSLATIONS).forEach(l => Object.keys(l).forEach(k => all.add(k)));
-  const m = {};
-  LANGUAGES.forEach(l => { if (!TRANSLATIONS[l.code]) { m[l.code] = ['(not loaded)']; return; }
-    const missing = []; all.forEach(k => { if (!TRANSLATIONS[l.code][k]) missing.push(k); });
-    if (missing.length) m[l.code] = missing;
+  const allKeys = new Set();
+  Object.values(TRANSLATIONS).forEach(langObj => 
+    Object.keys(langObj).forEach(k => allKeys.add(k))
+  );
+  
+  const missing = {};
+  LANGUAGES.forEach(l => {
+    if (!TRANSLATIONS[l.code]) {
+      missing[l.code] = ['(language not loaded)'];
+      return;
+    }
+    const missingKeys = [];
+    allKeys.forEach(k => {
+      if (!TRANSLATIONS[l.code][k]) missingKeys.push(k);
+    });
+    if (missingKeys.length) missing[l.code] = missingKeys;
   });
-  return m;
+  
+  return missing;
+}
+
+// Expose debug function only in development
+if (typeof window !== 'undefined' && 
+    (location.hostname === 'localhost' || location.search.includes('debug'))) {
+  window.findMissingTranslations = findMissingTranslations;
 }

@@ -1,7 +1,7 @@
 {
   "languages": [
-    {"code":"it","name":"Italiano","flag":"🇮🇹"},
     {"code":"en","name":"English","flag":"🇬🇧"},
+    {"code":"it","name":"Italiano","flag":"🇮🇹"},
     {"code":"fr","name":"Français","flag":"🇫🇷"},
     {"code":"de","name":"Deutsch","flag":"🇩🇪"},
     {"code":"es","name":"Español","flag":"🇪🇸"},
@@ -10,232 +10,678 @@
     {"code":"ar","name":"العربية","flag":"🇸🇦"}
   ],
   "strings": {
-    "header.title":{"en":"Historical <b>Board Game</b> Map Maker","it":"Creatore di Mappe <b>Gioco da Tavolo</b> Storiche","fr":"Créateur de Cartes <b>Jeu de Plateau</b> Historiques","de":"Historischer <b>Brettspiel</b>-Kartenersteller","es":"Creador de Mapas de <b>Juegos de Mesa</b> Históricos","zh":"���史<b>桌游</b>地图制作器","ru":"Создатель Исторических Карт <b>Настольных Игр</b>","ar":"صانع خرائط <b>ألعاب الطاولة</b> التاريخية"},
+    "header.title":{
+      "en":"Historical <b>Board Game</b> Map Maker",
+      "it":"Creatore di Mappe <b>Gioco da Tavolo</b> Storiche",
+      "fr":"Créateur de Cartes <b>Jeu de Plateau</b> Historiques",
+      "de":"Historischer <b>Brettspiel</b>-Kartenersteller",
+      "es":"Creador de Mapas de <b>Juegos de Mesa</b> Históricos",
+      "zh":"历史<b>桌游</b>地图制作器",
+      "ru":"Создатель Исторических Карт <b>Настольных Игр</b>",
+      "ar":"صانع خرائط <b>ألعاب الطاولة</b> التاريخية"
+    },
 
-    "panel.year":{"en":"📅 Historical Year","it":"📅 Anno Storico","fr":"📅 Année Historique","de":"📅 Historisches Jahr","es":"📅 Año Histórico","zh":"📅 历史年份","ru":"📅 Исторический Год","ar":"📅 السنة التاريخية"},
-    "panel.style":{"en":"🎨 Map Style & Borders","it":"🎨 Stile Mappa e Confini","fr":"🎨 Style & Frontières","de":"🎨 Kartenstil & Grenzen","es":"🎨 Estilo y Fronteras","zh":"🎨 地图样式和边界","ru":"🎨 Стиль и Границы","ar":"🎨 نمط الخريطة والحدود"},
-    "panel.colors":{"en":"🏳️ Nation Colors","it":"🏳️ Colori Nazioni","fr":"🏳️ Couleurs des Nations","de":"🏳️ Nationenfarben","es":"🏳️ Colores de Naciones","zh":"🏳️ 国家颜色","ru":"🏳️ Цвета Наций","ar":"🏳️ ألوان الدول"},
-    "panel.tools":{"en":"🛠️ Tools","it":"🛠️ Strumenti","fr":"🛠️ Outils","de":"🛠️ Werkzeuge","es":"🛠️ Herramientas","zh":"🛠️ 工具","ru":"🛠️ Инструменты","ar":"🛠️ أدوات"},
-    "panel.annotations":{"en":"📋 Annotations","it":"📋 Annotazioni","fr":"📋 Annotations","de":"📋 Anmerkungen","es":"📋 Anotaciones","zh":"📋 标注","ru":"📋 Аннотации","ar":"📋 تعليقات"},
-    "panel.import":{"en":"📂 Import GeoJSON","it":"📂 Importa GeoJSON","fr":"📂 Importer GeoJSON","de":"📂 GeoJSON Importieren","es":"📂 Importar GeoJSON","zh":"📂 导入GeoJSON","ru":"📂 Импорт GeoJSON","ar":"📂 استيراد GeoJSON"},
-    "panel.export":{"en":"💾 Export","it":"💾 Esportazione","fr":"💾 Exportation","de":"💾 Exportieren","es":"💾 Exportar","zh":"💾 导出","ru":"💾 Экспорт","ar":"💾 تصدير"},
+    "menu.file":{
+      "en":"File","it":"File","fr":"Fichier","de":"Datei","es":"Archivo","zh":"文件","ru":"Файл","ar":"ملف"
+    },
+    "menu.map":{
+      "en":"Map","it":"Mappa","fr":"Carte","de":"Karte","es":"Mapa","zh":"地图","ru":"Карта","ar":"خريطة"
+    },
+    "menu.view":{
+      "en":"View","it":"Visualizza","fr":"Affichage","de":"Ansicht","es":"Ver","zh":"视图","ru":"Вид","ar":"عرض"
+    },
+    "menu.close.panels":{
+      "en":"Close All Panels","it":"Chiudi Tutti i Pannelli","fr":"Fermer Tous les Panneaux","de":"Alle Panels Schließen","es":"Cerrar Todos los Paneles","zh":"关闭所有面板","ru":"Закрыть Все Панели","ar":"إغلاق جميع اللوحات"
+    },
+    "menu.export.options":{
+      "en":"Export Options...","it":"Opzioni Esportazione...","fr":"Options d'exportation...","de":"Exportoptionen...","es":"Opciones de Exportación...","zh":"导出选项...","ru":"Параметры Экспорта...","ar":"خيارات التصدير..."
+    },
 
-    "year.bc":{"en":"BC","it":"a.C.","fr":"av. J.-C.","de":"v. Chr.","es":"a.C.","zh":"公元前","ru":"до н.э.","ar":"ق.م"},
-    "year.ad":{"en":"AD","it":"d.C.","fr":"ap. J.-C.","de":"n. Chr.","es":"d.C.","zh":"公元","ru":"н.э.","ar":"م"},
+    "panel.year":{
+      "en":"📅 Historical Year","it":"📅 Anno Storico","fr":"📅 Année Historique","de":"📅 Historisches Jahr","es":"📅 Año Histórico","zh":"📅 历史年份","ru":"📅 Исторический Год","ar":"📅 السنة التاريخية"
+    },
+    "panel.style":{
+      "en":"🎨 Map Style & Borders","it":"🎨 Stile Mappa e Confini","fr":"🎨 Style & Frontières","de":"🎨 Kartenstil & Grenzen","es":"🎨 Estilo y Fronteras","zh":"🎨 地图样式和边界","ru":"🎨 Стиль и Границы","ar":"🎨 نمط الخريطة والحدود"
+    },
+    "panel.colors":{
+      "en":"🏳️ Nation Colors","it":"🏳️ Colori Nazioni","fr":"🏳️ Couleurs des Nations","de":"🏳️ Nationenfarben","es":"🏳️ Colores de Naciones","zh":"🏳️ 国家颜色","ru":"🏳️ Цвета Наций","ar":"🏳️ ألوان الدول"
+    },
+    "panel.tools":{
+      "en":"🛠️ Tools","it":"🛠️ Strumenti","fr":"🛠️ Outils","de":"🛠️ Werkzeuge","es":"🛠️ Herramientas","zh":"🛠️ 工具","ru":"🛠️ Инструменты","ar":"🛠️ أدوات"
+    },
+    "panel.annotations":{
+      "en":"📋 Annotations","it":"📋 Annotazioni","fr":"📋 Annotations","de":"📋 Anmerkungen","es":"📋 Anotaciones","zh":"📋 标注","ru":"📋 Аннотации","ar":"📋 تعليقات"
+    },
+    "panel.import":{
+      "en":"📂 Import GeoJSON","it":"📂 Importa GeoJSON","fr":"📂 Importer GeoJSON","de":"📂 GeoJSON Importieren","es":"📂 Importar GeoJSON","zh":"📂 导入GeoJSON","ru":"📂 Импорт GeoJSON","ar":"📂 استيراد GeoJSON"
+    },
+    "panel.export":{
+      "en":"💾 Export","it":"💾 Esportazione","fr":"💾 Exportation","de":"💾 Exportieren","es":"💾 Exportar","zh":"💾 导出","ru":"💾 Экспорт","ar":"💾 تصدير"
+    },
 
-    "era.prehistory":{"en":"Prehistory","it":"Preistoria","fr":"Préhistoire","de":"Vorgeschichte","es":"Prehistoria","zh":"史前时代","ru":"Доисторический","ar":"ما قبل التاريخ"},
-    "era.antiquity":{"en":"Antiquity","it":"Antichità","fr":"Antiquité","de":"Antike","es":"Antigüedad","zh":"古代","ru":"Античность","ar":"العصور القديمة"},
-    "era.firstmill":{"en":"1st Millennium","it":"I Millennio","fr":"Ier Millénaire","de":"1. Jahrtausend","es":"I Milenio","zh":"第一千年","ru":"I Тысячелетие","ar":"الألفية الأولى"},
-    "era.medieval":{"en":"Medieval","it":"Medioevo","fr":"Médiéval","de":"Mittelalter","es":"Medieval","zh":"中世纪","ru":"Средневековье","ar":"العصور الوسطى"},
-    "era.earlymodern":{"en":"Early Modern","it":"Età Moderna","fr":"Époque Moderne","de":"Frühe Neuzeit","es":"Edad Moderna","zh":"近代早期","ru":"Раннее Новое Время","ar":"العصر الحديث المبكر"},
-    "era.nineteenth":{"en":"19th Century","it":"XIX Secolo","fr":"XIXe Siècle","de":"19. Jahrhundert","es":"Siglo XIX","zh":"19世纪","ru":"XIX Век","ar":"القرن التاسع عشر"},
-    "era.twentieth":{"en":"20th Century","it":"XX Secolo","fr":"XXe Siècle","de":"20. Jahrhundert","es":"Siglo XX","zh":"20世纪","ru":"XX Век","ar":"القرن العشرون"},
-    "era.twentyfirst":{"en":"21st Century","it":"XXI Secolo","fr":"XXIe Siècle","de":"21. Jahrhundert","es":"Siglo XXI","zh":"21世纪","ru":"XXI Век","ar":"القرن الحادي والعشرون"},
+    "year.bc":{
+      "en":"BC","it":"a.C.","fr":"av. J.-C.","de":"v. Chr.","es":"a.C.","zh":"公元前","ru":"до н.э.","ar":"ق.م"
+    },
+    "year.ad":{
+      "en":"AD","it":"d.C.","fr":"ap. J.-C.","de":"n. Chr.","es":"d.C.","zh":"公元","ru":"н.э.","ar":"م"
+    },
 
-    "basemap.label":{"en":"Base Map","it":"Mappa Base","fr":"Carte de Base","de":"Basiskarte","es":"Mapa Base","zh":"底图","ru":"Базовая Карта","ar":"الخريطة الأساسية"},
-    "basemap.physical":{"en":"🗺️ Physical","it":"🗺️ Fisico","fr":"🗺️ Physique","de":"🗺️ Physisch","es":"🗺️ Físico","zh":"🗺️ 自然地理","ru":"🗺️ Физическая","ar":"🗺️ طبيعية"},
-    "basemap.relief":{"en":"⛰️ Shaded Relief","it":"⛰️ Rilievo Ombreggiato","fr":"⛰️ Relief Ombré","de":"⛰️ Schattenrelief","es":"⛰️ Relieve","zh":"⛰�� 地形阴影","ru":"⛰️ Рельеф","ar":"⛰️ تضاريس"},
-    "basemap.natgeo":{"en":"🌍 NatGeo","it":"🌍 NatGeo","fr":"🌍 NatGeo","de":"🌍 NatGeo","es":"🌍 NatGeo","zh":"🌍 国家地理","ru":"🌍 NatGeo","ar":"🌍 ناشيونال جيو"},
-    "basemap.topo":{"en":"📐 Topographic","it":"📐 Topografico","fr":"📐 Topographique","de":"📐 Topographisch","es":"📐 Topográfico","zh":"📐 地形图","ru":"📐 Топографическая","ar":"📐 طبوغرافية"},
-    "basemap.satellite":{"en":"🛰️ Satellite","it":"��️ Satellite","fr":"🛰️ Satellite","de":"🛰️ Satellit","es":"🛰️ Satélite","zh":"🛰️ 卫星","ru":"🛰️ Спутник","ar":"🛰️ قمر صناعي"},
-    "basemap.dark":{"en":"🌑 Dark","it":"🌑 Scuro","fr":"🌑 Sombre","de":"🌑 Dunkel","es":"🌑 Oscuro","zh":"🌑 暗色","ru":"🌑 Тёмная","ar":"🌑 داكن"},
-    "basemap.watercolor":{"en":"🎨 Watercolor","it":"🎨 Acquerello","fr":"🎨 Aquarelle","de":"🎨 Aquarell","es":"🎨 Acuarela","zh":"🎨 水彩","ru":"🎨 Акварель","ar":"🎨 ألوان مائية"},
-    "basemap.none":{"en":"⬜ None","it":"⬜ Nessuno","fr":"⬜ Aucune","de":"⬜ Keine","es":"⬜ Ninguno","zh":"⬜ 无","ru":"⬜ Нет","ar":"⬜ بدون"},
+    "era.prehistory":{
+      "en":"Prehistory","it":"Preistoria","fr":"Préhistoire","de":"Vorgeschichte","es":"Prehistoria","zh":"史前时代","ru":"Доисторический","ar":"ما قبل التاريخ"
+    },
+    "era.antiquity":{
+      "en":"Antiquity","it":"Antichità","fr":"Antiquité","de":"Antike","es":"Antigüedad","zh":"古代","ru":"Античность","ar":"العصور القديمة"
+    },
+    "era.firstmill":{
+      "en":"1st Millennium","it":"I Millennio","fr":"Ier Millénaire","de":"1. Jahrtausend","es":"I Milenio","zh":"第一千年","ru":"I Тысячелетие","ar":"الألفية الأولى"
+    },
+    "era.medieval":{
+      "en":"Medieval","it":"Medioevo","fr":"Médiéval","de":"Mittelalter","es":"Medieval","zh":"中世纪","ru":"Средневековье","ar":"العصور الوسطى"
+    },
+    "era.earlymodern":{
+      "en":"Early Modern","it":"Età Moderna","fr":"Époque Moderne","de":"Frühe Neuzeit","es":"Edad Moderna","zh":"近代早期","ru":"Раннее Новое Время","ar":"العصر الحديث المبكر"
+    },
+    "era.nineteenth":{
+      "en":"19th Century","it":"XIX Secolo","fr":"XIXe Siècle","de":"19. Jahrhundert","es":"Siglo XIX","zh":"19世纪","ru":"XIX Век","ar":"القرن التاسع عشر"
+    },
+    "era.twentieth":{
+      "en":"20th Century","it":"XX Secolo","fr":"XXe Siècle","de":"20. Jahrhundert","es":"Siglo XX","zh":"20世纪","ru":"XX Век","ar":"القرن العشرون"
+    },
+    "era.twentyfirst":{
+      "en":"21st Century","it":"XXI Secolo","fr":"XXIe Siècle","de":"21. Jahrhundert","es":"Siglo XXI","zh":"21世纪","ru":"XXI Век","ar":"القرن الحادي والعشرون"
+    },
 
-    "border.style.label":{"en":"Border Style","it":"Stile Confini","fr":"Style des Frontières","de":"Grenzstil","es":"Estilo de Frontera","zh":"边界样式","ru":"Стиль Границ","ar":"نمط الحدود"},
-    "border.solid":{"en":"━ Solid","it":"━ Solido","fr":"━ Solide","de":"━ Durchgehend","es":"━ Sólido","zh":"━ 实线","ru":"━ Сплошная","ar":"━ متصل"},
-    "border.dashed":{"en":"┅ Dashed","it":"┅ Tratteggiato","fr":"┅ Tirets","de":"┅ Gestrichelt","es":"┅ Discontinuo","zh":"┅ 虚线","ru":"┅ Штриховая","ar":"┅ متقطع"},
-    "border.dotted":{"en":"… Dotted","it":"… Punteggiato","fr":"… Pointillé","de":"… Gepunktet","es":"… Punteado","zh":"… 点线","ru":"… Пунктирная","ar":"… منقط"},
-    "border.dashdot":{"en":"┄· Dash-Dot","it":"┄· Tratto-Punto","fr":"┄· Tiret-Point","de":"┄· Strich-Punkt","es":"┄· Raya-Punto","zh":"┄· 点划线","ru":"┄· Штрих-пункт","ar":"┄· شرطة-نقطة"},
-    "border.longdash":{"en":"── Long Dash","it":"── Tratto Lungo","fr":"── Tiret Long","de":"── Langer Strich","es":"── Raya Larga","zh":"── 长虚线","ru":"── Длинный штрих","ar":"── شرطة طويلة"},
-    "border.double":{"en":"═ Double","it":"═ Doppio","fr":"═ Double","de":"═ Doppelt","es":"═ Doble","zh":"═ 双线","ru":"═ Двойная","ar":"═ مزدوج"},
-    "border.sketch":{"en":"～ Sketch","it":"～ Schizzo","fr":"～ Esquisse","de":"～ Skizze","es":"～ Boceto","zh":"～ 手绘","ru":"～ Эскиз","ar":"～ رسم يدوي"},
-    "border.railroad":{"en":"┊ Railroad","it":"┊ Ferrovia","fr":"┊ Chemin de fer","de":"┊ Eisenbahn","es":"┊ Ferrocarril","zh":"┊ 铁路","ru":"┊ Железнодорожная","ar":"┊ سكة حديد"},
-    "border.width":{"en":"Border Width","it":"Spessore Confini","fr":"Épaisseur","de":"Grenzbreite","es":"Ancho de Frontera","zh":"边界宽度","ru":"Ширина Границ","ar":"عرض الحدود"},
-    "border.px":{"en":"px","it":"px","fr":"px","de":"px","es":"px","zh":"像素","ru":"пикс.","ar":"بكسل"},
-    "border.color":{"en":"Border Color","it":"Colore Confini","fr":"Couleur des Frontières","de":"Grenzfarbe","es":"Color de Frontera","zh":"边界颜色","ru":"Цвет Границ","ar":"لون الحدود"},
+    "basemap.label":{
+      "en":"Base Map","it":"Mappa Base","fr":"Carte de Base","de":"Basiskarte","es":"Mapa Base","zh":"底图","ru":"Базовая Карта","ar":"الخريطة الأساسية"
+    },
+    "basemap.physical":{
+      "en":"🗺️ Physical","it":"🗺️ Fisico","fr":"🗺️ Physique","de":"🗺️ Physisch","es":"🗺️ Físico","zh":"🗺️ 自然地理","ru":"🗺️ Физическая","ar":"🗺️ طبيعية"
+    },
+    "basemap.relief":{
+      "en":"⛰️ Shaded Relief","it":"⛰️ Rilievo Ombreggiato","fr":"⛰️ Relief Ombré","de":"⛰️ Schattenrelief","es":"⛰️ Relieve","zh":"⛰️ 地形阴影","ru":"⛰️ Рельеф","ar":"⛰️ تضاريس"
+    },
+    "basemap.natgeo":{
+      "en":"🌍 NatGeo","it":"🌍 NatGeo","fr":"🌍 NatGeo","de":"🌍 NatGeo","es":"🌍 NatGeo","zh":"🌍 国家地理","ru":"🌍 NatGeo","ar":"🌍 ناشيونال جيو"
+    },
+    "basemap.topo":{
+      "en":"📐 Topographic","it":"📐 Topografico","fr":"📐 Topographique","de":"📐 Topographisch","es":"📐 Topográfico","zh":"📐 地形图","ru":"📐 Топографическая","ar":"📐 طبوغرافية"
+    },
+    "basemap.satellite":{
+      "en":"🛰️ Satellite","it":"🛰️ Satellite","fr":"🛰️ Satellite","de":"🛰️ Satellit","es":"🛰️ Satélite","zh":"🛰️ 卫星","ru":"🛰️ Спутник","ar":"🛰️ قمر صناعي"
+    },
+    "basemap.dark":{
+      "en":"🌑 Dark","it":"🌑 Scuro","fr":"🌑 Sombre","de":"🌑 Dunkel","es":"🌑 Oscuro","zh":"🌑 暗色","ru":"🌑 Тёмная","ar":"🌑 داكن"
+    },
+    "basemap.watercolor":{
+      "en":"🎨 Watercolor","it":"🎨 Acquerello","fr":"🎨 Aquarelle","de":"🎨 Aquarell","es":"🎨 Acuarela","zh":"🎨 水彩","ru":"🎨 Акварель","ar":"🎨 ألوان مائية"
+    },
+    "basemap.none":{
+      "en":"⬜ None","it":"⬜ Nessuno","fr":"⬜ Aucune","de":"⬜ Keine","es":"⬜ Ninguno","zh":"⬜ 无","ru":"⬜ Нет","ar":"⬜ بدون"
+    },
 
-    "border.desc.solid":{"en":"Clean solid line","it":"Linea continua","fr":"Ligne continue","de":"Durchgehende Linie","es":"Línea continua","zh":"实线","ru":"Сплошная линия","ar":"خط متصل"},
-    "border.desc.dashed":{"en":"Standard dashed line","it":"Linea tratteggiata","fr":"Ligne tiretée","de":"Gestrichelte Linie","es":"Línea discontinua","zh":"虚线","ru":"Штриховая линия","ar":"خط متقطع"},
-    "border.desc.dotted":{"en":"Dotted line","it":"Linea punteggiata","fr":"Ligne pointillée","de":"Gepunktete Linie","es":"Línea punteada","zh":"点线","ru":"Пунктирная линия","ar":"خط منقط"},
-    "border.desc.dashdot":{"en":"Dash-dot pattern","it":"Tratto-punto","fr":"Tiret-point","de":"Strich-Punkt-Muster","es":"Patrón raya-punto","zh":"点划线","ru":"Штрих-пунктир","ar":"شرطة-نقطة"},
-    "border.desc.longdash":{"en":"Long dashes","it":"Tratti lunghi","fr":"Tirets longs","de":"Lange Striche","es":"Rayas largas","zh":"长虚线","ru":"Длинные штрихи","ar":"شرطات طويلة"},
-    "border.desc.double":{"en":"Double parallel lines","it":"Linea doppia","fr":"Ligne double","de":"Doppellinie","es":"Línea doble","zh":"双线","ru":"Двойная линия","ar":"خط مزدوج"},
-    "border.desc.sketch":{"en":"Hand-drawn style","it":"Stile disegnato a mano","fr":"Style dessiné à la main","de":"Handgezeichnet","es":"Estilo dibujado a mano","zh":"手绘风格","ru":"Рисованный стиль","ar":"رسم يدوي"},
-    "border.desc.railroad":{"en":"Railroad style","it":"Stile ferrovia","fr":"Style chemin de fer","de":"Eisenbahnstil","es":"Estilo ferrocarril","zh":"铁路风格","ru":"Железнодорожный стиль","ar":"سكة حديد"},
+    "border.style.label":{
+      "en":"Border Style","it":"Stile Confini","fr":"Style des Frontières","de":"Grenzstil","es":"Estilo de Frontera","zh":"边界样式","ru":"Стиль Границ","ar":"نمط الحدود"
+    },
+    "border.solid":{
+      "en":"━ Solid","it":"━ Solido","fr":"━ Solide","de":"━ Durchgehend","es":"━ Sólido","zh":"━ 实线","ru":"━ Сплошная","ar":"━ متصل"
+    },
+    "border.dashed":{
+      "en":"┅ Dashed","it":"┅ Tratteggiato","fr":"┅ Tirets","de":"┅ Gestrichelt","es":"┅ Discontinuo","zh":"┅ 虚线","ru":"┅ Штриховая","ar":"┅ متقطع"
+    },
+    "border.dotted":{
+      "en":"… Dotted","it":"… Punteggiato","fr":"… Pointillé","de":"… Gepunktet","es":"… Punteado","zh":"… 点线","ru":"… Пунктирная","ar":"… منقط"
+    },
+    "border.dashdot":{
+      "en":"┄· Dash-Dot","it":"┄· Tratto-Punto","fr":"┄· Tiret-Point","de":"┄· Strich-Punkt","es":"┄· Raya-Punto","zh":"┄· 点划线","ru":"┄· Штрих-пункт","ar":"┄· شرطة-نقطة"
+    },
+    "border.longdash":{
+      "en":"── Long Dash","it":"── Tratto Lungo","fr":"── Tiret Long","de":"── Langer Strich","es":"── Raya Larga","zh":"── 长虚线","ru":"── Длинный штрих","ar":"── شرطة طويلة"
+    },
+    "border.double":{
+      "en":"═ Double","it":"═ Doppio","fr":"═ Double","de":"═ Doppelt","es":"═ Doble","zh":"═ 双线","ru":"═ Двойная","ar":"═ مزدوج"
+    },
+    "border.sketch":{
+      "en":"～ Sketch","it":"～ Schizzo","fr":"～ Esquisse","de":"～ Skizze","es":"～ Boceto","zh":"～ 手绘","ru":"～ Эскиз","ar":"～ رسم يدوي"
+    },
+    "border.railroad":{
+      "en":"┊ Railroad","it":"┊ Ferrovia","fr":"┊ Chemin de fer","de":"┊ Eisenbahn","es":"┊ Ferrocarril","zh":"┊ 铁路","ru":"┊ Железнодорожная","ar":"┊ سكة حديد"
+    },
+    "border.width":{
+      "en":"Border Width","it":"Spessore Confini","fr":"Épaisseur","de":"Grenzbreite","es":"Ancho de Frontera","zh":"边界宽度","ru":"Ширина Границ","ar":"عرض الحدود"
+    },
+    "border.px":{
+      "en":"px","it":"px","fr":"px","de":"px","es":"px","zh":"像素","ru":"пикс.","ar":"بكسل"
+    },
+    "border.color":{
+      "en":"Border Color","it":"Colore Confini","fr":"Couleur des Frontières","de":"Grenzfarbe","es":"Color de Frontera","zh":"边界颜色","ru":"Цвет Границ","ar":"لون الحدود"
+    },
 
-    "fill.opacity":{"en":"Fill Opacity","it":"Opacità Riempimento","fr":"Opacité du Remplissage","de":"Fülldeckkraft","es":"Opacidad del Relleno","zh":"填充不透明度","ru":"Непрозрачность Заливки","ar":"شفافية التعبئة"},
+    "border.desc.solid":{
+      "en":"Clean solid line","it":"Linea continua","fr":"Ligne continue","de":"Durchgehende Linie","es":"Línea continua","zh":"实线","ru":"Сплошная линия","ar":"خط متصل"
+    },
+    "border.desc.dashed":{
+      "en":"Standard dashed line","it":"Linea tratteggiata","fr":"Ligne tiretée","de":"Gestrichelte Linie","es":"Línea discontinua","zh":"虚线","ru":"Штриховая линия","ar":"خط متقطع"
+    },
+    "border.desc.dotted":{
+      "en":"Dotted line","it":"Linea punteggiata","fr":"Ligne pointillée","de":"Gepunktete Linie","es":"Línea punteada","zh":"点线","ru":"Пунктирная линия","ar":"خط منقط"
+    },
+    "border.desc.dashdot":{
+      "en":"Dash-dot pattern","it":"Tratto-punto","fr":"Tiret-point","de":"Strich-Punkt-Muster","es":"Patrón raya-punto","zh":"点划线","ru":"Штрих-пунктир","ar":"شرطة-نقطة"
+    },
+    "border.desc.longdash":{
+      "en":"Long dashes","it":"Tratti lunghi","fr":"Tirets longs","de":"Lange Striche","es":"Rayas largas","zh":"长虚线","ru":"Длинные штрихи","ar":"شرطات طويلة"
+    },
+    "border.desc.double":{
+      "en":"Double parallel lines","it":"Linea doppia","fr":"Ligne double","de":"Doppellinie","es":"Línea doble","zh":"双线","ru":"Двойная линия","ar":"خط مزدوج"
+    },
+    "border.desc.sketch":{
+      "en":"Hand-drawn style","it":"Stile disegnato a mano","fr":"Style dessiné à la main","de":"Handgezeichnet","es":"Estilo dibujado a mano","zh":"手绘风格","ru":"Рисованный стиль","ar":"رسم يدوي"
+    },
+    "border.desc.railroad":{
+      "en":"Railroad style","it":"Stile ferrovia","fr":"Style chemin de fer","de":"Eisenbahnstil","es":"Estilo ferrocarril","zh":"铁路风格","ru":"Железнодорожный стиль","ar":"سكة حديد"
+    },
 
-    "colors.selected":{"en":"Selected Nations","it":"Nazioni Selezionate","fr":"Nations Sélectionnées","de":"Ausgewählte Nationen","es":"Naciones Seleccionadas","zh":"已选国家","ru":"Выбранные Нации","ar":"الدول المحددة"},
-    "colors.hint":{"en":"Click = select · Ctrl+Click = multi · Shift+Click = range","it":"Click = seleziona · Ctrl+Click = multi · Shift+Click = intervallo","fr":"Clic = sélection · Ctrl+Clic = multi · Shift+Clic = plage","de":"Klick = Auswahl · Strg+Klick = Mehrfach · Shift+Klick = Bereich","es":"Clic = seleccionar · Ctrl+Clic = múltiple · Shift+Clic = rango","zh":"点击=选择 · Ctrl+点击=多选 · Shift+点击=范围","ru":"Клик = выбор · Ctrl+Клик = множ. · Shift+Клик = диапазон","ar":"انقر = تحديد · Ctrl+انقر = متعدد · Shift+انقر = نطاق"},
-    "colors.empty":{"en":"Click on nations in the map","it":"Clicca sulle nazioni nella mappa","fr":"Cliquez sur les nations sur la carte","de":"Klicken Sie auf Nationen in der Karte","es":"Haz clic en las naciones del mapa","zh":"点击地图上的国家","ru":"Нажмите на нации на карте","ar":"انقر على الدول في الخريطة"},
-    "colors.all":{"en":"✅ All","it":"✅ Tutte","fr":"✅ Toutes","de":"✅ Alle","es":"✅ Todas","zh":"✅ 全选","ru":"✅ Все","ar":"✅ الكل"},
-    "colors.invert":{"en":"🔄 Invert","it":"🔄 Inverti","fr":"🔄 Inverser","de":"🔄 Umkehren","es":"🔄 Invertir","zh":"🔄 反选","ru":"🔄 Инвертировать","ar":"🔄 عكس"},
-    "colors.none":{"en":"✖ None","it":"✖ Nessuna","fr":"✖ Aucune","de":"✖ Keine","es":"✖ Ninguna","zh":"✖ 取消","ru":"✖ Снять","ar":"✖ لا شيء"},
-    "colors.apply.label":{"en":"Apply color to selected:","it":"Applica colore alle selezionate:","fr":"Appliquer une couleur :","de":"Farbe anwenden:","es":"Aplicar color:","zh":"应用颜色：","ru":"Применить цвет:","ar":"تطبيق اللون:"},
-    "colors.custom.label":{"en":"Custom color:","it":"Colore personalizzato:","fr":"Couleur personnalisée :","de":"Benutzerdefiniert:","es":"Color personalizado:","zh":"自定义颜色：","ru":"Свой цвет:","ar":"لون مخصص:"},
-    "colors.apply":{"en":"Apply","it":"Applica","fr":"Appliquer","de":"Anwenden","es":"Aplicar","zh":"应用","ru":"Применить","ar":"تطبيق"},
-    "colors.reset":{"en":"↺ Reset All","it":"↺ Reset Tutti","fr":"↺ Tout Réinitialiser","de":"↺ Alles Zurücksetzen","es":"↺ Restablecer Todo","zh":"↺ 重置全部","ru":"↺ Сбросить Все","ar":"↺ إعادة تعيين الكل"},
+    "fill.opacity":{
+      "en":"Fill Opacity","it":"Opacità Riempimento","fr":"Opacité du Remplissage","de":"Fülldeckkraft","es":"Opacidad del Relleno","zh":"填充不透明度","ru":"Непрозрачность Заливки","ar":"شفافية التعبئة"
+    },
 
-    "tool.navigate":{"en":"🖱️ Navigate","it":"🖱️ Naviga","fr":"🖱️ Naviguer","de":"🖱️ Navigieren","es":"🖱️ Navegar","zh":"🖱️ 导航","ru":"🖱️ Навигация","ar":"🖱️ تنقل"},
-    "tool.text":{"en":"✏️ Text","it":"✏️ Testo","fr":"✏️ Texte","de":"✏️ Text","es":"✏️ Texto","zh":"✏️ 文字","ru":"✏️ Текст","ar":"✏️ نص"},
-    "tool.flag":{"en":"🏴 Flag","it":"🏴 Bandiera","fr":"🏴 Drapeau","de":"🏴 Flagge","es":"🏴 Bandera","zh":"🏴 旗帜","ru":"🏴 Флаг","ar":"🏴 علم"},
-    "tool.draw":{"en":"🖊️ Draw","it":"🖊️ Disegna","fr":"🖊️ Dessiner","de":"🖊️ Zeichnen","es":"🖊️ Dibujar","zh":"🖊️ 绘制","ru":"🖊️ Рисовать","ar":"🖊️ رسم"},
+    "colors.selected":{
+      "en":"Selected Nations","it":"Nazioni Selezionate","fr":"Nations Sélectionnées","de":"Ausgewählte Nationen","es":"Naciones Seleccionadas","zh":"已选国家","ru":"Выбранные Нации","ar":"الدول المحددة"
+    },
+    "colors.hint":{
+      "en":"Click = select · Ctrl+Click = multi · Shift+Click = range","it":"Click = seleziona · Ctrl+Click = multi · Shift+Click = intervallo","fr":"Clic = sélection · Ctrl+Clic = multi · Shift+Clic = plage","de":"Klick = Auswahl · Strg+Klick = Mehrfach · Shift+Klick = Bereich","es":"Clic = seleccionar · Ctrl+Clic = múltiple · Shift+Clic = rango","zh":"点击=选择 · Ctrl+点击=多选 · Shift+点击=范围","ru":"Клик = выбор · Ctrl+Клик = множ. · Shift+Клик = диапазон","ar":"انقر = تحديد · Ctrl+انقر = متعدد · Shift+انقر = نطاق"
+    },
+    "colors.empty":{
+      "en":"Click on nations in the map","it":"Clicca sulle nazioni nella mappa","fr":"Cliquez sur les nations sur la carte","de":"Klicken Sie auf Nationen in der Karte","es":"Haz clic en las naciones del mapa","zh":"点击地图上的国家","ru":"Нажмите на нации на карте","ar":"انقر على الدول في الخريطة"
+    },
+    "colors.all":{
+      "en":"✅ All","it":"✅ Tutte","fr":"✅ Toutes","de":"✅ Alle","es":"✅ Todas","zh":"✅ 全选","ru":"✅ Все","ar":"✅ الكل"
+    },
+    "colors.invert":{
+      "en":"🔄 Invert","it":"🔄 Inverti","fr":"🔄 Inverser","de":"🔄 Umkehren","es":"🔄 Invertir","zh":"🔄 反选","ru":"🔄 Инвертировать","ar":"🔄 عكس"
+    },
+    "colors.none":{
+      "en":"✖ None","it":"✖ Nessuna","fr":"✖ Aucune","de":"✖ Keine","es":"✖ Ninguna","zh":"✖ 取消","ru":"✖ Снять","ar":"✖ لا شيء"
+    },
+    "colors.apply.label":{
+      "en":"Apply color to selected:","it":"Applica colore alle selezionate:","fr":"Appliquer une couleur :","de":"Farbe anwenden:","es":"Aplicar color:","zh":"应用颜色：","ru":"Применить цвет:","ar":"تطبيق اللون:"
+    },
+    "colors.custom.label":{
+      "en":"Custom color:","it":"Colore personalizzato:","fr":"Couleur personnalisée :","de":"Benutzerdefiniert:","es":"Color personalizado:","zh":"自定义颜色：","ru":"Свой цвет:","ar":"لون مخصص:"
+    },
+    "colors.apply":{
+      "en":"Apply","it":"Applica","fr":"Appliquer","de":"Anwenden","es":"Aplicar","zh":"应用","ru":"Применить","ar":"تطبيق"
+    },
+    "colors.reset":{
+      "en":"↺ Reset All","it":"↺ Reset Tutti","fr":"↺ Tout Réinitialiser","de":"↺ Alles Zurücksetzen","es":"↺ Restablecer Todo","zh":"↺ 重置全部","ru":"↺ Сбросить Все","ar":"↺ إعادة تعيين الكل"
+    },
 
-    "text.label":{"en":"Text","it":"Testo","fr":"Texte","de":"Text","es":"Texto","zh":"文字","ru":"Текст","ar":"النص"},
-    "text.placeholder":{"en":"Enter text...","it":"Inserisci testo...","fr":"Entrez le texte...","de":"Text eingeben...","es":"Ingrese texto...","zh":"输入文字...","ru":"Введите текст...","ar":"أدخل النص..."},
-    "text.font":{"en":"Font","it":"Font","fr":"Police","de":"Schriftart","es":"Fuente","zh":"字体","ru":"Шрифт","ar":"الخط"},
-    "text.size":{"en":"Size","it":"Dimensione","fr":"Taille","de":"Größe","es":"Tamaño","zh":"大小","ru":"Размер","ar":"الحجم"},
-    "text.color":{"en":"Color","it":"Colore","fr":"Couleur","de":"Farbe","es":"Color","zh":"颜色","ru":"Цвет","ar":"اللون"},
-    "text.bold":{"en":"Bold","it":"Grassetto","fr":"Gras","de":"Fett","es":"Negrita","zh":"粗体","ru":"Жирный","ar":"عريض"},
-    "text.outline":{"en":"Outline","it":"Contorno","fr":"Contour","de":"Umriss","es":"Contorno","zh":"描边","ru":"Обводка","ar":"حدود"},
-    "text.rotation":{"en":"Rotation","it":"Rotazione","fr":"Rotation","de":"Drehung","es":"Rotación","zh":"旋转","ru":"Поворот","ar":"دوران"},
-    "text.shape":{"en":"Text Shape","it":"Forma Testo","fr":"Forme du Texte","de":"Textform","es":"Forma del Texto","zh":"文字形状","ru":"Форма Текста","ar":"شكل النص"},
-    "text.shape.none":{"en":"None","it":"Nessuna","fr":"Aucune","de":"Keine","es":"Ninguna","zh":"无","ru":"Нет","ar":"بدون"},
-    "text.shape.rect":{"en":"▢ Rectangle","it":"▢ Rettangolo","fr":"▢ Rectangle","de":"▢ Rechteck","es":"▢ Rectángulo","zh":"▢ 矩形","ru":"▢ Прямоугольник","ar":"▢ مستطيل"},
-    "text.shape.circle":{"en":"● Circle","it":"● Cerchio","fr":"● Cercle","de":"● Kreis","es":"● Círculo","zh":"● 圆形","ru":"● Круг","ar":"● دائرة"},
-    "text.shape.pill":{"en":"⬭ Pill","it":"⬭ Pillola","fr":"⬭ Pilule","de":"⬭ Pille","es":"⬭ Píldora","zh":"⬭ 药丸形","ru":"⬭ Таблетка","ar":"⬭ كبسولة"},
-    "text.shape.bg":{"en":"Background","it":"Sfondo","fr":"Fond","de":"Hintergrund","es":"Fondo","zh":"背景","ru":"Фон","ar":"خلفية"},
-    "text.shape.border":{"en":"Border","it":"Bordo","fr":"Bordure","de":"Rahmen","es":"Borde","zh":"边框","ru":"Рамка","ar":"إطار"},
-    "text.shape.borderwidth":{"en":"Border Width","it":"Spessore Bordo","fr":"Épaisseur Bordure","de":"Rahmenbreite","es":"Ancho del Borde","zh":"边框宽度","ru":"Ширина Рамки","ar":"عرض الإطار"},
-    "text.shape.padding":{"en":"Padding","it":"Spaziatura","fr":"Espacement","de":"Innenabstand","es":"Relleno","zh":"内边距","ru":"Отступ","ar":"حشوة"},
-    "text.shape.relief":{"en":"Relief Effect","it":"Effetto Rilievo","fr":"Effet de Relief","de":"Reliefeffekt","es":"Efecto de Relieve","zh":"浮雕效果","ru":"Эффект Рельефа","ar":"تأثير النقش"},
-    "text.relief.flat":{"en":"Flat","it":"Piatto","fr":"Plat","de":"Flach","es":"Plano","zh":"平面","ru":"Плоский","ar":"مسطح"},
-    "text.relief.raised":{"en":"Raised","it":"Rialzato","fr":"Relief","de":"Erhaben","es":"Elevado","zh":"凸起","ru":"Выпуклый","ar":"بارز"},
-    "text.relief.inset":{"en":"Inset","it":"Incassato","fr":"Encaissé","de":"Eingelassen","es":"Hundido","zh":"凹陷","ru":"Вдавленный","ar":"غائر"},
-    "text.relief.emboss":{"en":"Emboss","it":"Sbalzo","fr":"Embossé","de":"Geprägt","es":"Repujado","zh":"浮雕","ru":"Тиснение","ar":"منقوش"},
-    "text.relief.glow":{"en":"Glow","it":"Bagliore","fr":"Lueur","de":"Leuchten","es":"Brillo","zh":"发光","ru":"Свечение","ar":"توهج"},
+    "tool.navigate":{
+      "en":"🖱️ Navigate","it":"🖱️ Naviga","fr":"🖱️ Naviguer","de":"🖱️ Navigieren","es":"🖱️ Navegar","zh":"🖱️ 导航","ru":"🖱️ Навигация","ar":"🖱️ تنقل"
+    },
+    "tool.text":{
+      "en":"✏️ Text","it":"✏️ Testo","fr":"✏️ Texte","de":"✏️ Text","es":"✏️ Texto","zh":"✏️ 文字","ru":"✏️ Текст","ar":"✏️ نص"
+    },
+    "tool.flag":{
+      "en":"🏴 Flag","it":"🏴 Bandiera","fr":"🏴 Drapeau","de":"🏴 Flagge","es":"🏴 Bandera","zh":"🏴 旗帜","ru":"🏴 Флаг","ar":"🏴 علم"
+    },
+    "tool.draw":{
+      "en":"🖊️ Draw","it":"🖊️ Disegna","fr":"🖊️ Dessiner","de":"🖊️ Zeichnen","es":"🖊️ Dibujar","zh":"🖊️ 绘制","ru":"🖊️ Рисовать","ar":"🖊️ رسم"
+    },
 
-    "flag.shape":{"en":"Flag Shape","it":"Forma Bandiera","fr":"Forme du Drapeau","de":"Flaggenform","es":"Forma de Bandera","zh":"旗帜形状","ru":"Форма Флага","ar":"شكل العلم"},
-    "flag.circle":{"en":"🔵 Circle","it":"🔵 Cerchio","fr":"🔵 Cercle","de":"🔵 Kreis","es":"🔵 Círculo","zh":"🔵 圆形","ru":"🔵 Круг","ar":"🔵 دائرة"},
-    "flag.rect":{"en":"🟦 Rectangle","it":"🟦 Rettangolo","fr":"🟦 Rectangle","de":"🟦 Rechteck","es":"🟦 Rectángulo","zh":"🟦 矩形","ru":"🟦 Прямоугольник","ar":"🟦 مستطيل"},
-    "flag.search":{"en":"Search","it":"Cerca","fr":"Rechercher","de":"Suchen","es":"Buscar","zh":"搜索","ru":"Поиск","ar":"بحث"},
-    "flag.search.placeholder":{"en":"Search flag...","it":"Cerca bandiera...","fr":"Chercher un drapeau...","de":"Flagge suchen...","es":"Buscar bandera...","zh":"搜索旗帜...","ru":"Найти флаг...","ar":"ابحث عن علم..."},
-    "flag.size":{"en":"Size","it":"Dimensione","fr":"Taille","de":"Größe","es":"Tamaño","zh":"大小","ru":"Размер","ar":"الحجم"},
-    "flag.upload.title":{"en":"Upload custom flag","it":"Carica bandiera personalizzata","fr":"Télécharger un drapeau","de":"Flagge hochladen","es":"Subir bandera personalizada","zh":"上传自定义旗帜","ru":"Загрузить свой флаг","ar":"رفع علم مخصص"},
-    "flag.upload.desc":{"en":"PNG, SVG, JPG — drag & drop or click","it":"PNG, SVG, JPG — trascina o clicca","fr":"PNG, SVG, JPG — glisser ou cliquer","de":"PNG, SVG, JPG","es":"PNG, SVG, JPG","zh":"PNG、SVG、JPG","ru":"PNG, SVG, JPG","ar":"PNG, SVG, JPG"},
-    "flag.name.placeholder":{"en":"Flag name...","it":"Nome bandiera...","fr":"Nom du drapeau...","de":"Flaggenname...","es":"Nombre de la bandera...","zh":"旗帜名称...","ru":"Название флага...","ar":"اسم العلم..."},
-    "flag.add":{"en":"➕ Add","it":"➕ Aggiungi","fr":"➕ Ajouter","de":"➕ Hinzufügen","es":"➕ Añadir","zh":"➕ 添加","ru":"➕ Добавить","ar":"➕ إضافة"},
-    "flag.builtin":{"en":"Built-in Flags","it":"Bandiere Integrate","fr":"Drapeaux Intégrés","de":"Eingebaute Flaggen","es":"Banderas Integradas","zh":"内置旗帜","ru":"Встроенные Флаги","ar":"أعلام مدمجة"},
-    "flag.custom.section":{"en":"Custom Flags","it":"Bandiere Personalizzate","fr":"Drapeaux Personnalisés","de":"Benutzerdefinierte Flaggen","es":"Banderas Personalizadas","zh":"自定义旗帜","ru":"Свои Флаги","ar":"أعلام مخصصة"},
-    "flag.select.hint":{"en":"👆 Select a flag, then click on the map","it":"👆 Seleziona una bandiera, poi clicca sulla mappa","fr":"👆 Sélectionnez un drapeau, puis cliquez sur la carte","de":"👆 Flagge wählen, dann auf Karte klicken","es":"👆 Selecciona una bandera y haz clic en el mapa","zh":"👆 选择旗帜，然后点击地图","ru":"👆 Выберите флаг и нажмите на карту","ar":"👆 اختر علماً ثم انقر على الخريطة"},
-    "flag.selected":{"en":"Selected: {name} — click on map to place","it":"Selezionata: {name} — clicca sulla mappa per posizionare","fr":"Sélectionné : {name} — cliquez pour placer","de":"Ausgewählt: {name} — klicken zum Platzieren","es":"Seleccionada: {name} — clic en el mapa para colocar","zh":"已选：{name} — 点击地图放置","ru":"Выбран: {name} — нажмите на карту","ar":"محدد: {name} — انقر على الخريطة"},
+    "text.label":{
+      "en":"Text","it":"Testo","fr":"Texte","de":"Text","es":"Texto","zh":"文字","ru":"Текст","ar":"النص"
+    },
+    "text.placeholder":{
+      "en":"Enter text...","it":"Inserisci testo...","fr":"Entrez le texte...","de":"Text eingeben...","es":"Ingrese texto...","zh":"输入文字...","ru":"Введите текст...","ar":"أدخل النص..."
+    },
+    "text.font":{
+      "en":"Font","it":"Font","fr":"Police","de":"Schriftart","es":"Fuente","zh":"字体","ru":"Шрифт","ar":"الخط"
+    },
+    "text.size":{
+      "en":"Size","it":"Dimensione","fr":"Taille","de":"Größe","es":"Tamaño","zh":"大小","ru":"Размер","ar":"الحجم"
+    },
+    "text.color":{
+      "en":"Color","it":"Colore","fr":"Couleur","de":"Farbe","es":"Color","zh":"颜色","ru":"Цвет","ar":"اللون"
+    },
+    "text.bold":{
+      "en":"Bold","it":"Grassetto","fr":"Gras","de":"Fett","es":"Negrita","zh":"粗体","ru":"Жирный","ar":"عريض"
+    },
+    "text.outline":{
+      "en":"Outline","it":"Contorno","fr":"Contour","de":"Umriss","es":"Contorno","zh":"描边","ru":"Обводка","ar":"حدود"
+    },
+    "text.rotation":{
+      "en":"Rotation","it":"Rotazione","fr":"Rotation","de":"Drehung","es":"Rotación","zh":"旋转","ru":"Поворот","ar":"دوران"
+    },
+    "text.fixed.size":{
+      "en":"Fixed size (no zoom scaling)","it":"Dimensione fissa (no zoom)","fr":"Taille fixe (sans zoom)","de":"Feste Größe (kein Zoom)","es":"Tamaño fijo (sin zoom)","zh":"固定大小（无缩放）","ru":"Фиксированный размер (без масштаба)","ar":"حجم ثابت (بدون تكبير)"
+    },
+    "text.shape":{
+      "en":"Text Shape","it":"Forma Testo","fr":"Forme du Texte","de":"Textform","es":"Forma del Texto","zh":"文字形状","ru":"Форма Текста","ar":"شكل النص"
+    },
+    "text.shape.none":{
+      "en":"None","it":"Nessuna","fr":"Aucune","de":"Keine","es":"Ninguna","zh":"无","ru":"Нет","ar":"بدون"
+    },
+    "text.shape.rect":{
+      "en":"▢ Rectangle","it":"▢ Rettangolo","fr":"▢ Rectangle","de":"▢ Rechteck","es":"▢ Rectángulo","zh":"▢ 矩形","ru":"▢ Прямоугольник","ar":"▢ مستطيل"
+    },
+    "text.shape.circle":{
+      "en":"● Circle","it":"● Cerchio","fr":"● Cercle","de":"● Kreis","es":"● Círculo","zh":"● 圆形","ru":"● Круг","ar":"● دائرة"
+    },
+    "text.shape.pill":{
+      "en":"⬭ Pill","it":"⬭ Pillola","fr":"⬭ Pilule","de":"⬭ Pille","es":"⬭ Píldora","zh":"⬭ 药丸形","ru":"⬭ Таблетка","ar":"⬭ كبسولة"
+    },
+    "text.shape.bg":{
+      "en":"Background","it":"Sfondo","fr":"Fond","de":"Hintergrund","es":"Fondo","zh":"背景","ru":"Фон","ar":"خلفية"
+    },
+    "text.shape.border":{
+      "en":"Border","it":"Bordo","fr":"Bordure","de":"Rahmen","es":"Borde","zh":"边框","ru":"Рамка","ar":"إطار"
+    },
+    "text.shape.borderwidth":{
+      "en":"Border Width","it":"Spessore Bordo","fr":"Épaisseur Bordure","de":"Rahmenbreite","es":"Ancho del Borde","zh":"边框宽度","ru":"Ширина Рамки","ar":"عرض الإطار"
+    },
+    "text.shape.padding":{
+      "en":"Padding","it":"Spaziatura","fr":"Espacement","de":"Innenabstand","es":"Relleno","zh":"内边距","ru":"Отступ","ar":"حشوة"
+    },
+    "text.shape.relief":{
+      "en":"Relief Effect","it":"Effetto Rilievo","fr":"Effet de Relief","de":"Reliefeffekt","es":"Efecto de Relieve","zh":"浮雕效果","ru":"Эффект Рельефа","ar":"تأثير النقش"
+    },
+    "text.relief.flat":{
+      "en":"Flat","it":"Piatto","fr":"Plat","de":"Flach","es":"Plano","zh":"平面","ru":"Плоский","ar":"مسطح"
+    },
+    "text.relief.raised":{
+      "en":"Raised","it":"Rialzato","fr":"Relief","de":"Erhaben","es":"Elevado","zh":"凸起","ru":"Выпуклый","ar":"بارز"
+    },
+    "text.relief.inset":{
+      "en":"Inset","it":"Incassato","fr":"Encaissé","de":"Eingelassen","es":"Hundido","zh":"凹陷","ru":"Вдавленный","ar":"غائر"
+    },
+    "text.relief.emboss":{
+      "en":"Emboss","it":"Sbalzo","fr":"Embossé","de":"Geprägt","es":"Repujado","zh":"浮雕","ru":"Тиснение","ar":"منقوش"
+    },
+    "text.relief.glow":{
+      "en":"Glow","it":"Bagliore","fr":"Lueur","de":"Leuchten","es":"Brillo","zh":"发光","ru":"Свечение","ar":"توهج"
+    },
 
-    "draw.world.mode":{"en":"World Mode","it":"Modalità Mondo","fr":"Mode Monde","de":"Weltmodus","es":"Modo Mundo","zh":"世界模式","ru":"Режим Мира","ar":"وضع العالم"},
-    "draw.world.existing":{"en":"🌍 Existing World","it":"🌍 Mondo Esistente","fr":"🌍 Monde Existant","de":"🌍 Bestehende Welt","es":"🌍 Mundo Existente","zh":"🌍 现有世界","ru":"🌍 Существующий Мир","ar":"🌍 عالم موجود"},
-    "draw.world.empty":{"en":"📄 Empty World","it":"📄 Mondo Vuoto","fr":"📄 Monde Vide","de":"📄 Leere Welt","es":"📄 Mundo Vacío","zh":"📄 空白世界","ru":"📄 Пустой Мир","ar":"📄 عالم فارغ"},
-    "draw.border.type":{"en":"Border Type","it":"Tipo di Confine","fr":"Type de Frontière","de":"Grenztyp","es":"Tipo de Frontera","zh":"边界类型","ru":"Тип Границы","ar":"نوع الحدود"},
-    "draw.type.land":{"en":"🏔️ Land Border","it":"🏔️ Confine Terrestre","fr":"🏔️ Frontière Terrestre","de":"🏔️ Landgrenze","es":"🏔️ Frontera Terrestre","zh":"🏔️ 陆地边界","ru":"🏔️ Сухопутная","ar":"🏔️ حدود برية"},
-    "draw.type.sea":{"en":"🌊 Sea Border","it":"🌊 Confine Marittimo","fr":"🌊 Frontière Maritime","de":"🌊 Seegrenze","es":"🌊 Frontera Marítima","zh":"🌊 海洋边界","ru":"🌊 Морская","ar":"🌊 حدود بحرية"},
-    "draw.region.name":{"en":"Region Name","it":"Nome Regione","fr":"Nom de la Région","de":"Regionsname","es":"Nombre de Región","zh":"区域名称","ru":"Название Региона","ar":"اسم المنطقة"},
-    "draw.region.placeholder":{"en":"Enter region name...","it":"Nome della regione...","fr":"Nom de la région...","de":"Regionsname...","es":"Nombre de la región...","zh":"输入区域名称...","ru":"Название региона...","ar":"اسم المنطقة..."},
-    "draw.region.color":{"en":"Region Color","it":"Colore Regione","fr":"Couleur de la Région","de":"Regionsfarbe","es":"Color de Región","zh":"区域颜色","ru":"Цвет Региона","ar":"لون المنطقة"},
-    "draw.start":{"en":"✏️ Start Drawing","it":"✏️ Inizia a Disegnare","fr":"✏️ Commencer à Dessiner","de":"✏️ Zeichnen Starten","es":"✏️ Empezar a Dibujar","zh":"✏️ 开始绘制","ru":"✏️ Начать Рисование","ar":"✏️ ابدأ الرسم"},
-    "draw.undo":{"en":"↩️ Undo","it":"↩️ Annulla","fr":"↩️ Annuler","de":"↩️ Rückgängig","es":"↩️ Deshacer","zh":"↩️ 撤销","ru":"↩️ Отменить","ar":"↩️ تراجع"},
-    "draw.cancel":{"en":"✕ Cancel","it":"✕ Annulla","fr":"✕ Annuler","de":"✕ Abbrechen","es":"✕ Cancelar","zh":"✕ 取消","ru":"✕ Отмена","ar":"✕ إلغاء"},
-    "draw.finish":{"en":"✓ Finish","it":"✓ Termina","fr":"✓ Terminer","de":"✓ Fertig","es":"✓ Terminar","zh":"✓ 完成","ru":"✓ Завершить","ar":"✓ إنهاء"},
-    "draw.info.land.desc":{"en":"Clipped to coastline — land only.","it":"Ritagliato sulla costa — solo terra.","fr":"Découpé sur la côte — terre uniquement.","de":"An Küste geschnitten — nur Land.","es":"Recortado en la costa — solo tierra.","zh":"沿海岸裁剪——仅陆地。","ru":"Обрезка по берегу — только суша.","ar":"قص على الساحل — أرض فقط."},
-    "draw.info.sea.desc":{"en":"Clipped to coastline — sea only.","it":"Ritagliato sulla costa — solo mare.","fr":"Découpé sur la côte — mer uniquement.","de":"An Küste geschnitten — nur Meer.","es":"Recortado en la costa — solo mar.","zh":"沿海岸裁剪——仅海洋。","ru":"Обрезка по берегу — только море.","ar":"قص على الساحل — بحر فقط."},
-    "draw.info.overlap.desc":{"en":"Auto-clipped against existing regions.","it":"Ritaglio automatico contro le regioni esistenti.","fr":"Découpage automatique contre les régions existantes.","de":"Automatischer Schnitt gegen bestehende Regionen.","es":"Recorte automático contra regiones existentes.","zh":"自动裁剪与现有区域。","ru":"Авто-обрезка по существующим регионам.","ar":"قص تلقائي مع المناطق الموجودة."},
-    "draw.regions.title":{"en":"Custom Regions","it":"Regioni Personalizzate","fr":"Régions Personnalisées","de":"Benutzerdefinierte Regionen","es":"Regiones Personalizadas","zh":"自定义区域","ru":"Свои Регионы","ar":"مناطق مخصصة"},
-    "draw.regions.empty":{"en":"No custom regions yet.","it":"Nessuna regione personalizzata.","fr":"Aucune région personnalisée.","de":"Keine Regionen erstellt.","es":"No hay regiones personalizadas.","zh":"没有自定义区域。","ru":"Нет регионов.","ar":"لا توجد مناطق مخصصة."},
-    "draw.regions.clear":{"en":"🗑️ Remove All Regions","it":"🗑️ Rimuovi Tutte","fr":"🗑️ Tout Supprimer","de":"🗑️ Alle Entfernen","es":"🗑️ Eliminar Todas","zh":"🗑️ 删除全部","ru":"🗑️ Удалить Все","ar":"🗑️ حذف الكل"},
-    "draw.loading.coastline":{"en":"Loading coastline data...","it":"Caricamento dati costieri...","fr":"Chargement des données côtières...","de":"Küstendaten laden...","es":"Cargando datos de costa...","zh":"加载海岸线数据...","ru":"Загрузка береговой линии...","ar":"تحميل بيانات الساحل..."},
-    "draw.mode.empty":{"en":"Empty world mode — draw freely","it":"Modalità mondo vuoto — disegna liberamente","fr":"Mode monde vide — dessinez librement","de":"Leerer Weltmodus","es":"Modo mundo vacío — dibuja libremente","zh":"空白世界模式","ru":"Режим пустого мира","ar":"وضع العالم الفارغ"},
-    "draw.mode.existing":{"en":"Existing world mode","it":"Modalità mondo esistente","fr":"Mode monde existant","de":"Bestehender Weltmodus","es":"Modo mundo existente","zh":"现有世界模式","ru":"Режим существующего мира","ar":"وضع العالم الموجود"},
-    "draw.mode.land.hint":{"en":"Land mode: borders snap to coastline","it":"Modalità terra: i confini si agganciano alla costa","fr":"Mode terre : les frontières s'accrochent à la côte","de":"Landmodus: Grenzen rasten an Küste ein","es":"Modo tierra: las fronteras se ajustan a la costa","zh":"陆地模式：边界沿海岸线吸附","ru":"Режим суши: границы привязаны к берегу","ar":"وضع الأرض: الحدود تلتصق بالساحل"},
-    "draw.mode.sea.hint":{"en":"Sea mode: borders stay on water","it":"Modalità mare: i confini restano sull'acqua","fr":"Mode mer : les frontières restent sur l'eau","de":"Seemodus: Grenzen bleiben auf Wasser","es":"Modo mar: las fronteras se quedan en el agua","zh":"海洋模式：边界保持在水面上","ru":"Режим моря: границы на воде","ar":"وضع البحر: الحدود تبقى على الماء"},
-    "draw.started":{"en":"Drawing started — click to add points","it":"Disegno iniziato — clicca per aggiungere punti","fr":"Dessin commencé — cliquez pour ajouter des points","de":"Zeichnen gestartet — klicken für Punkte","es":"Dibujo iniciado — clic para añadir puntos","zh":"开始绘制——点击添加点","ru":"Рисование начато — нажимайте для точек","ar":"بدأ الرسم — انقر لإضافة نقاط"},
-    "draw.points":{"en":"Points: {count} — click to continue, click first point or double-click to finish","it":"Punti: {count} — clicca per continuare, clicca il primo punto o doppio-click per finire","fr":"Points : {count} — cliquez pour continuer","de":"Punkte: {count}","es":"Puntos: {count}","zh":"点数：{count}","ru":"Точки: {count}","ar":"نقاط: {count}"},
-    "draw.point.removed":{"en":"Last point removed","it":"Ultimo punto rimosso","fr":"Dernier point supprimé","de":"Letzter Punkt entfernt","es":"Último punto eliminado","zh":"最后一个点已删除","ru":"Последняя точка удалена","ar":"تم حذف آخر نقطة"},
-    "draw.cancelled":{"en":"Drawing cancelled","it":"Disegno annullato","fr":"Dessin annulé","de":"Zeichnen abgebrochen","es":"Dibujo cancelado","zh":"绘制已取消","ru":"Рисование отменено","ar":"تم إلغاء الرسم"},
-    "draw.need.3.points":{"en":"Need at least 3 points","it":"Servono almeno 3 punti","fr":"Au moins 3 points nécessaires","de":"Mindestens 3 Punkte benötigt","es":"Se necesitan al menos 3 puntos","zh":"至少需要3个点","ru":"Нужно минимум 3 точки","ar":"يلزم 3 نقاط على الأقل"},
-    "draw.fully.outside":{"en":"Region fully outside valid area — nothing created","it":"Regione completamente fuori dall'area valida","fr":"Région entièrement hors de la zone valide","de":"Region vollständig außerhalb","es":"Región completamente fuera del área válida","zh":"区域完全在有效区域之外","ru":"Регион полностью вне зоны","ar":"المنطقة خارج النطاق بالكامل"},
-    "draw.region.created":{"en":"✓ Region \"{name}\" created ({count} vertices)","it":"✓ Regione \"{name}\" creata ({count} vertici)","fr":"✓ Région \"{name}\" créée ({count} sommets)","de":"✓ Region \"{name}\" erstellt ({count} Ecken)","es":"✓ Región \"{name}\" creada ({count} vértices)","zh":"✓ 区域\"{name}\"已创建（{count}个顶点）","ru":"✓ Регион \"{name}\" создан ({count} вершин)","ar":"✓ تم إنشاء المنطقة \"{name}\" ({count} رأس)"},
-    "draw.region.removed":{"en":"Region removed","it":"Regione rimossa","fr":"Région supprimée","de":"Region entfernt","es":"Región eliminada","zh":"区域已删除","ru":"Регион удалён","ar":"تم حذف المنطقة"},
-    "draw.regions.cleared":{"en":"All custom regions removed","it":"Tutte le regioni personalizzate rimosse","fr":"Toutes les régions supprimées","de":"Alle Regionen entfernt","es":"Todas las regiones eliminadas","zh":"所有自定义区域已删除","ru":"Все регионы удалены","ar":"تم حذف جميع المناطق"},
-    "draw.clipped.to.land":{"en":"⚡ Clipped to land","it":"⚡ Ritagliata sulla terra","fr":"⚡ Découpée sur la terre","de":"⚡ Auf Land geschnitten","es":"⚡ Recortada a tierra","zh":"⚡ 已裁剪到陆地","ru":"⚡ Обрезан по суше","ar":"⚡ تم القص على الأرض"},
-    "draw.clipped.to.sea":{"en":"⚡ Clipped to sea","it":"⚡ Ritagliata sul mare","fr":"⚡ Découpée sur la mer","de":"⚡ Auf Meer geschnitten","es":"⚡ Recortada a mar","zh":"⚡ 已裁剪到海洋","ru":"⚡ Обрезан по морю","ar":"⚡ تم القص على البحر"},
-    "draw.clipped.regions":{"en":"⚡ Clipped against other regions","it":"⚡ Ritagliata contro altre regioni","fr":"⚡ Découpée contre d'autres régions","de":"⚡ Gegen andere Regionen geschnitten","es":"⚡ Recortada contra otras regiones","zh":"⚡ 已裁剪其他区域","ru":"⚡ Обрезан по другим регионам","ar":"⚡ تم القص مع مناطق أخرى"},
-    "draw.snapped.coast.land":{"en":"📍 Snapped to coastline (land mode)","it":"📍 Agganciato alla costa (modalità terra)","fr":"📍 Accroché à la côte (mode terre)","de":"📍 An Küste eingerastet (Land)","es":"📍 Ajustado a la costa (tierra)","zh":"📍 已吸附到海岸线（陆地）","ru":"📍 Привязан к берегу (суша)","ar":"📍 التصاق بالساحل (أرض)"},
-    "draw.snapped.coast.sea":{"en":"📍 Snapped to coastline (sea mode)","it":"📍 Agganciato alla costa (modalità mare)","fr":"📍 Accroché à la côte (mode mer)","de":"📍 An Küste eingerastet (Meer)","es":"📍 Ajustado a la costa (mar)","zh":"📍 已吸附到海岸线（海洋）","ru":"📍 Привязан к берегу (море)","ar":"📍 التصاق بالساحل (بحر)"},
-    "draw.snapped.region":{"en":"⚡ Snapped to region border","it":"⚡ Agganciato al bordo della regione","fr":"⚡ Accroché à la frontière de la région","de":"⚡ An Regionsgrenze eingerastet","es":"⚡ Ajustado al borde de la región","zh":"⚡ 已吸附到区域边界","ru":"⚡ Привязан к границе региона","ar":"⚡ التصاق بحدود المنطقة"},
-    "draw.cannot.cross.land":{"en":"❌ Cannot cross land in sea mode","it":"❌ Non puoi attraversare la terra in modalità mare","fr":"❌ Impossible de traverser la terre en mode mer","de":"❌ Land kann im Seemodus nicht gekreuzt werden","es":"❌ No se puede cruzar tierra en modo mar","zh":"❌ 海洋模式下不能穿越陆地","ru":"❌ Нельзя пересекать сушу в морском режиме","ar":"❌ لا يمكن عبور الأرض في وضع البحر"},
+    "flag.shape":{
+      "en":"Flag Shape","it":"Forma Bandiera","fr":"Forme du Drapeau","de":"Flaggenform","es":"Forma de Bandera","zh":"旗帜形状","ru":"Форма Флага","ar":"شكل العلم"
+    },
+    "flag.circle":{
+      "en":"🔵 Circle","it":"🔵 Cerchio","fr":"🔵 Cercle","de":"🔵 Kreis","es":"🔵 Círculo","zh":"🔵 圆形","ru":"🔵 Круг","ar":"🔵 دائرة"
+    },
+    "flag.rect":{
+      "en":"🟦 Rectangle","it":"🟦 Rettangolo","fr":"🟦 Rectangle","de":"🟦 Rechteck","es":"🟦 Rectángulo","zh":"🟦 矩形","ru":"🟦 Прямоугольник","ar":"🟦 مستطيل"
+    },
+    "flag.search":{
+      "en":"Search by code","it":"Cerca per sigla","fr":"Rechercher par code","de":"Nach Code suchen","es":"Buscar por código","zh":"按代码搜索","ru":"Поиск по коду","ar":"البحث بالرمز"
+    },
+    "flag.search.placeholder":{
+      "en":"e.g. it, de, fr...","it":"es. it, de, fr...","fr":"ex. fr, de, it...","de":"z.B. de, it, fr...","es":"ej. es, it, de...","zh":"例如 cn, us, de...","ru":"напр. ru, de, fr...","ar":"مثال: ar, de, fr..."
+    },
+    "flag.size":{
+      "en":"Size","it":"Dimensione","fr":"Taille","de":"Größe","es":"Tamaño","zh":"大小","ru":"Размер","ar":"الحجم"
+    },
+    "flag.upload.title":{
+      "en":"Upload custom flag","it":"Carica bandiera personalizzata","fr":"Télécharger un drapeau","de":"Flagge hochladen","es":"Subir bandera personalizada","zh":"上传自定义旗帜","ru":"Загрузить свой флаг","ar":"رفع علم مخصص"
+    },
+    "flag.upload.desc":{
+      "en":"PNG, SVG, JPG — drag & drop or click","it":"PNG, SVG, JPG — trascina o clicca","fr":"PNG, SVG, JPG — glisser ou cliquer","de":"PNG, SVG, JPG","es":"PNG, SVG, JPG","zh":"PNG、SVG、JPG","ru":"PNG, SVG, JPG","ar":"PNG, SVG, JPG"
+    },
+    "flag.name.placeholder":{
+      "en":"Flag name...","it":"Nome bandiera...","fr":"Nom du drapeau...","de":"Flaggenname...","es":"Nombre de la bandera...","zh":"旗帜名称...","ru":"Название флага...","ar":"اسم العلم..."
+    },
+    "flag.add":{
+      "en":"➕ Add","it":"➕ Aggiungi","fr":"➕ Ajouter","de":"➕ Hinzufügen","es":"➕ Añadir","zh":"➕ 添加","ru":"➕ Добавить","ar":"➕ إضافة"
+    },
+    "flag.builtin":{
+      "en":"Built-in Flags","it":"Bandiere Integrate","fr":"Drapeaux Intégrés","de":"Eingebaute Flaggen","es":"Banderas Integradas","zh":"内置旗帜","ru":"Встроенные Флаги","ar":"أعلام مدمجة"
+    },
+    "flag.custom.section":{
+      "en":"Custom Flags","it":"Bandiere Personalizzate","fr":"Drapeaux Personnalisés","de":"Benutzerdefinierte Flaggen","es":"Banderas Personalizadas","zh":"自定义旗帜","ru":"Свои Флаги","ar":"أعلام مخصصة"
+    },
+    "flag.select.hint":{
+      "en":"👆 Search by ISO code and select","it":"👆 Cerca per sigla ISO e seleziona","fr":"👆 Recherchez par code ISO et sélectionnez","de":"👆 Nach ISO-Code suchen und auswählen","es":"👆 Busca por código ISO y selecciona","zh":"👆 按ISO代码搜索并选择","ru":"👆 Найдите по ISO-коду и выберите","ar":"👆 ابحث برمز ISO واختر"
+    },
+    "flag.selected":{
+      "en":"Selected: {name} — click on map to place","it":"Selezionata: {name} — clicca sulla mappa per posizionare","fr":"Sélectionné : {name} — cliquez pour placer","de":"Ausgewählt: {name} — klicken zum Platzieren","es":"Seleccionada: {name} — clic en el mapa para colocar","zh":"已选：{name} — 点击地图放置","ru":"Выбран: {name} — нажмите на карту","ar":"محدد: {name} — انقر على الخريطة"
+    },
+  
 
-    "ann.empty":{"en":"No annotations yet.","it":"Nessuna annotazione.","fr":"Aucune annotation.","de":"Keine Anmerkungen.","es":"Sin anotaciones.","zh":"没有标注。","ru":"Нет аннотаций.","ar":"لا توجد تعليقات."},
-    "ann.removeall":{"en":"🗑️ Remove All","it":"🗑️ Rimuovi Tutte","fr":"🗑️ Tout Supprimer","de":"🗑️ Alle Entfernen","es":"🗑️ Eliminar Todas","zh":"🗑️ 全部删除","ru":"🗑️ Удалить Все","ar":"🗑️ حذف الكل"},
+    "draw.world.mode":{
+      "en":"World Mode","it":"Modalità Mondo","fr":"Mode Monde","de":"Weltmodus","es":"Modo Mundo","zh":"世界模式","ru":"Режим Мира","ar":"وضع العالم"
+    },
+    "draw.world.existing":{
+      "en":"🌍 Existing World","it":"🌍 Mondo Esistente","fr":"🌍 Monde Existant","de":"🌍 Bestehende Welt","es":"🌍 Mundo Existente","zh":"🌍 现有世界","ru":"🌍 Существующий Мир","ar":"🌍 عالم موجود"
+    },
+    "draw.world.empty":{
+      "en":"📄 Empty World","it":"📄 Mondo Vuoto","fr":"📄 Monde Vide","de":"📄 Leere Welt","es":"📄 Mundo Vacío","zh":"📄 空白世界","ru":"📄 Пустой Мир","ar":"📄 عالم فارغ"
+    },
+    "draw.border.type":{
+      "en":"Border Type","it":"Tipo di Confine","fr":"Type de Frontière","de":"Grenztyp","es":"Tipo de Frontera","zh":"边界类型","ru":"Тип Границы","ar":"نوع الحدود"
+    },
+    "draw.type.land":{
+      "en":"🏔️ Land Border","it":"🏔️ Confine Terrestre","fr":"🏔️ Frontière Terrestre","de":"🏔️ Landgrenze","es":"🏔️ Frontera Terrestre","zh":"🏔️ 陆地边界","ru":"🏔️ Сухопутная","ar":"🏔️ حدود برية"
+    },
+    "draw.type.sea":{
+      "en":"🌊 Sea Border","it":"🌊 Confine Marittimo","fr":"🌊 Frontière Maritime","de":"🌊 Seegrenze","es":"🌊 Frontera Marítima","zh":"🌊 海洋边界","ru":"🌊 Морская","ar":"🌊 حدود بحرية"
+    },
+    "draw.region.name":{
+      "en":"Region Name","it":"Nome Regione","fr":"Nom de la Région","de":"Regionsname","es":"Nombre de Región","zh":"区域名称","ru":"Название Региона","ar":"اسم المنطقة"
+    },
+    "draw.region.placeholder":{
+      "en":"Enter region name...","it":"Nome della regione...","fr":"Nom de la région...","de":"Regionsname...","es":"Nombre de la región...","zh":"输入区域名称...","ru":"Название региона...","ar":"اسم المنطقة..."
+    },
+    "draw.region.color":{
+      "en":"Region Color","it":"Colore Regione","fr":"Couleur de la Région","de":"Regionsfarbe","es":"Color de Región","zh":"区域颜色","ru":"Цвет Региона","ar":"لون المنطقة"
+    },
+    "draw.start":{
+      "en":"✏️ Start Drawing","it":"✏️ Inizia a Disegnare","fr":"✏️ Commencer à Dessiner","de":"✏️ Zeichnen Starten","es":"✏️ Empezar a Dibujar","zh":"✏️ 开始绘制","ru":"✏️ Начать Рисование","ar":"✏️ ابدأ الرسم"
+    },
+    "draw.undo":{
+      "en":"↩️ Undo","it":"↩️ Annulla","fr":"↩️ Annuler","de":"↩️ Rückgängig","es":"↩️ Deshacer","zh":"↩️ 撤销","ru":"↩️ Отменить","ar":"↩️ تراجع"
+    },
+    "draw.cancel":{
+      "en":"✕ Cancel","it":"✕ Annulla","fr":"✕ Annuler","de":"✕ Abbrechen","es":"✕ Cancelar","zh":"✕ 取消","ru":"✕ Отмена","ar":"✕ إلغاء"
+    },
+    "draw.finish":{
+      "en":"✓ Finish","it":"✓ Termina","fr":"✓ Terminer","de":"✓ Fertig","es":"✓ Terminar","zh":"✓ 完成","ru":"✓ Завершить","ar":"✓ إنهاء"
+    },
+    "draw.info.land.desc":{
+      "en":"Clipped to coastline — land only.","it":"Ritagliato sulla costa — solo terra.","fr":"Découpé sur la côte — terre uniquement.","de":"An Küste geschnitten — nur Land.","es":"Recortado en la costa — solo tierra.","zh":"沿海岸裁剪——仅陆地。","ru":"Обрезка по берегу — только суша.","ar":"قص على الساحل — أرض فقط."
+    },
+    "draw.info.sea.desc":{
+      "en":"Clipped to coastline — sea only.","it":"Ritagliato sulla costa — solo mare.","fr":"Découpé sur la côte — mer uniquement.","de":"An Küste geschnitten — nur Meer.","es":"Recortado en la costa — solo mar.","zh":"沿海岸裁剪——仅海洋。","ru":"Обрезка по берегу — только море.","ar":"قص على الساحل — بحر فقط."
+    },
+    "draw.info.overlap.desc":{
+      "en":"Auto-clipped against existing regions.","it":"Ritaglio automatico contro le regioni esistenti.","fr":"Découpage automatique contre les régions existantes.","de":"Automatischer Schnitt gegen bestehende Regionen.","es":"Recorte automático contra regiones existentes.","zh":"自动裁剪与现有区域。","ru":"Авто-обрезка по существующим регионам.","ar":"قص تلقائي مع المناطق الموجودة."
+    },
+    "draw.regions.title":{
+      "en":"Custom Regions","it":"Regioni Personalizzate","fr":"Régions Personnalisées","de":"Benutzerdefinierte Regionen","es":"Regiones Personalizadas","zh":"自定义区域","ru":"Свои Регионы","ar":"مناطق مخصصة"
+    },
+    "draw.regions.empty":{
+      "en":"No custom regions yet.","it":"Nessuna regione personalizzata.","fr":"Aucune région personnalisée.","de":"Keine Regionen erstellt.","es":"No hay regiones personalizadas.","zh":"没有自定义区域。","ru":"Нет регионов.","ar":"لا توجد مناطق مخصصة."
+    },
+    "draw.regions.clear":{
+      "en":"🗑️ Remove All Regions","it":"🗑️ Rimuovi Tutte","fr":"🗑️ Tout Supprimer","de":"🗑️ Alle Entfernen","es":"🗑️ Eliminar Todas","zh":"🗑️ 删除全部","ru":"🗑️ Удалить Все","ar":"🗑️ حذف الكل"
+    },
+    "draw.loading.coastline":{
+      "en":"Loading coastline data...","it":"Caricamento dati costieri...","fr":"Chargement des données côtières...","de":"Küstendaten laden...","es":"Cargando datos de costa...","zh":"加载海岸线数据...","ru":"Загрузка береговой линии...","ar":"تحميل بيانات الساحل..."
+    },
+    "draw.mode.empty":{
+      "en":"Empty world mode — draw freely","it":"Modalità mondo vuoto — disegna liberamente","fr":"Mode monde vide — dessinez librement","de":"Leerer Weltmodus","es":"Modo mundo vacío — dibuja libremente","zh":"空白世界模式","ru":"Режим пустого мира","ar":"وضع العالم الفارغ"
+    },
+    "draw.mode.existing":{
+      "en":"Existing world mode","it":"Modalità mondo esistente","fr":"Mode monde existant","de":"Bestehender Weltmodus","es":"Modo mundo existente","zh":"现有世界模式","ru":"Режим существующего мира","ar":"وضع العالم الموجود"
+    },
+    "draw.mode.land.hint":{
+      "en":"Land mode: borders snap to coastline","it":"Modalità terra: i confini si agganciano alla costa","fr":"Mode terre : les frontières s'accrochent à la côte","de":"Landmodus: Grenzen rasten an Küste ein","es":"Modo tierra: las fronteras se ajustan a la costa","zh":"陆地模式：边界沿海岸线吸附","ru":"Режим суши: границы привязаны к берегу","ar":"وضع الأرض: الحدود تلتصق بالساحل"
+    },
+    "draw.mode.sea.hint":{
+      "en":"Sea mode: borders stay on water","it":"Modalità mare: i confini restano sull'acqua","fr":"Mode mer : les frontières restent sur l'eau","de":"Seemodus: Grenzen bleiben auf Wasser","es":"Modo mar: las fronteras se quedan en el agua","zh":"海洋模式：边界保持在水面上","ru":"Режим моря: границы на воде","ar":"وضع البحر: الحدود تبقى على الماء"
+    },
+    "draw.started":{
+      "en":"Drawing started — click to add points","it":"Disegno iniziato — clicca per aggiungere punti","fr":"Dessin commencé — cliquez pour ajouter des points","de":"Zeichnen gestartet — klicken für Punkte","es":"Dibujo iniciado — clic para añadir puntos","zh":"开始绘制——点击添加点","ru":"Рисование начато — нажимайте для точек","ar":"بدأ الرسم — انقر لإضافة نقاط"
+    },
+    "draw.points":{
+      "en":"Points: {count}","it":"Punti: {count}","fr":"Points : {count}","de":"Punkte: {count}","es":"Puntos: {count}","zh":"点数：{count}","ru":"Точки: {count}","ar":"نقاط: {count}"
+    },
+    "draw.point.removed":{
+      "en":"Last point removed","it":"Ultimo punto rimosso","fr":"Dernier point supprimé","de":"Letzter Punkt entfernt","es":"Último punto eliminado","zh":"最后一个点已删除","ru":"Последняя точка удалена","ar":"تم حذف آخر نقطة"
+    },
+    "draw.cancelled":{
+      "en":"Drawing cancelled","it":"Disegno annullato","fr":"Dessin annulé","de":"Zeichnen abgebrochen","es":"Dibujo cancelado","zh":"绘制已取消","ru":"Рисование отменено","ar":"تم إلغاء الرسم"
+    },
+    "draw.need.3.points":{
+      "en":"Need at least 3 points","it":"Servono almeno 3 punti","fr":"Au moins 3 points nécessaires","de":"Mindestens 3 Punkte benötigt","es":"Se necesitan al menos 3 puntos","zh":"至少需要3个点","ru":"Нужно минимум 3 точки","ar":"يلزم 3 نقاط على الأقل"
+    },
+    "draw.fully.outside":{
+      "en":"Region fully outside valid area — nothing created","it":"Regione completamente fuori dall'area valida","fr":"Région entièrement hors de la zone valide","de":"Region vollständig außerhalb","es":"Región completamente fuera del área válida","zh":"区域完全在有效区域之外","ru":"Регион полностью вне зоны","ar":"المنطقة خارج النطاق بالكامل"
+    },
+    "draw.region.created":{
+      "en":"✓ Region \"{name}\" created ({count} vertices)","it":"✓ Regione \"{name}\" creata ({count} vertici)","fr":"✓ Région \"{name}\" créée ({count} sommets)","de":"✓ Region \"{name}\" erstellt ({count} Ecken)","es":"✓ Región \"{name}\" creada ({count} vértices)","zh":"✓ 区域\"{name}\"已创建（{count}个顶点）","ru":"✓ Регион \"{name}\" создан ({count} вершин)","ar":"✓ تم إنشاء المنطقة \"{name}\" ({count} رأس)"
+    },
+    "draw.region.removed":{
+      "en":"Region removed","it":"Regione rimossa","fr":"Région supprimée","de":"Region entfernt","es":"Región eliminada","zh":"区域已删除","ru":"Регион удалён","ar":"تم حذف المنطقة"
+    },
+    "draw.regions.cleared":{
+      "en":"All custom regions removed","it":"Tutte le regioni personalizzate rimosse","fr":"Toutes les régions supprimées","de":"Alle Regionen entfernt","es":"Todas las regiones eliminadas","zh":"所有自定义区域已删除","ru":"Все регионы удалены","ar":"تم حذف جميع المناطق"
+    },
+    "draw.clipped.to.land":{
+      "en":"⚡ Clipped to land","it":"⚡ Ritagliata sulla terra","fr":"⚡ Découpée sur la terre","de":"⚡ Auf Land geschnitten","es":"⚡ Recortada a tierra","zh":"⚡ 已裁剪到陆地","ru":"⚡ Обрезан по суше","ar":"⚡ تم القص على الأرض"
+    },
+    "draw.clipped.to.sea":{
+      "en":"⚡ Clipped to sea","it":"⚡ Ritagliata sul mare","fr":"⚡ Découpée sur la mer","de":"⚡ Auf Meer geschnitten","es":"⚡ Recortada a mar","zh":"⚡ 已裁剪到海洋","ru":"⚡ Обрезан по морю","ar":"⚡ تم القص على البحر"
+    },
+    "draw.clipped.regions":{
+      "en":"⚡ Clipped against other regions","it":"⚡ Ritagliata contro altre regioni","fr":"⚡ Découpée contre d'autres régions","de":"⚡ Gegen andere Regionen geschnitten","es":"⚡ Recortada contra otras regiones","zh":"⚡ 已裁剪其他区域","ru":"⚡ Обрезан по другим регионам","ar":"⚡ تم القص مع مناطق أخرى"
+    },
+    "draw.snapped.coast.land":{
+      "en":"📍 Snapped to coastline (land mode)","it":"📍 Agganciato alla costa (modalità terra)","fr":"📍 Accroché à la côte (mode terre)","de":"📍 An Küste eingerastet (Land)","es":"📍 Ajustado a la costa (tierra)","zh":"📍 已吸附到海岸线（陆地）","ru":"📍 Привязан к берегу (суша)","ar":"📍 التصاق بالساحل (أرض)"
+    },
+    "draw.snapped.coast.sea":{
+      "en":"📍 Snapped to coastline (sea mode)","it":"📍 Agganciato alla costa (modalità mare)","fr":"📍 Accroché à la côte (mode mer)","de":"📍 An Küste eingerastet (Meer)","es":"📍 Ajustado a la costa (mar)","zh":"📍 已吸附到海岸线（海洋）","ru":"📍 Привязан к берегу (море)","ar":"📍 التصاق بالساحل (بحر)"
+    },
+    "draw.snapped.region":{
+      "en":"⚡ Snapped to region border","it":"⚡ Agganciato al bordo della regione","fr":"⚡ Accroché à la frontière de la région","de":"⚡ An Regionsgrenze eingerastet","es":"⚡ Ajustado al borde de la región","zh":"⚡ 已吸附到区域边界","ru":"⚡ Привязан к границе региона","ar":"⚡ التصاق بحدود المنطقة"
+    },
+    "draw.cannot.cross.land":{
+      "en":"❌ Cannot cross land in sea mode","it":"❌ Non puoi attraversare la terra in modalità mare","fr":"❌ Impossible de traverser la terre en mode mer","de":"❌ Land kann im Seemodus nicht gekreuzt werden","es":"❌ No se puede cruzar tierra en modo mar","zh":"❌ 海洋模式下不能穿越陆地","ru":"❌ Нельзя пересекать сушу в морском режиме","ar":"❌ لا يمكن عبور الأرض في وضع البحر"
+    },
 
-    "import.hint":{"en":"Load custom GeoJSON borders from file.","it":"Carica confini GeoJSON personalizzati da file.","fr":"Charger des frontières GeoJSON depuis un fichier.","de":"GeoJSON-Grenzen aus Datei laden.","es":"Cargar fronteras GeoJSON desde archivo.","zh":"从文件加载GeoJSON边界。","ru":"Загрузить GeoJSON из файла.","ar":"تحميل حدود GeoJSON من ملف."},
+    "ann.empty":{
+      "en":"No annotations yet.","it":"Nessuna annotazione.","fr":"Aucune annotation.","de":"Keine Anmerkungen.","es":"Sin anotaciones.","zh":"没有标注。","ru":"Нет аннотаций.","ar":"لا توجد تعليقات."
+    },
+    "ann.removeall":{
+      "en":"🗑️ Remove All","it":"🗑️ Rimuovi Tutte","fr":"🗑️ Tout Supprimer","de":"🗑️ Alle Entfernen","es":"🗑️ Eliminar Todas","zh":"🗑️ 全部删除","ru":"🗑️ Удалить Все","ar":"🗑️ حذف الكل"
+    },
 
-    "export.format":{"en":"Format","it":"Formato","fr":"Format","de":"Format","es":"Formato","zh":"格式","ru":"Формат","ar":"الصيغة"},
-    "export.png":{"en":"PNG Image","it":"Immagine PNG","fr":"Image PNG","de":"PNG-Bild","es":"Imagen PNG","zh":"PNG图片","ru":"PNG Изображение","ar":"صورة PNG"},
-    "export.pdf":{"en":"PDF Document","it":"Documento PDF","fr":"Document PDF","de":"PDF-Dokument","es":"Documento PDF","zh":"PDF文档","ru":"PDF Документ","ar":"مستند PDF"},
-    "export.svg":{"en":"SVG Vector","it":"Vettoriale SVG","fr":"Vecteur SVG","de":"SVG-Vektor","es":"Vector SVG","zh":"SVG矢量","ru":"SVG Вектор","ar":"متجه SVG"},
-    "export.width":{"en":"Width","it":"Larghezza","fr":"Largeur","de":"Breite","es":"Ancho","zh":"宽度","ru":"Ширина","ar":"العرض"},
-    "export.height":{"en":"Height","it":"Altezza","fr":"Hauteur","de":"Höhe","es":"Alto","zh":"高度","ru":"Высота","ar":"الارتفاع"},
-    "export.page":{"en":"Page Size","it":"Formato Pagina","fr":"Format de Page","de":"Seitengröße","es":"Tamaño de Página","zh":"页面大小","ru":"Размер Страницы","ar":"حجم الصفحة"},
-    "export.orientation":{"en":"Orientation","it":"Orientamento","fr":"Orientation","de":"Ausrichtung","es":"Orientación","zh":"方向","ru":"Ориентация","ar":"الاتجاه"},
-    "export.dpi":{"en":"DPI","it":"DPI","fr":"DPI","de":"DPI","es":"DPI","zh":"DPI","ru":"DPI","ar":"DPI"},
-    "export.landscape":{"en":"Landscape","it":"Orizzontale","fr":"Paysage","de":"Querformat","es":"Horizontal","zh":"横向","ru":"Альбомная","ar":"أفقي"},
-    "export.portrait":{"en":"Portrait","it":"Verticale","fr":"Portrait","de":"Hochformat","es":"Vertical","zh":"纵向","ru":"Книжная","ar":"عمودي"},
-    "export.custom.mm":{"en":"Custom (mm)","it":"Personalizzato (mm)","fr":"Personnalisé (mm)","de":"Benutzerdefiniert (mm)","es":"Personalizado (mm)","zh":"自定义（毫米）","ru":"Свой (мм)","ar":"مخصص (مم)"},
-    "export.view.info":{"en":"📐 <b>Exports the current visible map area.</b> Pan and zoom to frame your view.","it":"📐 <b>Esporta l'area visibile della mappa.</b> Sposta e zooma per inquadrare.","fr":"📐 <b>Exporte la zone visible de la carte.</b>","de":"📐 <b>Exportiert den sichtbaren Kartenbereich.</b>","es":"📐 <b>Exporta el área visible del mapa.</b>","zh":"📐 <b>导出当前可见地图区域。</b>","ru":"📐 <b>Экспорт видимой области карты.</b>","ar":"📐 <b>يصدر المنطقة المرئية من الخريطة.</b>"},
-    "export.world":{"en":"🌍 World View","it":"🌍 Vista Mondo","fr":"🌍 Vue Monde","de":"🌍 Weltansicht","es":"🌍 Vista Mundial","zh":"🌍 世界视图","ru":"🌍 Весь Мир","ar":"🌍 عرض عالمي"},
-    "export.fit":{"en":"📐 Fit Data","it":"📐 Adatta","fr":"📐 Ajuster","de":"📐 Anpassen","es":"📐 Ajustar","zh":"📐 适应数据","ru":"📐 По Данным","ar":"📐 ملاءمة"},
-    "export.button":{"en":"💾 Export Current View","it":"💾 Esporta Vista Attuale","fr":"💾 Exporter la Vue Actuelle","de":"💾 Aktuelle Ansicht Exportieren","es":"💾 Exportar Vista Actual","zh":"💾 导出当前视图","ru":"💾 Экспортировать","ar":"💾 تصدير العرض الحالي"},
-    "export.geojson.title":{"en":"Export GeoJSON","it":"Esporta GeoJSON","fr":"Exporter GeoJSON","de":"GeoJSON Exportieren","es":"Exportar GeoJSON","zh":"导出GeoJSON","ru":"Экспорт GeoJSON","ar":"تصدير GeoJSON"},
-    "export.geojson.desc":{"en":"Export all polygons (loaded + custom regions) as GeoJSON.","it":"Esporta tutti i poligoni (caricati + regioni personalizzate) come GeoJSON.","fr":"Exporter tous les polygones en GeoJSON.","de":"Alle Polygone als GeoJSON exportieren.","es":"Exportar todos los polígonos como GeoJSON.","zh":"将所有多边形导出为GeoJSON。","ru":"Экспорт всех полигонов в GeoJSON.","ar":"تصدير جميع المضلعات كـ GeoJSON."},
-    "export.geojson.button":{"en":"📄 Export GeoJSON","it":"📄 Esporta GeoJSON","fr":"📄 Exporter GeoJSON","de":"📄 GeoJSON Exportieren","es":"📄 Exportar GeoJSON","zh":"📄 导出GeoJSON","ru":"📄 Экспорт GeoJSON","ar":"📄 تصدير GeoJSON"},
-    "export.geojson.done":{"en":"GeoJSON exported ({count} features)","it":"GeoJSON esportato ({count} elementi)","fr":"GeoJSON exporté ({count} éléments)","de":"GeoJSON exportiert ({count} Elemente)","es":"GeoJSON exportado ({count} elementos)","zh":"GeoJSON已导出（{count}个要素）","ru":"GeoJSON экспортирован ({count} элементов)","ar":"تم تصدير GeoJSON ({count} عنصر)"},
-    "export.modal.title":{"en":"⏳ Exporting...","it":"⏳ Esportazione...","fr":"⏳ Exportation...","de":"⏳ Exportiere...","es":"⏳ Exportando...","zh":"⏳ 正在导出...","ru":"⏳ Экспорт...","ar":"⏳ جاري التصدير..."},
-    "export.preparing":{"en":"Preparing export...","it":"Preparazione esportazione...","fr":"Préparation...","de":"Vorbereitung...","es":"Preparando...","zh":"准备导出...","ru":"Подготовка...","ar":"جاري التحضير..."},
-    "export.rendering.tiles":{"en":"Rendering map tiles...","it":"Rendering tile mappa...","fr":"Rendu des tuiles...","de":"Kacheln rendern...","es":"Renderizando tiles...","zh":"渲染地图瓦片...","ru":"Рендеринг тайлов...","ar":"رسم البلاطات..."},
-    "export.rendering.poly":{"en":"Drawing polygons...","it":"Disegno poligoni...","fr":"Dessin des polygones...","de":"Polygone zeichnen...","es":"Dibujando polígonos...","zh":"绘制多边形...","ru":"Отрисовка полигонов...","ar":"رسم المضلعات..."},
-    "export.generating":{"en":"Generating file...","it":"Generazione file...","fr":"Génération du fichier...","de":"Datei generieren...","es":"Generando archivo...","zh":"生成文件...","ru":"Генерация файла...","ar":"إنشاء الملف..."},
-    "export.done":{"en":"✓ Export complete!","it":"✓ Esportazione completata!","fr":"✓ Exportation terminée !","de":"✓ Export abgeschlossen!","es":"✓ ¡Exportación completada!","zh":"✓ 导出完成！","ru":"✓ Экспорт завершён!","ar":"✓ اكتمل التصدير!"},
+    "import.hint":{
+      "en":"Load custom GeoJSON borders from file.","it":"Carica confini GeoJSON personalizzati da file.","fr":"Charger des frontières GeoJSON depuis un fichier.","de":"GeoJSON-Grenzen aus Datei laden.","es":"Cargar fronteras GeoJSON desde archivo.","zh":"从文件加载GeoJSON边界。","ru":"Загрузить GeoJSON из файла.","ar":"تحميل حدود GeoJSON من ملف."
+    },
 
-    "banner.text":{"en":"✏️ Click on the map to place text","it":"✏️ Clicca sulla mappa per posizionare il testo","fr":"✏️ Cliquez sur la carte pour placer le texte","de":"✏️ Klicken Sie auf die Karte für Text","es":"✏️ Haz clic en el mapa para colocar texto","zh":"✏️ 点击地图放置文字","ru":"✏️ Нажмите на карту для текста","ar":"✏️ انقر على الخريطة لوضع النص"},
-    "banner.flag.select":{"en":"🏴 Select a flag first, then click on the map","it":"🏴 Seleziona prima una bandiera, poi clicca sulla mappa","fr":"🏴 Sélectionnez d'abord un drapeau","de":"🏴 Wählen Sie zuerst eine Flagge","es":"🏴 Selecciona primero una bandera","zh":"🏴 先选择旗帜，再点击地图","ru":"🏴 Сначала выберите флаг","ar":"🏴 اختر علماً أولاً"},
-    "banner.flag.place":{"en":"🏴 Click to place: {name}","it":"🏴 Clicca per posizionare: {name}","fr":"🏴 Cliquez pour placer : {name}","de":"🏴 Klicken zum Platzieren: {name}","es":"🏴 Clic para colocar: {name}","zh":"🏴 点击放置：{name}","ru":"🏴 Нажмите для размещения: {name}","ar":"🏴 انقر لوضع: {name}"},
-    "banner.custom.place":{"en":"📁 Click to place: {name}","it":"📁 Clicca per posizionare: {name}","fr":"📁 Cliquez pour placer : {name}","de":"📁 Klicken zum Platzieren: {name}","es":"📁 Clic para colocar: {name}","zh":"📁 点击放置：{name}","ru":"📁 Нажмите для размещения: {name}","ar":"📁 انقر لوضع: {name}"},
-    "banner.draw":{"en":"🖊️ Drawing mode — use controls in sidebar","it":"🖊️ Modalità disegno — usa i controlli nella barra laterale","fr":"🖊️ Mode dessin — utilisez les contrôles","de":"🖊️ Zeichenmodus","es":"🖊️ Modo dibujo","zh":"🖊️ 绘制模式","ru":"🖊️ Режим рисования","ar":"🖊️ وضع الرسم"},
-    "banner.cancel":{"en":"✕ Cancel","it":"✕ Annulla","fr":"✕ Annuler","de":"✕ Abbrechen","es":"✕ Cancelar","zh":"✕ 取消","ru":"✕ Отмена","ar":"✕ إلغاء"},
+    "export.format":{
+      "en":"Format","it":"Formato","fr":"Format","de":"Format","es":"Formato","zh":"格式","ru":"Формат","ar":"الصيغة"
+    },
+    "export.png":{
+      "en":"PNG Image","it":"Immagine PNG","fr":"Image PNG","de":"PNG-Bild","es":"Imagen PNG","zh":"PNG图片","ru":"PNG Изображение","ar":"صورة PNG"
+    },
+    "export.pdf":{
+      "en":"PDF Document","it":"Documento PDF","fr":"Document PDF","de":"PDF-Dokument","es":"Documento PDF","zh":"PDF文档","ru":"PDF Документ","ar":"مستند PDF"
+    },
+    "export.svg":{
+      "en":"SVG Vector","it":"Vettoriale SVG","fr":"Vecteur SVG","de":"SVG-Vektor","es":"Vector SVG","zh":"SVG矢量","ru":"SVG Вектор","ar":"متجه SVG"
+    },
+    "export.geotiff":{
+      "en":"GeoTIFF + World File","it":"GeoTIFF + World File","fr":"GeoTIFF + World File","de":"GeoTIFF + World File","es":"GeoTIFF + World File","zh":"GeoTIFF + 世界文件","ru":"GeoTIFF + World File","ar":"GeoTIFF + ملف عالمي"
+    },
+    "export.width":{
+      "en":"Width","it":"Larghezza","fr":"Largeur","de":"Breite","es":"Ancho","zh":"宽度","ru":"Ширина","ar":"العرض"
+    },
+    "export.height":{
+      "en":"Height","it":"Altezza","fr":"Hauteur","de":"Höhe","es":"Alto","zh":"高度","ru":"Высота","ar":"الارتفاع"
+    },
+    "export.page":{
+      "en":"Page Size","it":"Formato Pagina","fr":"Format de Page","de":"Seitengröße","es":"Tamaño de Página","zh":"页面大小","ru":"Размер Страницы","ar":"حجم الصفحة"
+    },
+    "export.orientation":{
+      "en":"Orientation","it":"Orientamento","fr":"Orientation","de":"Ausrichtung","es":"Orientación","zh":"方向","ru":"Ориентация","ar":"الاتجاه"
+    },
+    "export.dpi":{
+      "en":"DPI","it":"DPI","fr":"DPI","de":"DPI","es":"DPI","zh":"DPI","ru":"DPI","ar":"DPI"
+    },
+    "export.landscape":{
+      "en":"Landscape","it":"Orizzontale","fr":"Paysage","de":"Querformat","es":"Horizontal","zh":"横向","ru":"Альбомная","ar":"أفقي"
+    },
+    "export.portrait":{
+      "en":"Portrait","it":"Verticale","fr":"Portrait","de":"Hochformat","es":"Vertical","zh":"纵向","ru":"Книжная","ar":"عمودي"
+    },
+    "export.custom.mm":{
+      "en":"Custom (mm)","it":"Personalizzato (mm)","fr":"Personnalisé (mm)","de":"Benutzerdefiniert (mm)","es":"Personalizado (mm)","zh":"自定义（毫米）","ru":"Свой (мм)","ar":"مخصص (مم)"
+    },
+    "export.view.info":{
+      "en":"📐 <b>Exports the current visible map area.</b> Pan and zoom to frame your view.","it":"📐 <b>Esporta l'area visibile della mappa.</b> Sposta e zooma per inquadrare.","fr":"📐 <b>Exporte la zone visible de la carte.</b>","de":"📐 <b>Exportiert den sichtbaren Kartenbereich.</b>","es":"📐 <b>Exporta el área visible del mapa.</b>","zh":"📐 <b>导出当前可见地图区域。</b>","ru":"📐 <b>Экспорт видимой области карты.</b>","ar":"📐 <b>يصدر المنطقة المرئية من الخريطة.</b>"
+    },
+    "export.world":{
+      "en":"🌍 World View","it":"🌍 Vista Mondo","fr":"🌍 Vue Monde","de":"🌍 Weltansicht","es":"🌍 Vista Mundial","zh":"🌍 世界视图","ru":"🌍 Весь Мир","ar":"🌍 عرض عالمي"
+    },
+    "export.fit":{
+      "en":"📐 Fit Data","it":"📐 Adatta","fr":"📐 Ajuster","de":"📐 Anpassen","es":"📐 Ajustar","zh":"📐 适应数据","ru":"📐 По Данным","ar":"📐 ملاءمة"
+    },
+    "export.button":{
+      "en":"💾 Export Current View","it":"💾 Esporta Vista Attuale","fr":"💾 Exporter la Vue Actuelle","de":"💾 Aktuelle Ansicht Exportieren","es":"💾 Exportar Vista Actual","zh":"💾 导出当前视图","ru":"💾 Экспортировать","ar":"💾 تصدير العرض الحالي"
+    },
+    "export.geojson.title":{
+      "en":"Export GeoJSON","it":"Esporta GeoJSON","fr":"Exporter GeoJSON","de":"GeoJSON Exportieren","es":"Exportar GeoJSON","zh":"导出GeoJSON","ru":"Экспорт GeoJSON","ar":"تصدير GeoJSON"
+    },
+    "export.geojson.desc":{
+      "en":"Export all polygons (loaded + custom regions) as GeoJSON.","it":"Esporta tutti i poligoni (caricati + regioni personalizzate) come GeoJSON.","fr":"Exporter tous les polygones en GeoJSON.","de":"Alle Polygone als GeoJSON exportieren.","es":"Exportar todos los polígonos como GeoJSON.","zh":"将所有多边形导出为GeoJSON。","ru":"Экспорт всех полигонов в GeoJSON.","ar":"تصدير جميع المضلعات كـ GeoJSON."
+    },
+    "export.geojson.button":{
+      "en":"📄 Export GeoJSON","it":"📄 Esporta GeoJSON","fr":"📄 Exporter GeoJSON","de":"📄 GeoJSON Exportieren","es":"📄 Exportar GeoJSON","zh":"📄 导出GeoJSON","ru":"📄 Экспорт GeoJSON","ar":"📄 تصدير GeoJSON"
+    },
+    "export.geojson.done":{
+      "en":"GeoJSON exported ({count} features)","it":"GeoJSON esportato ({count} elementi)","fr":"GeoJSON exporté ({count} éléments)","de":"GeoJSON exportiert ({count} Elemente)","es":"GeoJSON exportado ({count} elementos)","zh":"GeoJSON已导出（{count}个要素）","ru":"GeoJSON экспортирован ({count} элементов)","ar":"تم تصدير GeoJSON ({count} عنصر)"
+    },
+    "export.modal.title":{
+      "en":"⏳ Exporting...","it":"⏳ Esportazione...","fr":"⏳ Exportation...","de":"⏳ Exportiere...","es":"⏳ Exportando...","zh":"⏳ 正在导出...","ru":"⏳ Экспорт...","ar":"⏳ جاري التصدير..."
+    },
+    "export.preparing":{
+      "en":"Preparing export...","it":"Preparazione esportazione...","fr":"Préparation...","de":"Vorbereitung...","es":"Preparando...","zh":"准备导出...","ru":"Подготовка...","ar":"جاري التحضير..."
+    },
+    "export.rendering.tiles":{
+      "en":"Rendering map tiles...","it":"Rendering tile mappa...","fr":"Rendu des tuiles...","de":"Kacheln rendern...","es":"Renderizando tiles...","zh":"渲染地图瓦片...","ru":"Рендеринг тайлов...","ar":"رسم البلاطات..."
+    },
+    "export.rendering.poly":{
+      "en":"Drawing polygons...","it":"Disegno poligoni...","fr":"Dessin des polygones...","de":"Polygone zeichnen...","es":"Dibujando polígonos...","zh":"绘制多边形...","ru":"Отрисовка полигонов...","ar":"رسم المضلعات..."
+    },
+    "export.generating":{
+      "en":"Generating file...","it":"Generazione file...","fr":"Génération du fichier...","de":"Datei generieren...","es":"Generando archivo...","zh":"生成文件...","ru":"Генерация файла...","ar":"إنشاء الملف..."
+    },
+    "export.done":{
+      "en":"✓ Export complete!","it":"✓ Esportazione completata!","fr":"✓ Exportation terminée !","de":"✓ Export abgeschlossen!","es":"✓ ¡Exportación completada!","zh":"✓ 导出完成！","ru":"✓ Экспорт завершён!","ar":"✓ اكتمل التصدير!"
+    },
 
-    "edit.mode":{"en":"Edit Mode","it":"Modalità Modifica","fr":"Mode Édition","de":"Bearbeitungsmodus","es":"Modo Edición","zh":"编辑模式","ru":"Режим Редактирования","ar":"وضع التحرير"},
-    "edit.editing":{"en":"Editing","it":"Modifica in corso","fr":"Édition en cours","de":"Bearbeitung","es":"Editando","zh":"正在编辑","ru":"Редактирование","ar":"جاري التحرير"},
-    "edit.vertices":{"en":"vertices","it":"vertici","fr":"sommets","de":"Ecken","es":"vértices","zh":"顶点","ru":"вершин","ar":"رؤوس"},
-    "edit.drag":{"en":"Drag vertices to move","it":"Trascina i vertici per spostare","fr":"Glissez les sommets","de":"Ecken ziehen zum Verschieben","es":"Arrastra los vértices","zh":"拖拽顶点移动","ru":"Перетащите вершины","ar":"اسحب الرؤوس للتحريك"},
-    "edit.dblclick":{"en":"Double-click vertex to delete","it":"Doppio-click su un vertice per eliminarlo","fr":"Double-clic pour supprimer","de":"Doppelklick zum Löschen","es":"Doble clic para eliminar","zh":"双击顶点删除","ru":"Двойной клик для удаления","ar":"انقر مرتين لحذف الرأس"},
-    "edit.midpoint":{"en":"Click midpoints to add vertex","it":"Clicca i punti medi per aggiungere un vertice","fr":"Cliquez les points médians pour ajouter","de":"Mittelpunkte anklicken zum Hinzufügen","es":"Clic en puntos medios para añadir","zh":"点击中点添加顶点","ru":"Нажмите на середину для добавления","ar":"انقر على النقاط الوسطى للإضافة"},
-    "edit.vertex.added":{"en":"Vertex added","it":"Vertice aggiunto","fr":"Sommet ajouté","de":"Ecke hinzugefügt","es":"Vértice añadido","zh":"顶点已添加","ru":"Вершина добавлена","ar":"تمت إضافة رأس"},
-    "edit.vertex.removed":{"en":"Vertex removed","it":"Vertice rimosso","fr":"Sommet supprimé","de":"Ecke entfernt","es":"Vértice eliminado","zh":"顶点已删除","ru":"Вершина удалена","ar":"تم حذف رأس"},
-    "edit.min.vertices":{"en":"Minimum 3 vertices required","it":"Minimo 3 vertici richiesti","fr":"Minimum 3 sommets requis","de":"Mindestens 3 Ecken erforderlich","es":"Mínimo 3 vértices","zh":"至少需要3个顶点","ru":"Минимум 3 вершины","ar":"مطلوب 3 رؤوس كحد أدنى"},
-    "edit.clipped":{"en":"⚡ Region re-clipped after edit","it":"⚡ Regione ri-ritagliata dopo la modifica","fr":"⚡ Région redécoupée","de":"⚡ Region neu geschnitten","es":"⚡ Región re-recortada","zh":"⚡ 区域已重新裁剪","ru":"⚡ Регион пере-обрезан","ar":"⚡ تم إعادة قص المنطقة"},
-    "edit.done":{"en":"✓ Edit saved","it":"✓ Modifica salvata","fr":"✓ Modification sauvegardée","de":"✓ Bearbeitung gespeichert","es":"✓ Edición guardada","zh":"✓ 编辑已保存","ru":"✓ Редактирование сохранено","ar":"✓ تم حفظ التحرير"},
+    "banner.text":{
+      "en":"✏️ Click on the map to place text","it":"✏️ Clicca sulla mappa per posizionare il testo","fr":"✏️ Cliquez sur la carte pour placer le texte","de":"✏️ Klicken Sie auf die Karte für Text","es":"✏️ Haz clic en el mapa para colocar texto","zh":"✏️ 点击地图放置文字","ru":"✏️ Нажмите на карту для текста","ar":"✏️ انقر على الخريطة لوضع النص"
+    },
+    "banner.flag.select":{
+      "en":"🏴 Select a flag first, then click on the map","it":"🏴 Seleziona prima una bandiera, poi clicca sulla mappa","fr":"🏴 Sélectionnez d'abord un drapeau","de":"🏴 Wählen Sie zuerst eine Flagge","es":"🏴 Selecciona primero una bandera","zh":"🏴 先选择旗帜，再点击地图","ru":"🏴 Сначала выберите флаг","ar":"🏴 اختر علماً أولاً"
+    },
+    "banner.flag.place":{
+      "en":"🏴 Click to place: {name}","it":"🏴 Clicca per posizionare: {name}","fr":"🏴 Cliquez pour placer : {name}","de":"🏴 Klicken zum Platzieren: {name}","es":"🏴 Clic para colocar: {name}","zh":"🏴 点击放置：{name}","ru":"🏴 Нажмите для размещения: {name}","ar":"🏴 انقر لوضع: {name}"
+    },
+    "banner.custom.place":{
+      "en":"📁 Click to place: {name}","it":"📁 Clicca per posizionare: {name}","fr":"📁 Cliquez pour placer : {name}","de":"📁 Klicken zum Platzieren: {name}","es":"📁 Clic para colocar: {name}","zh":"📁 点击放置：{name}","ru":"📁 Нажмите для размещения: {name}","ar":"📁 انقر لوضع: {name}"
+    },
+    "banner.draw":{
+      "en":"🖊️ Drawing mode — use controls in panel","it":"🖊️ Modalità disegno — usa i controlli nel pannello","fr":"🖊️ Mode dessin — utilisez les contrôles","de":"🖊️ Zeichenmodus","es":"🖊️ Modo dibujo","zh":"🖊️ 绘制模式","ru":"🖊️ Режим рисования","ar":"🖊️ وضع الرسم"
+    },
+    "banner.cancel":{
+      "en":"✕ Cancel","it":"✕ Annulla","fr":"✕ Annuler","de":"✕ Abbrechen","es":"✕ Cancelar","zh":"✕ 取消","ru":"✕ Отмена","ar":"✕ إلغاء"
+    },
 
-    "status.ready":{"en":"Ready","it":"Pronto","fr":"Prêt","de":"Bereit","es":"Listo","zh":"就绪","ru":"Готово","ar":"جاهز"},
-    "status.loading":{"en":"Loading {year}...","it":"Caricamento {year}...","fr":"Chargement {year}...","de":"Lade {year}...","es":"Cargando {year}...","zh":"正在加载 {year}...","ru":"Загрузка {year}...","ar":"جاري تحميل {year}..."},
-    "status.loaded":{"en":"{year}: {count} territories loaded ✓","it":"{year}: {count} territori caricati ✓","fr":"{year} : {count} territoires chargés ✓","de":"{year}: {count} Gebiete geladen ✓","es":"{year}: {count} territorios cargados ✓","zh":"{year}：已加载 {count} 个领土 ✓","ru":"{year}: {count} территорий загружено ✓","ar":"{year}: تم تحميل {count} منطقة ✓"},
-    "status.cached":{"en":"{year}: {count} territories (cached) ✓","it":"{year}: {count} territori (cache) ✓","fr":"{year} : {count} territoires (cache) ✓","de":"{year}: {count} Gebiete (Cache) ✓","es":"{year}: {count} territorios (caché) ✓","zh":"{year}：{count} 个领土（缓存）✓","ru":"{year}: {count} территорий (кэш) ✓","ar":"{year}: {count} منطقة (مخبأة) ✓"},
-    "status.error":{"en":"Error loading {year}: {msg}","it":"Errore caricamento {year}: {msg}","fr":"Erreur chargement {year} : {msg}","de":"Fehler beim Laden von {year}: {msg}","es":"Error al cargar {year}: {msg}","zh":"加载 {year} 出错：{msg}","ru":"Ошибка загрузки {year}: {msg}","ar":"خطأ في تحميل {year}: {msg}"},
-    "status.imported":{"en":"Imported: {count} features ✓","it":"Importati: {count} elementi ✓","fr":"Importés : {count} éléments ✓","de":"Importiert: {count} Elemente ✓","es":"Importados: {count} elementos ✓","zh":"已导入：{count} 个要素 ✓","ru":"Импортировано: {count} элементов ✓","ar":"تم الاستيراد: {count} عنصر ✓"},
-    "status.nation.selected":{"en":"{count} nation selected","it":"{count} nazione selezionata","fr":"{count} nation sélectionnée","de":"{count} Nation ausgewählt","es":"{count} nación seleccionada","zh":"已选择 {count} 个国家","ru":"Выбрано {count} нация","ar":"تم تحديد {count} دولة"},
-    "status.nations.selected":{"en":"{count} nations selected","it":"{count} nazioni selezionate","fr":"{count} nations sélectionnées","de":"{count} Nationen ausgewählt","es":"{count} naciones seleccionadas","zh":"已选择 {count} 个国家","ru":"Выбрано {count} наций","ar":"تم تحديد {count} دول"},
-    "status.all.selected":{"en":"All {count} nations selected","it":"Tutte le {count} nazioni selezionate","fr":"Toutes les {count} nations sélectionnées","de":"Alle {count} Nationen ausgewählt","es":"Todas las {count} naciones seleccionadas","zh":"已选择全部 {count} 个国家","ru":"Выбраны все {count} наций","ar":"تم تحديد جميع الـ {count} دولة"},
-    "status.inverted":{"en":"Selection inverted: {count} nations","it":"Selezione invertita: {count} nazioni","fr":"Sélection inversée : {count} nations","de":"Auswahl umgekehrt: {count} Nationen","es":"Selección invertida: {count} naciones","zh":"反选：{count} 个国家","ru":"Выбор инвертирован: {count} наций","ar":"تم عكس التحديد: {count} دولة"},
-    "status.deselected":{"en":"Selection cleared","it":"Selezione annullata","fr":"Sélection annulée","de":"Auswahl aufgehoben","es":"Selección eliminada","zh":"已取消选择","ru":"Выбор снят","ar":"تم إلغاء التحديد"},
-    "status.select.nation.first":{"en":"Select at least one nation first","it":"Seleziona almeno una nazione","fr":"Sélectionnez d'abord une nation","de":"Wählen Sie zuerst eine Nation","es":"Selecciona primero una nación","zh":"请先选择至少一个国家","ru":"Сначала выберите нацию","ar":"اختر دولة أولاً"},
-    "status.color.applied":{"en":"Color {color} applied to {count} nations","it":"Colore {color} applicato a {count} nazioni","fr":"Couleur {color} appliquée à {count} nations","de":"Farbe {color} auf {count} Nationen angewendet","es":"Color {color} aplicado a {count} naciones","zh":"颜色 {color} 已应用到 {count} 个国家","ru":"Цвет {color} применён к {count} нациям","ar":"تم تطبيق اللون {color} على {count} دول"},
-    "status.colors.reset":{"en":"All colors reset","it":"Tutti i colori reimpostati","fr":"Toutes les couleurs réinitialisées","de":"Alle Farben zurückgesetzt","es":"Todos los colores restablecidos","zh":"所有颜色已重置","ru":"Все цвета сброшены","ar":"تم إعادة تعيين جميع الألوان"},
-    "status.text.placed":{"en":"Text placed: \"{text}\"","it":"Testo posizionato: \"{text}\"","fr":"Texte placé : \"{text}\"","de":"Text platziert: \"{text}\"","es":"Texto colocado: \"{text}\"","zh":"文字已放置：\"{text}\"","ru":"Текст размещён: \"{text}\"","ar":"تم وضع النص: \"{text}\""},
-    "status.flag.placed":{"en":"Flag placed: {name}","it":"Bandiera posizionata: {name}","fr":"Drapeau placé : {name}","de":"Flagge platziert: {name}","es":"Bandera colocada: {name}","zh":"旗帜已放置：{name}","ru":"Флаг размещён: {name}","ar":"تم وضع العلم: {name}"},
-    "status.flag.select.first":{"en":"Select a flag first","it":"Seleziona prima una bandiera","fr":"Sélectionnez d'abord un drapeau","de":"Wählen Sie zuerst eine Flagge","es":"Selecciona primero una bandera","zh":"请先选择一面旗帜","ru":"Сначала выберите флаг","ar":"اختر علماً أولاً"},
-    "status.ann.removed":{"en":"Annotation removed","it":"Annotazione rimossa","fr":"Annotation supprimée","de":"Anmerkung entfernt","es":"Anotación eliminada","zh":"标注已删除","ru":"Аннотация удалена","ar":"تم حذف التعليق"},
-    "status.ann.cleared":{"en":"All annotations cleared","it":"Tutte le annotazioni rimosse","fr":"Toutes les annotations supprimées","de":"Alle Anmerkungen entfernt","es":"Todas las anotaciones eliminadas","zh":"所有标注已清除","ru":"Все аннотации удалены","ar":"تم حذف جميع التعليقات"},
-    "status.custom.added":{"en":"Custom flag added: {name}","it":"Bandiera personalizzata aggiunta: {name}","fr":"Drapeau personnalisé ajouté : {name}","de":"Flagge hinzugefügt: {name}","es":"Bandera personalizada añadida: {name}","zh":"自定义旗帜已添加：{name}","ru":"Свой флаг добавлен: {name}","ar":"تم إضافة علم مخصص: {name}"},
-    "status.custom.removed":{"en":"Custom flag removed","it":"Bandiera personalizzata rimossa","fr":"Drapeau personnalisé supprimé","de":"Flagge entfernt","es":"Bandera personalizada eliminada","zh":"自定义旗帜已删除","ru":"Свой флаг удалён","ar":"تم حذف العلم المخصص"},
-    "status.format.unsupported":{"en":"Unsupported format. Use PNG, SVG, JPG, WebP or GIF.","it":"Formato non supportato. Usa PNG, SVG, JPG, WebP o GIF.","fr":"Format non supporté.","de":"Format nicht unterstützt.","es":"Formato no soportado.","zh":"不支持的格式。","ru":"Неподдерживаемый формат.","ar":"صيغة غير مدعومة."},
-    "loading.text":{"en":"Loading...","it":"Caricamento...","fr":"Chargement...","de":"Wird geladen...","es":"Cargando...","zh":"加载中...","ru":"Загрузка...","ar":"جاري التحميل..."},
+    "edit.mode":{
+      "en":"Edit Mode","it":"Modalità Modifica","fr":"Mode Édition","de":"Bearbeitungsmodus","es":"Modo Edición","zh":"编辑模式","ru":"Режим Редактирования","ar":"وضع التحرير"
+    },
+    "edit.editing":{
+      "en":"Editing","it":"Modifica in corso","fr":"Édition en cours","de":"Bearbeitung","es":"Editando","zh":"正在编辑","ru":"Редактирование","ar":"جاري التحرير"
+    },
+    "edit.vertices":{
+      "en":"vertices","it":"vertici","fr":"sommets","de":"Ecken","es":"vértices","zh":"顶点","ru":"вершин","ar":"رؤوس"
+    },
+    "edit.drag":{
+      "en":"Drag vertices to move","it":"Trascina i vertici per spostare","fr":"Glissez les sommets","de":"Ecken ziehen zum Verschieben","es":"Arrastra los vértices","zh":"拖拽顶点移动","ru":"Перетащите вершины","ar":"اسحب الرؤوس للتحريك"
+    },
+    "edit.dblclick":{
+      "en":"Double-click vertex to delete","it":"Doppio-click su un vertice per eliminarlo","fr":"Double-clic pour supprimer","de":"Doppelklick zum Löschen","es":"Doble clic para eliminar","zh":"双击顶点删除","ru":"Двойной клик для удаления","ar":"انقر مرتين لحذف الرأس"
+    },
+    "edit.midpoint":{
+      "en":"Click midpoints to add vertex","it":"Clicca i punti medi per aggiungere un vertice","fr":"Cliquez les points médians pour ajouter","de":"Mittelpunkte anklicken zum Hinzufügen","es":"Clic en puntos medios para añadir","zh":"点击中点添加顶点","ru":"Нажмите на середину для добавления","ar":"انقر على النقاط الوسطى للإضافة"
+    },
+    "edit.vertex.added":{
+      "en":"Vertex added","it":"Vertice aggiunto","fr":"Sommet ajouté","de":"Ecke hinzugefügt","es":"Vértice añadido","zh":"顶点已添加","ru":"Вершина добавлена","ar":"تمت إضافة رأس"
+    },
+    "edit.vertex.removed":{
+      "en":"Vertex removed","it":"Vertice rimosso","fr":"Sommet supprimé","de":"Ecke entfernt","es":"Vértice eliminado","zh":"顶点已删除","ru":"Вершина удалена","ar":"تم حذف رأس"
+    },
+    "edit.min.vertices":{
+      "en":"Minimum 3 vertices required","it":"Minimo 3 vertici richiesti","fr":"Minimum 3 sommets requis","de":"Mindestens 3 Ecken erforderlich","es":"Mínimo 3 vértices","zh":"至少需要3个顶点","ru":"Минимум 3 вершины","ar":"مطلوب 3 رؤوس كحد أدنى"
+    },
+    "edit.clipped":{
+      "en":"⚡ Region re-clipped after edit","it":"⚡ Regione ri-ritagliata dopo la modifica","fr":"⚡ Région redécoupée","de":"⚡ Region neu geschnitten","es":"⚡ Región re-recortada","zh":"⚡ 区域已重新裁剪","ru":"⚡ Регион пере-обрезан","ar":"⚡ تم إعادة قص المنطقة"
+    },
+    "edit.done":{
+      "en":"✓ Edit saved","it":"✓ Modifica salvata","fr":"✓ Modification sauvegardée","de":"✓ Bearbeitung gespeichert","es":"✓ Edición guardada","zh":"✓ 编辑已保存","ru":"✓ Редактирование сохранено","ar":"✓ تم حفظ التحرير"
+    },
+
+    "status.ready":{
+      "en":"Ready","it":"Pronto","fr":"Prêt","de":"Bereit","es":"Listo","zh":"就绪","ru":"Готово","ar":"جاهز"
+    },
+    "status.loading":{
+      "en":"Loading {year}...","it":"Caricamento {year}...","fr":"Chargement {year}...","de":"Lade {year}...","es":"Cargando {year}...","zh":"正在加载 {year}...","ru":"Загрузка {year}...","ar":"جاري تحميل {year}..."
+    },
+    "status.loaded":{
+      "en":"{year}: {count} territories loaded ✓","it":"{year}: {count} territori caricati ✓","fr":"{year} : {count} territoires chargés ✓","de":"{year}: {count} Gebiete geladen ✓","es":"{year}: {count} territorios cargados ✓","zh":"{year}：已加载 {count} 个领土 ✓","ru":"{year}: {count} территорий загружено ✓","ar":"{year}: تم تحميل {count} منطقة ✓"
+    },
+    "status.cached":{
+      "en":"{year}: {count} territories (cached) ✓","it":"{year}: {count} territori (cache) ✓","fr":"{year} : {count} territoires (cache) ✓","de":"{year}: {count} Gebiete (Cache) ✓","es":"{year}: {count} territorios (caché) ✓","zh":"{year}：{count} 个领土（缓存）✓","ru":"{year}: {count} территорий (кэш) ✓","ar":"{year}: {count} منطقة (مخبأة) ✓"
+    },
+    "status.error":{
+      "en":"Error loading {year}: {msg}","it":"Errore caricamento {year}: {msg}","fr":"Erreur chargement {year} : {msg}","de":"Fehler beim Laden von {year}: {msg}","es":"Error al cargar {year}: {msg}","zh":"加载 {year} 出错：{msg}","ru":"Ошибка загрузки {year}: {msg}","ar":"خطأ في تحميل {year}: {msg}"
+    },
+    "status.imported":{
+      "en":"Imported: {count} features ✓","it":"Importati: {count} elementi ✓","fr":"Importés : {count} éléments ✓","de":"Importiert: {count} Elemente ✓","es":"Importados: {count} elementos ✓","zh":"已导入：{count} 个要素 ✓","ru":"Импортировано: {count} элементов ✓","ar":"تم الاستيراد: {count} عنصر ✓"
+    },
+    "status.nation.selected":{
+      "en":"{count} nation selected","it":"{count} nazione selezionata","fr":"{count} nation sélectionnée","de":"{count} Nation ausgewählt","es":"{count} nación seleccionada","zh":"已选择 {count} 个国家","ru":"Выбрано {count} нация","ar":"تم تحديد {count} دولة"
+    },
+    "status.nations.selected":{
+      "en":"{count} nations selected","it":"{count} nazioni selezionate","fr":"{count} nations sélectionnées","de":"{count} Nationen ausgewählt","es":"{count} naciones seleccionadas","zh":"已选择 {count} 个国家","ru":"Выбрано {count} наций","ar":"تم تحديد {count} دول"
+    },
+    "status.all.selected":{
+      "en":"All {count} nations selected","it":"Tutte le {count} nazioni selezionate","fr":"Toutes les {count} nations sélectionnées","de":"Alle {count} Nationen ausgewählt","es":"Todas las {count} naciones seleccionadas","zh":"已选择全部 {count} 个国家","ru":"Выбраны все {count} наций","ar":"تم تحديد جميع الـ {count} دولة"
+    },
+    "status.inverted":{
+      "en":"Selection inverted: {count} nations","it":"Selezione invertita: {count} nazioni","fr":"Sélection inversée : {count} nations","de":"Auswahl umgekehrt: {count} Nationen","es":"Selección invertida: {count} naciones","zh":"反选：{count} 个国家","ru":"Выбор инвертирован: {count} наций","ar":"تم عكس التحديد: {count} دولة"
+    },
+    "status.deselected":{
+      "en":"Selection cleared","it":"Selezione annullata","fr":"Sélection annulée","de":"Auswahl aufgehoben","es":"Selección eliminada","zh":"已取消选择","ru":"Выбор снят","ar":"تم إلغاء التحديد"
+    },
+    "status.select.nation.first":{
+      "en":"Select at least one nation first","it":"Seleziona almeno una nazione","fr":"Sélectionnez d'abord une nation","de":"Wählen Sie zuerst eine Nation","es":"Selecciona primero una nación","zh":"请先选择至少一个国家","ru":"Сначала выберите нацию","ar":"اختر دولة أولاً"
+    },
+    "status.color.applied":{
+      "en":"Color {color} applied to {count} nations","it":"Colore {color} applicato a {count} nazioni","fr":"Couleur {color} appliquée à {count} nations","de":"Farbe {color} auf {count} Nationen angewendet","es":"Color {color} aplicado a {count} naciones","zh":"颜色 {color} 已应用到 {count} 个国家","ru":"Цвет {color} применён к {count} нациям","ar":"تم تطبيق اللون {color} على {count} دول"
+    },
+    "status.colors.reset":{
+      "en":"All colors reset","it":"Tutti i colori reimpostati","fr":"Toutes les couleurs réinitialisées","de":"Alle Farben zurückgesetzt","es":"Todos los colores restablecidos","zh":"所有颜色已重置","ru":"Все цвета сброшены","ar":"تم إعادة تعيين جميع الألوان"
+    },
+    "status.text.placed":{
+      "en":"Text placed: \"{text}\"","it":"Testo posizionato: \"{text}\"","fr":"Texte placé : \"{text}\"","de":"Text platziert: \"{text}\"","es":"Texto colocado: \"{text}\"","zh":"文字已放置：\"{text}\"","ru":"Текст размещён: \"{text}\"","ar":"تم وضع النص: \"{text}\""
+    },
+    "status.flag.placed":{
+      "en":"Flag placed: {name}","it":"Bandiera posizionata: {name}","fr":"Drapeau placé : {name}","de":"Flagge platziert: {name}","es":"Bandera colocada: {name}","zh":"旗帜已放置：{name}","ru":"Флаг размещён: {name}","ar":"تم وضع العلم: {name}"
+    },
+    "status.flag.select.first":{
+      "en":"Select a flag first","it":"Seleziona prima una bandiera","fr":"Sélectionnez d'abord un drapeau","de":"Wählen Sie zuerst eine Flagge","es":"Selecciona primero una bandera","zh":"请先选择一面旗帜","ru":"Сначала выберите флаг","ar":"اختر علماً أولاً"
+    },
+    "status.ann.removed":{
+      "en":"Annotation removed","it":"Annotazione rimossa","fr":"Annotation supprimée","de":"Anmerkung entfernt","es":"Anotación eliminada","zh":"标注已删除","ru":"Аннотация удалена","ar":"تم حذف التعليق"
+    },
+    "status.ann.cleared":{
+      "en":"All annotations cleared","it":"Tutte le annotazioni rimosse","fr":"Toutes les annotations supprimées","de":"Alle Anmerkungen entfernt","es":"Todas las anotaciones eliminadas","zh":"所有标注已清除","ru":"Все аннотации удалены","ar":"تم حذف جميع التعليقات"
+    },
+    "status.custom.added":{
+      "en":"Custom flag added: {name}","it":"Bandiera personalizzata aggiunta: {name}","fr":"Drapeau personnalisé ajouté : {name}","de":"Flagge hinzugefügt: {name}","es":"Bandera personalizada añadida: {name}","zh":"自定义旗帜已添加：{name}","ru":"Свой флаг добавлен: {name}","ar":"تم إضافة علم مخصص: {name}"
+    },
+    "status.custom.removed":{
+      "en":"Custom flag removed","it":"Bandiera personalizzata rimossa","fr":"Drapeau personnalisé supprimé","de":"Flagge entfernt","es":"Bandera personalizada eliminada","zh":"自定义旗帜已删除","ru":"Свой флаг удалён","ar":"تم حذف العلم المخصص"
+    },
+    "status.format.unsupported":{
+      "en":"Unsupported format. Use PNG, SVG, JPG, WebP or GIF.","it":"Formato non supportato. Usa PNG, SVG, JPG, WebP o GIF.","fr":"Format non supporté.","de":"Format nicht unterstützt.","es":"Formato no soportado.","zh":"不支持的格式。","ru":"Неподдерживаемый формат.","ar":"صيغة غير مدعومة."
+    },
+    "loading.text":{
+      "en":"Loading...","it":"Caricamento...","fr":"Chargement...","de":"Wird geladen...","es":"Cargando...","zh":"加载中...","ru":"Загрузка...","ar":"جاري التحميل..."
+    },
 
     "country.us":{"en":"United States","it":"Stati Uniti","fr":"États-Unis","de":"Vereinigte Staaten","es":"Estados Unidos","zh":"美国","ru":"США","ar":"الولايات المتحدة"},
     "country.gb":{"en":"United Kingdom","it":"Regno Unito","fr":"Royaume-Uni","de":"Vereinigtes Königreich","es":"Reino Unido","zh":"英国","ru":"Великобритания","ar":"المملكة المتحدة"},
@@ -304,6 +750,148 @@
     "country.my":{"en":"Malaysia","it":"Malesia","fr":"Malaisie","de":"Malaysia","es":"Malasia","zh":"马来西亚","ru":"Малайзия","ar":"ماليزيا"},
     "country.bd":{"en":"Bangladesh","it":"Bangladesh","fr":"Bangladesh","de":"Bangladesch","es":"Bangladés","zh":"孟加拉国","ru":"Бангладеш","ar":"بنغلاديش"},
     "country.lk":{"en":"Sri Lanka","it":"Sri Lanka","fr":"Sri Lanka","de":"Sri Lanka","es":"Sri Lanka","zh":"斯里兰卡","ru":"Шри-Ланка","ar":"سريلانكا"},
-    "country.ke":{"en":"Kenya","it":"Kenya","fr":"Kenya","de":"Kenia","es":"Kenia","zh":"肯尼亚","ru":"Кения","ar":"كينيا"}
+    "country.ke":{"en":"Kenya","it":"Kenya","fr":"Kenya","de":"Kenia","es":"Kenia","zh":"肯尼亚","ru":"Кения","ar":"كينيا"},
+
+    "menu.new":{"en":"New Project","it":"Nuovo Progetto","fr":"Nouveau Projet","de":"Neues Projekt","es":"Nuevo Proyecto","zh":"新建项目","ru":"Новый Проект","ar":"مشروع جديد"},
+    "menu.save":{"en":"Save Project","it":"Salva Progetto","fr":"Sauvegarder le Projet","de":"Projekt Speichern","es":"Guardar Proyecto","zh":"保存项目","ru":"Сохранить Проект","ar":"حفظ المشروع"},
+    "menu.open":{"en":"Open Project","it":"Apri Progetto","fr":"Ouvrir le Projet","de":"Projekt Öffnen","es":"Abrir Proyecto","zh":"打开项目","ru":"Открыть Проект","ar":"فتح المشروع"},
+    "menu.export.project":{"en":"Export Project","it":"Esporta Progetto","fr":"Exporter le Projet","de":"Projekt Exportieren","es":"Exportar Proyecto","zh":"导出项目","ru":"Экспортировать Проект","ar":"تصدير المشروع"},
+    "menu.import.geojson":{"en":"Import GeoJSON","it":"Importa GeoJSON","fr":"Importer GeoJSON","de":"GeoJSON Importieren","es":"Importar GeoJSON","zh":"导入GeoJSON","ru":"Импорт GeoJSON","ar":"استيراد GeoJSON"},
+    
+    "menu.edit":{"en":"Edit","it":"Modifica","fr":"Édition","de":"Bearbeiten","es":"Editar","zh":"编辑","ru":"Правка","ar":"تحرير"},
+    "menu.undo":{"en":"Undo","it":"Annulla","fr":"Annuler","de":"Rückgängig","es":"Deshacer","zh":"撤销","ru":"Отменить","ar":"تراجع"},
+    "menu.redo":{"en":"Redo","it":"Ripeti","fr":"Refaire","de":"Wiederholen","es":"Rehacer","zh":"重做","ru":"Повторить","ar":"إعادة"},
+    "menu.select.all":{"en":"Select All Nations","it":"Seleziona Tutte le Nazioni","fr":"Sélectionner Toutes les Nations","de":"Alle Nationen Auswählen","es":"Seleccionar Todas las Naciones","zh":"选择所有国家","ru":"Выбрать Все Нации","ar":"تحديد جميع الدول"},
+    "menu.clear.selection":{"en":"Clear Selection","it":"Cancella Selezione","fr":"Effacer la Sélection","de":"Auswahl Löschen","es":"Borrar Selección","zh":"清除选择","ru":"Снять Выделение","ar":"مسح التحديد"},
+    "menu.year":{"en":"Historical Year","it":"Anno Storico","fr":"Année Historique","de":"Historisches Jahr","es":"Año Histórico","zh":"历史年份","ru":"Исторический Год","ar":"السنة التاريخية"},
+    "menu.style":{"en":"Map Style","it":"Stile Mappa","fr":"Style de Carte","de":"Kartenstil","es":"Estilo de Mapa","zh":"地图样式","ru":"Стиль Карты","ar":"نمط الخريطة"},
+    "menu.colors":{"en":"Nation Colors","it":"Colori Nazioni","fr":"Couleurs des Nations","de":"Nationenfarben","es":"Colores de Naciones","zh":"国家颜色","ru":"Цвета Наций","ar":"ألوان الدول"},
+
+    "toolbar.year":{"en":"Year","it":"Anno","fr":"Année","de":"Jahr","es":"Año","zh":"年份","ru":"Год","ar":"السنة"},
+
+    "status.ready":{"en":"Ready","it":"Pronto","fr":"Prêt","de":"Bereit","es":"Listo","zh":"就绪","ru":"Готов","ar":"جاهز"},
+    "status.loaded":{"en":"Map data loaded","it":"Dati mappa caricati","fr":"Données chargées","de":"Kartendaten geladen","es":"Datos cargados","zh":"地图数据已加载","ru":"Данные загружены","ar":"تم تحميل البيانات"},
+    "status.undo":{"en":"Undo completed","it":"Annullamento completato","fr":"Annulation effectuée","de":"Rückgängig abgeschlossen","es":"Deshacer completado","zh":"撤销完成","ru":"Отмена выполнена","ar":"تم التراجع"},
+    "status.redo":{"en":"Redo completed","it":"Ripetizione completata","fr":"Rétablissement effectué","de":"Wiederholen abgeschlossen","es":"Rehacer completado","zh":"重做完成","ru":"Повтор выполнен","ar":"تم الإعادة"},
+    "status.project.saved":{"en":"Project saved","it":"Progetto salvato","fr":"Projet sauvegardé","de":"Projekt gespeichert","es":"Proyecto guardado","zh":"项目已保存","ru":"Проект сохранён","ar":"تم حفظ المشروع"},
+    "status.project.loaded":{"en":"Project loaded","it":"Progetto caricato","fr":"Projet chargé","de":"Projekt geladen","es":"Proyecto cargado","zh":"项目已加载","ru":"Проект загружен","ar":"تم تحميل المشروع"},
+    "status.project.exported":{"en":"Project exported","it":"Progetto esportato","fr":"Projet exporté","de":"Projekt exportiert","es":"Proyecto exportado","zh":"项目已导出","ru":"Проект экспортирован","ar":"تم تصدير المشروع"},
+    "status.new.project":{"en":"New project created","it":"Nuovo progetto creato","fr":"Nouveau projet créé","de":"Neues Projekt erstellt","es":"Nuevo proyecto creado","zh":"新项目已创建","ru":"Новый проект создан","ar":"تم إنشاء مشروع جديد"},
+    "status.import.success":{"en":"Import successful","it":"Importazione riuscita","fr":"Importation réussie","de":"Import erfolgreich","es":"Importación exitosa","zh":"导入成功","ru":"Импорт выполнен","ar":"نجح الاستيراد"},
+    "status.export.success":{"en":"Export successful","it":"Esportazione riuscita","fr":"Exportation réussie","de":"Export erfolgreich","es":"Exportación exitosa","zh":"导出成功","ru":"Экспорт выполнен","ar":"نجح التصدير"},
+    "status.export.geojson":{"en":"GeoJSON exported","it":"GeoJSON esportato","fr":"GeoJSON exporté","de":"GeoJSON exportiert","es":"GeoJSON exportado","zh":"GeoJSON已导出","ru":"GeoJSON экспортирован","ar":"تم تصدير GeoJSON"},
+    "status.exporting":{"en":"Exporting...","it":"Esportazione...","fr":"Exportation...","de":"Exportiere...","es":"Exportando...","zh":"导出中...","ru":"Экспорт...","ar":"جاري التصدير..."},
+    "status.tool.navigate":{"en":"Navigate mode","it":"Modalità navigazione","fr":"Mode navigation","de":"Navigationsmodus","es":"Modo navegación","zh":"导航模式","ru":"Режим навигации","ar":"وضع التنقل"},
+    "status.tool.text":{"en":"Text mode","it":"Modalità testo","fr":"Mode texte","de":"Textmodus","es":"Modo texto","zh":"文本模式","ru":"Режим текста","ar":"وضع النص"},
+    "status.tool.flag":{"en":"Flag mode","it":"Modalità bandiera","fr":"Mode drapeau","de":"Flaggenmodus","es":"Modo bandera","zh":"旗帜模式","ru":"Режим флага","ar":"وضع العلم"},
+    "status.tool.draw":{"en":"Draw mode","it":"Modalità disegno","fr":"Mode dessin","de":"Zeichenmodus","es":"Modo dibujo","zh":"绘制模式","ru":"Режим рисования","ar":"وضع الرسم"},
+    "status.draw.started":{"en":"Drawing started","it":"Disegno iniziato","fr":"Dessin commencé","de":"Zeichnen gestartet","es":"Dibujo iniciado","zh":"开始绘制","ru":"Рисование начато","ar":"بدأ الرسم"},
+    "status.draw.finished":{"en":"Drawing finished","it":"Disegno completato","fr":"Dessin terminé","de":"Zeichnen abgeschlossen","es":"Dibujo terminado","zh":"绘制完成","ru":"Рисование завершено","ar":"انتهى الرسم"},
+    "status.draw.cancelled":{"en":"Drawing cancelled","it":"Disegno annullato","fr":"Dessin annulé","de":"Zeichnen abgebrochen","es":"Dibujo cancelado","zh":"绘制已取消","ru":"Рисование отменено","ar":"تم إلغاء الرسم"},
+    "status.edit.region":{"en":"Editing region","it":"Modifica regione","fr":"Édition de région","de":"Region bearbeiten","es":"Editando región","zh":"编辑区域","ru":"Редактирование региона","ar":"تحرير المنطقة"},
+
+    "confirm.new.project":{"en":"Create new project? Unsaved changes will be lost.","it":"Creare nuovo progetto? Le modifiche non salvate andranno perse.","fr":"Créer un nouveau projet ? Les modifications non enregistrées seront perdues.","de":"Neues Projekt erstellen? Nicht gespeicherte Änderungen gehen verloren.","es":"¿Crear nuevo proyecto? Los cambios no guardados se perderán.","zh":"创建新项目？未保存的更改将丢失。","ru":"Создать новый проект? Несохранённые изменения будут потеряны.","ar":"إنشاء مشروع جديد؟ ستفقد التغييرات غير المحفوظة."},
+    "confirm.delete.region":{"en":"Delete this region?","it":"Eliminare questa regione?","fr":"Supprimer cette région ?","de":"Diese Region löschen?","es":"¿Eliminar esta región?","zh":"删除此区域？","ru":"Удалить этот регион?","ar":"حذف هذه المنطقة؟"},
+    "confirm.clear.annotations":{"en":"Clear all annotations?","it":"Cancellare tutte le annotazioni?","fr":"Effacer toutes les annotations ?","de":"Alle Anmerkungen löschen?","es":"¿Borrar todas las anotaciones?","zh":"清除所有标注？","ru":"Удалить все аннотации?","ar":"مسح جميع التعليقات؟"},
+
+    "error.save.project":{"en":"Error saving project","it":"Errore nel salvataggio del progetto","fr":"Erreur lors de la sauvegarde","de":"Fehler beim Speichern","es":"Error al guardar","zh":"保存项目时出错","ru":"Ошибка сохранения","ar":"خطأ في الحفظ"},
+    "error.load.project":{"en":"Error loading project","it":"Errore nel caricamento del progetto","fr":"Erreur lors du chargement","de":"Fehler beim Laden","es":"Error al cargar","zh":"加载项目时出错","ru":"Ошибка загрузки","ar":"خطأ في التحميل"},
+    "error.export.project":{"en":"Error exporting project","it":"Errore nell'esportazione del progetto","fr":"Erreur lors de l'exportation","de":"Fehler beim Export","es":"Error al exportar","zh":"导出项目时出错","ru":"Ошибка экспорта","ar":"خطأ في التصدير"},
+    "error.import.project":{"en":"Error importing project","it":"Errore nell'importazione del progetto","fr":"Erreur lors de l'importation","de":"Fehler beim Import","es":"Error al importar","zh":"导入项目时出错","ru":"Ошибка импорта","ar":"خطأ في الاستيراد"},
+    "error.load.geojson":{"en":"Error loading GeoJSON","it":"Errore nel caricamento GeoJSON","fr":"Erreur de chargement GeoJSON","de":"Fehler beim Laden von GeoJSON","es":"Error al cargar GeoJSON","zh":"加载GeoJSON时出错","ru":"Ошибка загрузки GeoJSON","ar":"خطأ في تحميل GeoJSON"},
+    "error.import.geojson":{"en":"Error importing GeoJSON","it":"Errore nell'importazione GeoJSON","fr":"Erreur d'importation GeoJSON","de":"Fehler beim Import von GeoJSON","es":"Error al importar GeoJSON","zh":"导入GeoJSON时出错","ru":"Ошибка импорта GeoJSON","ar":"خطأ في استيراد GeoJSON"},
+
+    "selection.title":{"en":"Selection","it":"Selezione","fr":"Sélection","de":"Auswahl","es":"Selección","zh":"选择","ru":"Выделение","ar":"التحديد"},
+    "selection.hint":{"en":"Click a color to apply to selected nations","it":"Clicca un colore per applicarlo alle nazioni selezionate","fr":"Cliquez sur une couleur pour l'appliquer","de":"Klicken Sie auf eine Farbe zum Anwenden","es":"Haz clic en un color para aplicar","zh":"点击颜色应用到选定国家","ru":"Нажмите на цвет для применения","ar":"انقر على لون للتطبيق"},
+    "selection.empty":{"en":"No nations selected. Click on map to select.","it":"Nessuna nazione selezionata. Clicca sulla mappa per selezionare.","fr":"Aucune nation sélectionnée. Cliquez sur la carte.","de":"Keine Nationen ausgewählt. Klicken Sie auf die Karte.","es":"No hay naciones seleccionadas. Haz clic en el mapa.","zh":"未选择国家。点击地图进行选择。","ru":"Нации не выбраны. Нажмите на карту.","ar":"لم يتم تحديد دول. انقر على الخريطة."},
+    "selection.clear":{"en":"Clear","it":"Cancella","fr":"Effacer","de":"Löschen","es":"Borrar","zh":"清除","ru":"Очистить","ar":"مسح"},
+    "selection.all":{"en":"All","it":"Tutte","fr":"Toutes","de":"Alle","es":"Todas","zh":"全选","ru":"Все","ar":"الكل"},
+
+    "palette.label":{"en":"Color Palettes","it":"Palette di Colori","fr":"Palettes de Couleurs","de":"Farbpaletten","es":"Paletas de Colores","zh":"调色板","ru":"Цветовые Палитры","ar":"لوحات الألوان"},
+    "palette.custom":{"en":"Custom","it":"Personalizzata","fr":"Personnalisée","de":"Benutzerdefiniert","es":"Personalizada","zh":"自定义","ru":"Пользовательская","ar":"مخصص"},
+    "palette.political":{"en":"Political","it":"Politica","fr":"Politique","de":"Politisch","es":"Política","zh":"政治","ru":"Политическая","ar":"سياسية"},
+    "palette.empires":{"en":"Empires","it":"Imperi","fr":"Empires","de":"Reiche","es":"Imperios","zh":"帝国","ru":"Империи","ar":"إمبراطوريات"},
+    "palette.historic":{"en":"Historic","it":"Storica","fr":"Historique","de":"Historisch","es":"Histórica","zh":"历史","ru":"Историческая","ar":"تاريخية"},
+    "palette.pastel":{"en":"Pastel","it":"Pastello","fr":"Pastel","de":"Pastell","es":"Pastel","zh":"柔和","ru":"Пастельная","ar":"باستيل"},
+
+    "colors.quick":{"en":"Quick Colors","it":"Colori Rapidi","fr":"Couleurs Rapides","de":"Schnellfarben","es":"Colores Rápidos","zh":"快速颜色","ru":"Быстрые Цвета","ar":"ألوان سريعة"},
+
+    "tool.navigate":{"en":"Navigate","it":"Naviga","fr":"Naviguer","de":"Navigieren","es":"Navegar","zh":"导航","ru":"Навигация","ar":"تنقل"},
+    "tool.text":{"en":"Text","it":"Testo","fr":"Texte","de":"Text","es":"Texto","zh":"文本","ru":"Текст","ar":"نص"},
+    "tool.flag":{"en":"Flag","it":"Bandiera","fr":"Drapeau","de":"Flagge","es":"Bandera","zh":"旗帜","ru":"Флаг","ar":"علم"},
+    "tool.draw":{"en":"Draw","it":"Disegna","fr":"Dessiner","de":"Zeichnen","es":"Dibujar","zh":"绘制","ru":"Рисовать","ar":"رسم"},
+
+    "text.content":{"en":"Text Content","it":"Contenuto Testo","fr":"Contenu du Texte","de":"Textinhalt","es":"Contenido del Texto","zh":"文本内容","ru":"Содержание Текста","ar":"محتوى النص"},
+    "text.placeholder":{"en":"Enter text...","it":"Inserisci testo...","fr":"Saisir le texte...","de":"Text eingeben...","es":"Escribe el texto...","zh":"输入文本...","ru":"Введите текст...","ar":"أدخل النص..."},
+    "text.font":{"en":"Font","it":"Carattere","fr":"Police","de":"Schriftart","es":"Fuente","zh":"字体","ru":"Шрифт","ar":"الخط"},
+    "text.size":{"en":"Size","it":"Dimensione","fr":"Taille","de":"Größe","es":"Tamaño","zh":"大小","ru":"Размер","ar":"الحجم"},
+    "text.color":{"en":"Color","it":"Colore","fr":"Couleur","de":"Farbe","es":"Color","zh":"颜色","ru":"Цвет","ar":"اللون"},
+    "text.bold":{"en":"Bold","it":"Grassetto","fr":"Gras","de":"Fett","es":"Negrita","zh":"粗体","ru":"Жирный","ar":"عريض"},
+    "text.outline":{"en":"Outline","it":"Contorno","fr":"Contour","de":"Umriss","es":"Contorno","zh":"轮廓","ru":"Обводка","ar":"مخطط"},
+
+    "flag.country":{"en":"Country Code (ISO 2-letter)","it":"Codice Paese (ISO 2 lettere)","fr":"Code Pays (ISO 2 lettres)","de":"Ländercode (ISO 2-stellig)","es":"Código de País (ISO 2 letras)","zh":"国家代码（ISO 2字母）","ru":"Код Страны (ISO 2 буквы)","ar":"رمز البلد (ISO حرفان)"},
+    "flag.code":{"en":"Code","it":"Codice","fr":"Code","de":"Code","es":"Código","zh":"代码","ru":"Код","ar":"الرمز"},
+    "flag.preview":{"en":"Preview","it":"Anteprima","fr":"Aperçu","de":"Vorschau","es":"Vista previa","zh":"预览","ru":"Предпросмотр","ar":"معاينة"},
+
+    "draw.active":{"en":"Drawing Active","it":"Disegno Attivo","fr":"Dessin Actif","de":"Zeichnen Aktiv","es":"Dibujo Activo","zh":"绘制中","ru":"Рисование Активно","ar":"الرسم نشط"},
+    "draw.hint":{"en":"Click to add points. Enter to finish, Esc to cancel.","it":"Clicca per aggiungere punti. Invio per terminare, Esc per annullare.","fr":"Cliquez pour ajouter des points. Entrée pour terminer, Échap pour annuler.","de":"Klicken zum Hinzufügen von Punkten. Enter zum Beenden, Esc zum Abbrechen.","es":"Haz clic para añadir puntos. Enter para terminar, Esc para cancelar.","zh":"点击添加点。回车完成，Esc取消。","ru":"Нажимайте для добавления точек. Enter — завершить, Esc — отмена.","ar":"انقر لإضافة نقاط. Enter للإنهاء، Esc للإلغاء."},
+    "draw.color":{"en":"Region Color","it":"Colore Regione","fr":"Couleur de la Région","de":"Regionsfarbe","es":"Color de Región","zh":"区域颜色","ru":"Цвет Региона","ar":"لون المنطقة"},
+    "draw.instructions":{"en":"Click on map to start drawing a custom region.","it":"Clicca sulla mappa per iniziare a disegnare una regione personalizzata.","fr":"Cliquez sur la carte pour commencer à dessiner une région.","de":"Klicken Sie auf die Karte, um eine Region zu zeichnen.","es":"Haz clic en el mapa para empezar a dibujar una región.","zh":"点击地图开始绘制自定义区域。","ru":"Нажмите на карту, чтобы начать рисование региона.","ar":"انقر على الخريطة لبدء رسم منطقة."},
+
+    "regions.custom":{"en":"Custom Regions","it":"Regioni Personalizzate","fr":"Régions Personnalisées","de":"Benutzerdefinierte Regionen","es":"Regiones Personalizadas","zh":"自定义区域","ru":"Свои Регионы","ar":"مناطق مخصصة"},
+    "regions.none":{"en":"No custom regions yet","it":"Nessuna regione personalizzata","fr":"Aucune région personnalisée","de":"Keine Regionen erstellt","es":"No hay regiones personalizadas","zh":"没有自定义区域","ru":"Нет регионов","ar":"لا توجد مناطق مخصصة"},
+    "region.label":{"en":"Region","it":"Regione","fr":"Région","de":"Region","es":"Región","zh":"区域","ru":"Регион","ar":"منطقة"},
+    "region.edit":{"en":"Edit","it":"Modifica","fr":"Éditer","de":"Bearbeiten","es":"Editar","zh":"编辑","ru":"Изменить","ar":"تحرير"},
+    "region.delete":{"en":"Delete","it":"Elimina","fr":"Supprimer","de":"Löschen","es":"Eliminar","zh":"删除","ru":"Удалить","ar":"حذف"},
+
+    "annotations.none":{"en":"No annotations yet. Use tools to add text or flags.","it":"Nessuna annotazione. Usa gli strumenti per aggiungere testo o bandiere.","fr":"Aucune annotation. Utilisez les outils pour ajouter du texte ou des drapeaux.","de":"Keine Anmerkungen. Verwenden Sie Werkzeuge zum Hinzufügen.","es":"No hay anotaciones. Usa las herramientas para añadir texto o banderas.","zh":"还没有标注。使用工具添加文本或旗帜。","ru":"Нет аннотаций. Используйте инструменты для добавления текста или флагов.","ar":"لا توجد تعليقات. استخدم الأدوات لإضافة نص أو أعلام."},
+    "annotations.list":{"en":"Annotations List","it":"Elenco Annotazioni","fr":"Liste des Annotations","de":"Anmerkungsliste","es":"Lista de Anotaciones","zh":"标注列表","ru":"Список Аннотаций","ar":"قائمة التعليقات"},
+    "annotations.clear":{"en":"Clear All","it":"Cancella Tutto","fr":"Tout Effacer","de":"Alle Löschen","es":"Borrar Todo","zh":"全部清除","ru":"Очистить Всё","ar":"مسح الكل"},
+
+    "import.title":{"en":"Click to select GeoJSON file","it":"Clicca per selezionare file GeoJSON","fr":"Cliquez pour sélectionner un fichier GeoJSON","de":"Klicken Sie, um GeoJSON-Datei auszuwählen","es":"Haz clic para seleccionar archivo GeoJSON","zh":"点击选择GeoJSON文件","ru":"Нажмите для выбора файла GeoJSON","ar":"انقر لتحديد ملف GeoJSON"},
+    "import.hint":{"en":"or drag and drop here","it":"o trascina qui","fr":"ou glissez-déposez ici","de":"oder ziehen Sie hier","es":"o arrastra aquí","zh":"或拖放到此处","ru":"или перетащите сюда","ar":"أو اسحب وأفلت هنا"},
+
+    "export.image":{"en":"Export as Image","it":"Esporta come Immagine","fr":"Exporter en Image","de":"Als Bild Exportieren","es":"Exportar como Imagen","zh":"导出为图像","ru":"Экспорт в Изображение","ar":"تصدير كصورة"},
+    "export.resolution":{"en":"Resolution","it":"Risoluzione","fr":"Résolution","de":"Auflösung","es":"Resolución","zh":"分辨率","ru":"Разрешение","ar":"الدقة"},
+    "export.format":{"en":"Format","it":"Formato","fr":"Format","de":"Format","es":"Formato","zh":"格式","ru":"Формат","ar":"التنسيق"},
+    "export.png":{"en":"PNG","it":"PNG","fr":"PNG","de":"PNG","es":"PNG","zh":"PNG","ru":"PNG","ar":"PNG"},
+    "export.pdf":{"en":"PDF","it":"PDF","fr":"PDF","de":"PDF","es":"PDF","zh":"PDF","ru":"PDF","ar":"PDF"},
+    "export.data":{"en":"Export Data","it":"Esporta Dati","fr":"Exporter les Données","de":"Daten Exportieren","es":"Exportar Datos","zh":"导出数据","ru":"Экспорт Данных","ar":"تصدير البيانات"},
+    "export.geojson":{"en":"Export as GeoJSON","it":"Esporta come GeoJSON","fr":"Exporter en GeoJSON","de":"Als GeoJSON Exportieren","es":"Exportar como GeoJSON","zh":"导出为GeoJSON","ru":"Экспорт в GeoJSON","ar":"تصدير كـ GeoJSON"},
+
+    "year.current":{"en":"Current Year","it":"Anno Corrente","fr":"Année Actuelle","de":"Aktuelles Jahr","es":"Año Actual","zh":"当前年份","ru":"Текущий Год","ar":"السنة الحالية"},
+    "year.era":{"en":"Era","it":"Era","fr":"Ère","de":"Ära","es":"Era","zh":"时代","ru":"Эра","ar":"الحقبة"},
+
+    "style.fill.opacity":{"en":"Fill Opacity","it":"Opacità Riempimento","fr":"Opacité du Remplissage","de":"Fülldeckkraft","es":"Opacidad del Relleno","zh":"填充不透明度","ru":"Непрозрачность Заливки","ar":"شفافية التعبئة"},
+    "style.border.width":{"en":"Border Width","it":"Spessore Confini","fr":"Épaisseur des Frontières","de":"Grenzbreite","es":"Ancho de Frontera","zh":"边界宽度","ru":"Ширина Границ","ar":"عرض الحدود"},
+    "style.border.color":{"en":"Border Color","it":"Colore Confini","fr":"Couleur des Frontières","de":"Grenzfarbe","es":"Color de Frontera","zh":"边界颜色","ru":"Цвет Границ","ar":"لون الحدود"},
+    "style.border.style":{"en":"Border Style","it":"Stile Confini","fr":"Style des Frontières","de":"Grenzstil","es":"Estilo de Frontera","zh":"边界样式","ru":"Стиль Границ","ar":"نمط الحدود"},
+
+    "panel.random":{"en":"Random Map","it":"Mappa Casuale","fr":"Carte Aléatoire","de":"Zufallskarte","es":"Mapa Aleatorio","zh":"随机地图","ru":"Случайная Карта","ar":"خريطة عشوائية"},
+    "menu.random":{"en":"Random Map Generator","it":"Generatore Mappe Casuali","fr":"Générateur de Cartes","de":"Zufallskarten-Generator","es":"Generador de Mapas","zh":"随机地图生成器","ru":"Генератор Карт","ar":"مولد الخرائط"},
+    
+    "random.territories":{"en":"Number of Territories","it":"Numero di Territori","fr":"Nombre de Territoires","de":"Anzahl der Gebiete","es":"Número de Territorios","zh":"领土数量","ru":"Количество Территорий","ar":"عدد الأقاليم"},
+    "random.current.view":{"en":"Use Current View","it":"Usa Vista Corrente","fr":"Vue Actuelle","de":"Aktuelle Ansicht","es":"Vista Actual","zh":"使用当前视图","ru":"Текущий Вид","ar":"العرض الحالي"},
+    "random.current.view.hint":{"en":"Generate only in visible area. Uncheck for whole world.","it":"Genera solo nell'area visibile. Deseleziona per mondo intero.","fr":"Générer uniquement dans la zone visible. Décocher pour le monde entier.","de":"Nur im sichtbaren Bereich generieren. Abwählen für die ganze Welt.","es":"Generar solo en el área visible. Desmarcar para el mundo entero.","zh":"仅在可见区域生成。取消勾选以生成整个世界。","ru":"Генерировать только в видимой области. Снимите для всего мира.","ar":"توليد في المنطقة المرئية فقط. ألغ التحديد للعالم بأكمله."},
+    
+    "random.terrain":{"en":"Terrain Type","it":"Tipo di Terreno","fr":"Type de Terrain","de":"Geländetyp","es":"Tipo de Terreno","zh":"地形类型","ru":"Тип Местности","ar":"نوع التضاريس"},
+    "random.terrain.both":{"en":"Both Land & Sea","it":"Terra e Mare","fr":"Terre et Mer","de":"Land und Meer","es":"Tierra y Mar","zh":"陆地和海洋","ru":"Суша и Море","ar":"البر والبحر"},
+    "random.terrain.land":{"en":"Only Land","it":"Solo Terra","fr":"Seulement Terre","de":"Nur Land","es":"Solo Tierra","zh":"仅陆地","ru":"Только Суша","ar":"البر فقط"},
+    "random.terrain.sea":{"en":"Only Sea","it":"Solo Mare","fr":"Seulement Mer","de":"Nur Meer","es":"Solo Mar","zh":"仅海洋","ru":"Только Море","ar":"البحر فقط"},
+    "random.terrain.hint":{"en":"Filter territories by terrain type. Requires coastline data.","it":"Filtra i territori per tipo di terreno. Richiede dati costieri.","fr":"Filtrer par type de terrain. Nécessite des données côtières.","de":"Nach Geländetyp filtern. Benötigt Küstendaten.","es":"Filtrar por tipo de terreno. Requiere datos costeros.","zh":"按地形类型过滤领土。需要海岸线数据。","ru":"Фильтр по типу местности. Требуются данные береговой линии.","ar":"تصفية حسب نوع التضاريس. يتطلب بيانات الساحل."},
+    
+    "random.variation":{"en":"Size Variation","it":"Variazione Dimensioni","fr":"Variation de Taille","de":"Größenvariation","es":"Variación de Tamaño","zh":"大小变化","ru":"Вариация Размера","ar":"تباين الحجم"},
+    "random.output":{"en":"Output Mode","it":"Modalità Output","fr":"Mode de Sortie","de":"Ausgabemodus","es":"Modo de Salida","zh":"输出模式","ru":"Режим Вывода","ar":"وضع الإخراج"},
+    "random.as.regions":{"en":"Add as Custom Regions","it":"Aggiungi come Regioni Personalizzate","fr":"Ajouter comme Régions","de":"Als Regionen hinzufügen","es":"Añadir como Regiones","zh":"添加为自定义区域","ru":"Добавить как Регионы","ar":"إضافة كمناطق مخصصة"},
+    "random.as.regions.hint":{"en":"Add to custom regions (editable). Uncheck to replace current map data.","it":"Aggiungi alle regioni personalizzate (modificabili). Deseleziona per sostituire i dati mappa.","fr":"Ajouter aux régions (modifiables). Décocher pour remplacer les données.","de":"Zu Regionen hinzufügen (bearbeitbar). Abwählen, um Kartendaten zu ersetzen.","es":"Añadir a regiones (editables). Desmarcar para reemplazar datos del mapa.","zh":"添加到自定义区域（可编辑）。取消勾选以替换当前地图数据。","ru":"Добавить к регионам (редактируемые). Снимите для замены данных карты.","ar":"إضافة للمناطق (قابلة للتحرير). ألغ التحديد لاستبدال بيانات الخريطة."},
+    "random.generate":{"en":"Generate Map","it":"Genera Mappa","fr":"Générer la Carte","de":"Karte Generieren","es":"Generar Mapa","zh":"生成地图","ru":"Сгенерировать Карту","ar":"توليد الخريطة"},
+    "random.info":{"en":"ℹ️ Uses <b>Voronoi algorithm</b> to create natural-looking territories with random names.","it":"ℹ️ Usa l'<b>algoritmo Voronoi</b> per creare territori dall'aspetto naturale con nomi casuali.","fr":"ℹ️ Utilise l'<b>algorithme de Voronoï</b> pour créer des territoires naturels avec des noms aléatoires.","de":"ℹ️ Verwendet den <b>Voronoi-Algorithmus</b> für natürlich aussehende Gebiete mit zufälligen Namen.","es":"ℹ️ Usa el <b>algoritmo de Voronoi</b> para crear territorios de aspecto natural con nombres aleatorios.","zh":"ℹ️ 使用<b>Voronoi算法</b>创建具有随机名称的自然外观领土。","ru":"ℹ️ Использует <b>алгоритм Вороного</b> для создания естественных территорий со случайными названиями.","ar":"ℹ️ يستخدم <b>خوارزمية Voronoi</b> لإنشاء أقاليم طبيعية المظهر بأسماء عشوائية."},
+    "random.generating":{"en":"Generating random map...","it":"Generazione mappa casuale...","fr":"Génération de la carte...","de":"Generiere Karte...","es":"Generando mapa...","zh":"正在生成随机地图...","ru":"Генерация карты...","ar":"توليد الخريطة..."},
+    "random.created.regions":{"en":"Created {count} random regions","it":"Create {count} regioni casuali","fr":"{count} régions créées","de":"{count} Regionen erstellt","es":"{count} regiones creadas","zh":"已创建 {count} 个随机区域","ru":"Создано {count} регионов","ar":"تم إنشاء {count} منطقة"},
+    "random.created.nations":{"en":"Created {count} random nations","it":"Create {count} nazioni casuali","fr":"{count} nations créées","de":"{count} Nationen erstellt","es":"{count} naciones creadas","zh":"已创建 {count} 个随机国家","ru":"Создано {count} наций","ar":"تم إنشاء {count} دولة"},
+    "random.error":{"en":"Error generating random map","it":"Errore nella generazione mappa","fr":"Erreur de génération","de":"Fehler bei Generierung","es":"Error al generar mapa","zh":"生成地图时出错","ru":"Ошибка генерации","ar":"خطأ في توليد الخريطة"},
+    "random.coastline.required":{"en":"Coastline data required for terrain filtering","it":"Dati costieri necessari per filtrare il terreno","fr":"Données côtières nécessaires pour le filtrage","de":"Küstendaten für Geländefilterung erforderlich","es":"Se requieren datos costeros para filtrar terreno","zh":"地形过滤需要海岸线数据","ru":"Требуются данные береговой линии для фильтрации","ar":"بيانات الساحل مطلوبة للتصفية"},
+    "random.too.few.points":{"en":"Too few valid points ({count}). Try different settings.","it":"Troppi pochi punti validi ({count}). Prova altre impostazioni.","fr":"Trop peu de points valides ({count}). Essayez d'autres paramètres.","de":"Zu wenige gültige Punkte ({count}). Versuchen Sie andere Einstellungen.","es":"Muy pocos puntos válidos ({count}). Pruebe otros ajustes.","zh":"有效点太少 ({count})。尝试不同的设置。","ru":"Слишком мало точек ({count}). Попробуйте другие настройки.","ar":"نقاط صالحة قليلة جدًا ({count}). جرب إعدادات مختلفة."}
   }
 }
+
